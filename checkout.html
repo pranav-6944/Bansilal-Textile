@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout — Bansilal Textile</title>
+  <meta name="description" content="Secure checkout at Bansilal Textile. Complete your purchase of authentic Indian handloom textiles and bridal wear.">
+  <link rel="icon" href="../favicon_io/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="css/bansilal.css">
+  <style>
+    body { padding-top: 0; background: var(--color-surface-container-lowest); }
+    .checkout-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+    @media (min-width: 1024px) { .checkout-grid { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+
+    .checkout-section {
+      background: var(--color-surface);
+      padding: 2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .checkout-section-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 560px) { .form-row-2 { grid-template-columns: repeat(2, 1fr) !important; } }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 1rem;
+      border: 1px solid var(--color-outline-variant);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .payment-option:hover { border-color: var(--color-secondary); }
+    .payment-option.is-selected { border-color: var(--color-primary); background: var(--color-surface-container-low); }
+    .payment-radio {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-outline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color var(--transition-fast);
+    }
+    .payment-option.is-selected .payment-radio { border-color: var(--color-primary); }
+    .payment-radio-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+      display: none;
+    }
+    .payment-option.is-selected .payment-radio-dot { display: block; }
+
+    .order-item-mini {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+    .order-item-mini:last-child { border-bottom: none; }
+
+    /* Success Modal */
+    .success-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(26,20,18,0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .success-modal.is-open { display: flex; }
+    .success-panel {
+      background: var(--color-surface);
+      max-width: 32rem;
+      width: 100%;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-drawer);
+    }
+    .success-icon {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background: rgba(119,90,25,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: var(--color-secondary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Minimal checkout header -->
+  <header style="background:var(--color-surface);border-bottom:1px solid var(--border-hairline);padding:1rem 0;position:sticky;top:0;z-index:100;">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+      <a href="index.html" style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);text-decoration:none;">Bansilal Textile</a>
+      <div style="display:flex;align-items:center;gap:0.375rem;font-size:0.75rem;color:var(--color-secondary);">
+        <span class="material-symbols-outlined" style="font-size:1rem;">lock</span>
+        Secure Checkout
+      </div>
+    </div>
+  </header>
+
+  <!-- Step Indicator -->
+  <div style="background:var(--color-surface);border-bottom:1px solid var(--border-hairline);padding:1rem 0;">
+    <div class="container">
+      <div class="step-indicator">
+        <div class="step is-done" id="step-1">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+            <div class="step__dot">✓</div>
+            <span class="step__label">Cart</span>
+          </div>
+        </div>
+        <div class="step__line"></div>
+        <div class="step is-active" id="step-2">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+            <div class="step__dot">2</div>
+            <span class="step__label">Delivery</span>
+          </div>
+        </div>
+        <div class="step__line"></div>
+        <div class="step" id="step-3">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+            <div class="step__dot">3</div>
+            <span class="step__label">Payment</span>
+          </div>
+        </div>
+        <div class="step__line"></div>
+        <div class="step" id="step-4">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.375rem;">
+            <div class="step__dot">4</div>
+            <span class="step__label">Confirm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main style="padding:2rem 0 5rem;min-height:80vh;">
+    <div class="container">
+      <div class="checkout-grid">
+        <!-- Form Column -->
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          
+          <!-- Contact Info -->
+          <div class="checkout-section">
+            <h2 class="checkout-section-title">
+              <span class="material-symbols-outlined" style="vertical-align:middle;font-size:1rem;color:var(--color-secondary);margin-right:0.375rem;">person</span>
+              Contact Information
+            </h2>
+            <div class="form-row form-row-2">
+              <div class="field">
+                <label for="co-firstname">First Name *</label>
+                <input type="text" id="co-firstname" required autocomplete="given-name" placeholder="Ananya">
+              </div>
+              <div class="field">
+                <label for="co-lastname">Last Name *</label>
+                <input type="text" id="co-lastname" required autocomplete="family-name" placeholder="Deshmukh">
+              </div>
+            </div>
+            <div class="form-row form-row-2" style="margin-top:1.25rem;">
+              <div class="field">
+                <label for="co-email">Email Address *</label>
+                <input type="email" id="co-email" required autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="field">
+                <label for="co-phone">Mobile Number *</label>
+                <input type="tel" id="co-phone" required autocomplete="tel" placeholder="+91 98000 00000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Delivery Address -->
+          <div class="checkout-section">
+            <h2 class="checkout-section-title">
+              <span class="material-symbols-outlined" style="vertical-align:middle;font-size:1rem;color:var(--color-secondary);margin-right:0.375rem;">location_on</span>
+              Delivery Address
+            </h2>
+            <div class="form-row">
+              <div class="field">
+                <label for="co-address">Street Address *</label>
+                <input type="text" id="co-address" required autocomplete="street-address" placeholder="Flat No., Building, Street">
+              </div>
+            </div>
+            <div class="form-row form-row-2" style="margin-top:1.25rem;">
+              <div class="field">
+                <label for="co-city">City *</label>
+                <input type="text" id="co-city" required autocomplete="address-level2" placeholder="Pune">
+              </div>
+              <div class="field">
+                <label for="co-state">State *</label>
+                <select id="co-state" autocomplete="address-level1">
+                  <option value="">Select State</option>
+                  <option selected>Maharashtra</option>
+                  <option>Gujarat</option>
+                  <option>Karnataka</option>
+                  <option>Tamil Nadu</option>
+                  <option>Delhi</option>
+                  <option>Rajasthan</option>
+                  <option>West Bengal</option>
+                  <option>Uttar Pradesh</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row form-row-2" style="margin-top:1.25rem;">
+              <div class="field">
+                <label for="co-pincode">Pincode *</label>
+                <input type="text" id="co-pincode" required autocomplete="postal-code" placeholder="412105" maxlength="6" pattern="[0-9]{6}">
+              </div>
+              <div class="field">
+                <label for="co-country">Country</label>
+                <select id="co-country" autocomplete="country">
+                  <option selected>India</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Method -->
+          <div class="checkout-section">
+            <h2 class="checkout-section-title">
+              <span class="material-symbols-outlined" style="vertical-align:middle;font-size:1rem;color:var(--color-secondary);margin-right:0.375rem;">local_shipping</span>
+              Shipping Method
+            </h2>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div class="payment-option is-selected" onclick="selectShipping(this,'standard')" id="ship-standard">
+                <div class="payment-radio"><div class="payment-radio-dot"></div></div>
+                <div style="flex:1;">
+                  <p style="font-weight:500;font-size:0.9375rem;color:var(--color-primary);">Standard Delivery</p>
+                  <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);margin-top:0.125rem;">5–7 business days • Secure packaging</p>
+                </div>
+                <span id="ship-standard-price" style="font-size:0.875rem;font-weight:500;color:var(--color-primary);"></span>
+              </div>
+              <div class="payment-option" onclick="selectShipping(this,'express')" id="ship-express">
+                <div class="payment-radio"><div class="payment-radio-dot"></div></div>
+                <div style="flex:1;">
+                  <p style="font-weight:500;font-size:0.9375rem;color:var(--color-primary);">Express Delivery</p>
+                  <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);margin-top:0.125rem;">2–3 business days • Priority handling</p>
+                </div>
+                <span style="font-size:0.875rem;font-weight:500;color:var(--color-primary);">₹299</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Method -->
+          <div class="checkout-section" id="payment-section">
+            <h2 class="checkout-section-title">
+              <span class="material-symbols-outlined" style="vertical-align:middle;font-size:1rem;color:var(--color-secondary);margin-right:0.375rem;">payment</span>
+              Payment Method
+            </h2>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div class="payment-option is-selected" onclick="selectPayment(this,'cod')" id="pay-cod">
+                <div class="payment-radio"><div class="payment-radio-dot"></div></div>
+                <div style="flex:1;">
+                  <p style="font-weight:500;font-size:0.9375rem;color:var(--color-primary);">Cash on Delivery</p>
+                  <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);">Pay when your order arrives</p>
+                </div>
+                <span class="material-symbols-outlined" style="color:var(--color-secondary);">payments</span>
+              </div>
+              <div class="payment-option" onclick="selectPayment(this,'upi')" id="pay-upi">
+                <div class="payment-radio"><div class="payment-radio-dot"></div></div>
+                <div style="flex:1;">
+                  <p style="font-weight:500;font-size:0.9375rem;color:var(--color-primary);">UPI / QR Code</p>
+                  <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);">GPay, PhonePe, BHIM, Paytm</p>
+                </div>
+                <span class="material-symbols-outlined" style="color:var(--color-secondary);">qr_code_scanner</span>
+              </div>
+              <div class="payment-option" onclick="selectPayment(this,'card')" id="pay-card">
+                <div class="payment-radio"><div class="payment-radio-dot"></div></div>
+                <div style="flex:1;">
+                  <p style="font-weight:500;font-size:0.9375rem;color:var(--color-primary);">Credit / Debit Card</p>
+                  <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);">Visa, Mastercard, RuPay, Amex</p>
+                </div>
+                <span class="material-symbols-outlined" style="color:var(--color-secondary);">credit_card</span>
+              </div>
+              <div class="payment-option" onclick="selectPayment(this,'netbanking')" id="pay-netbanking">
+                <div class="payment-radio"><div class="payment-radio-dot"></div></div>
+                <div style="flex:1;">
+                  <p style="font-weight:500;font-size:0.9375rem;color:var(--color-primary);">Net Banking</p>
+                  <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);">All major banks supported</p>
+                </div>
+                <span class="material-symbols-outlined" style="color:var(--color-secondary);">account_balance</span>
+              </div>
+            </div>
+
+            <!-- Card details (shown for card) -->
+            <div id="card-fields" style="display:none;margin-top:1.25rem;padding:1.25rem;background:var(--color-surface-container-low);">
+              <div class="form-row">
+                <div class="field"><label for="card-name">Cardholder Name</label><input type="text" id="card-name" autocomplete="cc-name" placeholder="Name on card"></div>
+              </div>
+              <div class="form-row" style="margin-top:1rem;">
+                <div class="field"><label for="card-num">Card Number</label><input type="text" id="card-num" autocomplete="cc-number" placeholder="•••• •••• •••• ••••" maxlength="19"></div>
+              </div>
+              <div class="form-row form-row-2" style="margin-top:1rem;">
+                <div class="field"><label for="card-exp">Expiry</label><input type="text" id="card-exp" autocomplete="cc-exp" placeholder="MM / YY" maxlength="7"></div>
+                <div class="field"><label for="card-cvv">CVV</label><input type="text" id="card-cvv" autocomplete="cc-csc" placeholder="•••" maxlength="4"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Instructions -->
+          <div class="checkout-section">
+            <h2 class="checkout-section-title">
+              <span class="material-symbols-outlined" style="vertical-align:middle;font-size:1rem;color:var(--color-secondary);margin-right:0.375rem;">note</span>
+              Gift / Order Notes
+            </h2>
+            <div class="field">
+              <label for="co-notes">Special instructions (optional)</label>
+              <textarea id="co-notes" rows="3" placeholder="e.g. Gift packaging, specific folding method for bridal saree, delivery time preference..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary Column -->
+        <div style="position:sticky;top:5rem;height:fit-content;">
+          <div class="checkout-section">
+            <h2 class="checkout-section-title">
+              <span class="material-symbols-outlined" style="vertical-align:middle;font-size:1rem;color:var(--color-secondary);margin-right:0.375rem;">receipt_long</span>
+              Order Summary
+            </h2>
+            <div id="checkout-items-list" style="max-height:18rem;overflow-y:auto;margin-bottom:1.25rem;"></div>
+            
+            <div style="display:flex;flex-direction:column;gap:0.625rem;padding-top:1rem;border-top:1px solid var(--border-hairline);">
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:0.875rem;color:var(--color-on-surface-variant);">Subtotal</span>
+                <span id="co-subtotal" style="font-size:0.875rem;font-weight:500;"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:0.875rem;color:var(--color-on-surface-variant);">Shipping</span>
+                <span id="co-shipping" style="font-size:0.875rem;color:var(--color-secondary);font-weight:500;"></span>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;margin-top:0.5rem;border-top:1px solid var(--border-hairline);">
+              <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-on-surface-variant);">Total Payable</span>
+              <span id="co-total" style="font-family:var(--font-display);font-size:1.5rem;font-weight:500;color:var(--color-primary);"></span>
+            </div>
+
+            <button id="place-order-btn" class="btn-primary" style="width:100%;padding:1rem;justify-content:center;margin-top:1.5rem;" onclick="placeOrder()">
+              <span class="material-symbols-outlined" style="font-size:1rem;">lock</span>
+              Place Order Securely
+            </button>
+            <p style="font-size:0.75rem;text-align:center;color:var(--color-on-surface-variant);margin-top:0.625rem;">By placing this order you agree to our <a href="#" style="color:var(--color-secondary);">Terms of Service</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Success Modal -->
+  <div class="success-modal" id="success-modal">
+    <div class="success-panel">
+      <div class="success-icon">
+        <span class="material-symbols-outlined" style="font-size:2.5rem;font-variation-settings:'FILL' 1;">check_circle</span>
+      </div>
+      <h2 style="font-family:var(--font-display);font-size:1.75rem;font-weight:500;color:var(--color-primary);">Order Placed!</h2>
+      <p id="order-id" style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-secondary);margin:0.5rem 0 1rem;"></p>
+      <p style="font-size:0.9375rem;font-weight:300;color:var(--color-on-surface-variant);line-height:1.7;margin-bottom:2rem;">Thank you for your order! Our team will contact you within 2–4 hours to confirm your trousseau selection and arrange delivery.</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <button onclick="window.location.href='shop.html'" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;">Continue Shopping</button>
+        <button onclick="window.location.href='index.html'" class="btn-secondary" style="width:100%;justify-content:center;">Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script>
+    let selectedShipping = 'standard';
+    let selectedPayment = 'cod';
+
+    function selectShipping(el, type) {
+      selectedShipping = type;
+      document.querySelectorAll('.payment-option[id^="ship-"]').forEach(o => o.classList.remove('is-selected'));
+      el.classList.add('is-selected');
+      updateCheckoutSummary();
+    }
+
+    function selectPayment(el, type) {
+      selectedPayment = type;
+      document.querySelectorAll('.payment-option[id^="pay-"]').forEach(o => o.classList.remove('is-selected'));
+      el.classList.add('is-selected');
+      document.getElementById('card-fields').style.display = type === 'card' ? 'block' : 'none';
+    }
+
+    function updateCheckoutSummary() {
+      const cart = cartManager.getCart();
+      const subtotal = cartManager.getSubtotal();
+      const standardShipping = subtotal >= 5000 ? 0 : 199;
+      const expressShipping = 299;
+      const shipping = selectedShipping === 'express' ? expressShipping : standardShipping;
+      const total = subtotal + shipping;
+
+      document.getElementById('ship-standard-price').textContent = standardShipping === 0 ? 'FREE' : '₹' + standardShipping;
+      document.getElementById('co-subtotal').textContent = formatPrice(subtotal);
+      document.getElementById('co-shipping').textContent = shipping === 0 ? 'FREE' : formatPrice(shipping);
+      document.getElementById('co-total').textContent = formatPrice(total);
+
+      const list = document.getElementById('checkout-items-list');
+      list.innerHTML = cart.map(item => `
+        <div class="order-item-mini">
+          <div style="position:relative;">
+            <img src="${item.image}" alt="${item.name}" style="width:4rem;height:5rem;object-fit:cover;flex-shrink:0;background:var(--color-surface-container);">
+            <span style="position:absolute;top:-0.5rem;right:-0.5rem;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--color-on-surface-variant);color:white;font-size:0.625rem;font-weight:700;display:flex;align-items:center;justify-content:center;">${item.qty}</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:0.875rem;font-weight:500;color:var(--color-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.name}</p>
+            <p style="font-size:0.75rem;color:var(--color-on-surface-variant);margin-top:0.125rem;">${item.selectedColor} • ${item.selectedSize}</p>
+            <p style="font-size:0.875rem;font-weight:500;color:var(--color-on-surface);margin-top:0.25rem;">${formatPrice(item.price * item.qty)}</p>
+          </div>
+        </div>`).join('') || '<p style="color:var(--color-on-surface-variant);font-size:0.875rem;padding:1rem 0;">No items in cart</p>';
+    }
+
+    function placeOrder() {
+      const name = document.getElementById('co-firstname').value.trim();
+      const email = document.getElementById('co-email').value.trim();
+      const phone = document.getElementById('co-phone').value.trim();
+      const address = document.getElementById('co-address').value.trim();
+      const city = document.getElementById('co-city').value.trim();
+      const pincode = document.getElementById('co-pincode').value.trim();
+
+      if (!name || !email || !phone || !address || !city || !pincode) {
+        showToast('Please fill in all required delivery details.', 'error');
+        return;
+      }
+      if (!/\S+@\S+\.\S+/.test(email)) { showToast('Please enter a valid email.', 'error'); return; }
+      if (!/^\d{6}$/.test(pincode)) { showToast('Please enter a valid 6-digit pincode.', 'error'); return; }
+      if (cartManager.getCart().length === 0) { showToast('Your cart is empty.', 'error'); return; }
+
+      const btn = document.getElementById('place-order-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-outlined" style="font-size:1rem;animation:spin 1s linear infinite">progress_activity</span> Processing...';
+      const styleEl = document.createElement('style');
+      styleEl.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+      document.head.appendChild(styleEl);
+
+      setTimeout(() => {
+        const orderId = 'BT' + Date.now().toString().slice(-8);
+        cartManager.clearCart();
+        document.getElementById('order-id').textContent = 'Order ID: #' + orderId;
+        document.getElementById('success-modal').classList.add('is-open');
+      }, 1800);
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      if (cartManager.getCart().length === 0 && window.location.search !== '?demo') {
+        // Allow visiting for demo
+      }
+      updateCheckoutSummary();
+    });
+  </script>
+</body>
+</html>

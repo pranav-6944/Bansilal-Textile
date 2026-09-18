@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart — Bansilal Textile</title>
+  <meta name="description" content="Review your cart before checkout at Bansilal Textile. Authentic handloom sarees, bridal couture, and textiles.">
+  <link rel="icon" href="../favicon_io/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="css/bansilal.css">
+  <style>
+    body { padding-top: 0; }
+    .cart-page-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 1024px) { .cart-page-grid { grid-template-columns: 1.75fr 1fr; align-items: start; } }
+
+    .cart-page-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+    .cart-page-item:last-child { border-bottom: none; }
+    .cart-page-img {
+      width: 7rem;
+      height: 9rem;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--color-surface-container);
+    }
+    @media (max-width: 480px) { .cart-page-img { width: 5rem; height: 6.25rem; } }
+
+    .order-summary-card {
+      background: var(--color-surface-container-low);
+      padding: 1.75rem;
+      position: sticky;
+      top: 5.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div style="height:2.5rem;background:var(--color-tertiary-container);" aria-hidden="true"></div>
+
+  <main style="padding-top:4.5rem;min-height:100vh;background:var(--color-background);">
+    <div class="container" style="padding-top:2.5rem;padding-bottom:5rem;">
+      <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom:2rem;">
+        <a href="index.html">Home</a>
+        <span class="breadcrumbs__sep">›</span>
+        <span class="breadcrumbs__current">Your Cart</span>
+      </nav>
+      <h1 style="font-family:var(--font-display);font-size:clamp(1.75rem,4vw,3rem);font-weight:400;color:var(--color-primary);margin-bottom:0.25rem;">Your Cart</h1>
+      <p id="cart-page-count" style="font-size:0.875rem;color:var(--color-on-surface-variant);margin-bottom:2.5rem;"></p>
+
+      <!-- Empty State -->
+      <div id="cart-empty-state" class="empty-state" style="display:none;padding:5rem 2rem;min-height:30rem;">
+        <div class="empty-state__icon" style="width:5rem;height:5rem;">
+          <span class="material-symbols-outlined" style="font-size:2.5rem;">shopping_bag</span>
+        </div>
+        <h2 class="empty-state__title" style="font-size:1.5rem;">Your cart is empty</h2>
+        <p class="empty-state__text">Discover our curated handloom collections and add your favourites.</p>
+        <a href="shop.html" class="btn-primary" style="margin-top:1rem;">Start Shopping</a>
+      </div>
+
+      <!-- Cart Content -->
+      <div class="cart-page-grid" id="cart-content" style="display:none;">
+        <!-- Items -->
+        <div>
+          <div id="cart-page-items"></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;flex-wrap:wrap;gap:0.75rem;">
+            <a href="shop.html" class="btn-ghost" style="font-size:0.75rem;">← Continue Shopping</a>
+            <button onclick="confirmClearCart()" style="font-size:0.75rem;color:var(--color-error);background:none;border:none;cursor:pointer;font-family:var(--font-body);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Clear Cart</button>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div>
+          <div class="order-summary-card">
+            <h2 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--color-primary);margin-bottom:1.5rem;">Order Summary</h2>
+            
+            <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;">
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:0.875rem;color:var(--color-on-surface-variant);">Subtotal</span>
+                <span id="summary-subtotal" style="font-size:0.875rem;font-weight:500;color:var(--color-on-surface);"></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="font-size:0.875rem;color:var(--color-on-surface-variant);">Shipping</span>
+                <span id="summary-shipping" style="font-size:0.875rem;color:var(--color-secondary);font-weight:500;"></span>
+              </div>
+              <div id="discount-row" style="display:flex;justify-content:space-between;display:none;">
+                <span style="font-size:0.875rem;color:var(--color-secondary);">Discount Applied</span>
+                <span id="summary-discount" style="font-size:0.875rem;color:var(--color-secondary);font-weight:500;"></span>
+              </div>
+            </div>
+
+            <!-- Coupon -->
+            <div style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border-hairline);">
+              <p style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-on-surface-variant);margin-bottom:0.625rem;">Have a Coupon?</p>
+              <div style="display:flex;gap:0.5rem;">
+                <input type="text" id="coupon-input" placeholder="Enter code" 
+                  style="flex:1;background:var(--color-surface);border:none;border-bottom:1px solid rgba(26,20,18,0.25);padding:0.625rem 0;font-size:0.875rem;font-family:var(--font-body);outline:none;color:var(--color-on-surface);">
+                <button onclick="applyCoupon()" class="btn-secondary" style="padding:0.5rem 0.875rem;font-size:0.6875rem;">Apply</button>
+              </div>
+              <p id="coupon-msg" style="font-size:0.75rem;margin-top:0.375rem;display:none;"></p>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0;margin-bottom:1.5rem;">
+              <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-on-surface-variant);">Grand Total</span>
+              <span id="summary-total" style="font-size:1.5rem;font-weight:500;font-family:var(--font-display);color:var(--color-primary);"></span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <a href="checkout.html" class="btn-primary" style="width:100%;padding:1rem;justify-content:center;">
+                <span class="material-symbols-outlined" style="font-size:1rem;">lock</span>
+                Proceed to Checkout
+              </a>
+              <p style="font-size:0.75rem;text-align:center;color:var(--color-on-surface-variant);">🔒 256-bit SSL encrypted checkout</p>
+            </div>
+
+            <!-- Trust -->
+            <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border-hairline);display:flex;flex-direction:column;gap:0.5rem;">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-on-surface-variant);">
+                <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-secondary);">local_shipping</span>
+                Free shipping on orders over ₹5,000
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-on-surface-variant);">
+                <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-secondary);">replay</span>
+                Hassle-free 30-day returns
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8125rem;color:var(--color-on-surface-variant);">
+                <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-secondary);">support_agent</span>
+                Expert textile support: +91 98220 00000
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="data/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/layout.js"></script>
+  <script>
+    const COUPONS = { 'SILK10': 10, 'BANSILAL15': 15, 'BRIDAL20': 20, 'WELCOME5': 5 };
+    let appliedDiscount = 0;
+
+    function renderCartPage() {
+      const cart = cartManager.getCart();
+      const count = cartManager.getCount();
+      const subtotal = cartManager.getSubtotal();
+      const shipping = subtotal >= 5000 ? 0 : 199;
+      const discountAmt = Math.round(subtotal * appliedDiscount / 100);
+      const total = subtotal + shipping - discountAmt;
+
+      document.getElementById('cart-page-count').textContent = count + ' item' + (count !== 1 ? 's' : '');
+
+      if (cart.length === 0) {
+        document.getElementById('cart-empty-state').style.display = 'flex';
+        document.getElementById('cart-content').style.display = 'none';
+        return;
+      }
+
+      document.getElementById('cart-empty-state').style.display = 'none';
+      document.getElementById('cart-content').style.display = 'grid';
+
+      document.getElementById('cart-page-items').innerHTML = cart.map(item => `
+        <div class="cart-page-item" id="cart-page-item-${item.key}">
+          <a href="product.html?slug=${item.slug}">
+            <img class="cart-page-img" src="${item.image}" alt="${item.name}">
+          </a>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="display:flex;justify-content:space-between;gap:0.5rem;flex-wrap:wrap;">
+              <div>
+                <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-secondary);">${item.categoryLabel}</span>
+                <h3 style="font-family:var(--font-display);font-size:1.0625rem;font-weight:500;color:var(--color-primary);margin-top:0.125rem;line-height:1.3;">${item.name}</h3>
+              </div>
+              <span style="font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:var(--color-primary);white-space:nowrap;">${formatPrice(item.price * item.qty)}</span>
+            </div>
+            <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);">${item.selectedColor} • ${item.selectedSize}</p>
+            <p style="font-size:0.875rem;color:var(--color-on-surface-variant);">${formatPrice(item.price)} each</p>
+            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:0.25rem;">
+              <div style="display:flex;align-items:center;">
+                <button class="qty-btn" onclick="cartManager.updateQty('${item.key}',-1);renderCartPage()" aria-label="Decrease">−</button>
+                <span class="qty-display">${item.qty}</span>
+                <button class="qty-btn" onclick="cartManager.updateQty('${item.key}',1);renderCartPage()" aria-label="Increase">+</button>
+              </div>
+              <button onclick="cartManager.removeFromCart('${item.key}');renderCartPage()" 
+                style="font-size:0.75rem;color:var(--color-error);background:none;border:none;cursor:pointer;font-family:var(--font-body);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">
+                Remove
+              </button>
+              <a href="wishlist.html" onclick="wishlistManager.add('${item.productId}');cartManager.removeFromCart('${item.key}');renderCartPage();"
+                style="font-size:0.75rem;color:var(--color-secondary);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;">
+                Save for Later
+              </a>
+            </div>
+          </div>
+        </div>`).join('');
+
+      document.getElementById('summary-subtotal').textContent = formatPrice(subtotal);
+      document.getElementById('summary-shipping').textContent = shipping === 0 ? 'FREE' : formatPrice(shipping);
+      if (discountAmt > 0) {
+        document.getElementById('discount-row').style.display = 'flex';
+        document.getElementById('summary-discount').textContent = '−' + formatPrice(discountAmt);
+      }
+      document.getElementById('summary-total').textContent = formatPrice(total);
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+      const msg = document.getElementById('coupon-msg');
+      msg.style.display = 'block';
+      if (COUPONS[code]) {
+        appliedDiscount = COUPONS[code];
+        msg.textContent = '✓ Code applied! ' + appliedDiscount + '% discount.';
+        msg.style.color = 'var(--color-secondary)';
+        showToast('Coupon "' + code + '" applied successfully!', 'success');
+      } else {
+        msg.textContent = '✗ Invalid code. Try SILK10 or BRIDAL20.';
+        msg.style.color = 'var(--color-error)';
+      }
+      renderCartPage();
+    }
+
+    function confirmClearCart() {
+      if (confirm('Are you sure you want to clear your cart?')) {
+        cartManager.clearCart();
+        renderCartPage();
+      }
+    }
+
+    document.addEventListener('cart:updated', () => renderCartPage());
+    document.addEventListener('DOMContentLoaded', renderCartPage);
+  </script>
+</body>
+</html>

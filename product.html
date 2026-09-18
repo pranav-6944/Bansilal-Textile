@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">Product — Bansilal Textile</title>
+  <meta name="description" id="meta-desc" content="Authentic handloom textiles at Bansilal Textile, Alandi Pune.">
+  <link rel="icon" href="../favicon_io/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="css/bansilal.css">
+  <style>
+    body { padding-top: 0; }
+
+    /* Thumbnails */
+    .thumb-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 5.5rem;
+      flex-shrink: 0;
+    }
+    @media (max-width: 767px) { .thumb-strip { flex-direction: row; width: 100%; overflow-x: auto; } }
+    .thumb {
+      width: 5rem;
+      height: 6rem;
+      object-fit: cover;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: border-color var(--transition-fast);
+      flex-shrink: 0;
+    }
+    @media (max-width: 767px) { .thumb { width: 4rem; height: 5rem; } }
+    .thumb.is-active { border-color: var(--color-secondary); }
+
+    /* Main image */
+    .main-image-wrap {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      background: var(--color-surface-container-lowest);
+    }
+    .main-image {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+    .main-image-wrap:hover .main-image { transform: scale(1.04); }
+
+    /* Color Swatch */
+    .color-swatch {
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color var(--transition-fast), transform var(--transition-fast);
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+    .color-swatch.is-active {
+      border-color: white;
+      outline-color: var(--color-primary);
+    }
+    .color-swatch:hover { transform: scale(1.15); }
+
+    /* Size Selector */
+    .size-btn {
+      padding: 0.5rem 0.875rem;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      border: 1px solid var(--color-outline-variant);
+      cursor: pointer;
+      background: var(--color-surface);
+      color: var(--color-on-surface);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .size-btn:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface-container-low);
+    }
+    .size-btn.is-active {
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+      border-color: var(--color-primary);
+    }
+    .size-btn.is-out { color: var(--color-outline); text-decoration: line-through; cursor: not-allowed; }
+
+    /* Add to cart sticky bar (mobile) */
+    .sticky-atc {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-surface);
+      border-top: 1px solid var(--border-hairline);
+      padding: 0.875rem 1.25rem;
+      z-index: 100;
+      display: flex;
+      gap: 0.625rem;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+    }
+    @media (min-width: 1024px) { .sticky-atc { display: none; } }
+
+    /* Related products */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .related-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    /* Trust badge row */
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-on-surface-variant);
+      padding: 0.375rem 0.625rem;
+      border: 1px solid var(--border-hairline);
+    }
+    .trust-badge .material-symbols-outlined { font-size: 0.875rem; color: var(--color-secondary); }
+  </style>
+</head>
+<body>
+  <div style="height:2.5rem;background:var(--color-tertiary-container);" aria-hidden="true"></div>
+
+  <main style="padding-top:4.5rem;min-height:100vh;background:var(--color-background);" id="main-content">
+    <!-- Not found fallback (hidden initially) -->
+    <div id="not-found" style="display:none;padding:8rem 2rem;text-align:center;">
+      <p style="font-family:var(--font-display);font-size:2rem;font-weight:400;">Product Not Found</p>
+      <a href="shop.html" class="btn-primary" style="margin-top:1.5rem;">Back to Shop</a>
+    </div>
+
+    <!-- Product Content -->
+    <div id="product-page" style="display:none;">
+      <!-- Breadcrumbs -->
+      <div style="padding:1.25rem 0;border-bottom:1px solid var(--border-hairline);margin-bottom:0;" class="container">
+        <nav class="breadcrumbs" id="pdp-breadcrumbs" aria-label="Breadcrumb"></nav>
+      </div>
+
+      <!-- Main Product Section -->
+      <section class="container" style="padding-top:2.5rem;padding-bottom:4rem;" aria-label="Product details">
+        <div style="display:grid;grid-template-columns:1fr;gap:2.5rem;">
+          <style>@media(min-width:1024px){.pdp-grid{grid-template-columns:1.2fr 1fr!important;align-items:start;gap:4rem!important}}</style>
+          <div style="display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:start;" class="pdp-grid">
+            
+            <!-- Images -->
+            <div style="display:flex;flex-direction:column;gap:0.875rem;">
+              <!-- Desktop: thumb strip + main image -->
+              <div style="display:flex;gap:0.875rem;flex-direction:column;">
+                <style>@media(min-width:768px){.img-layout{flex-direction:row!important}}</style>
+                <div style="display:flex;gap:0.875rem;flex-direction:column;" class="img-layout">
+                  <div class="thumb-strip" id="thumb-strip"><!-- thumbs by JS --></div>
+                  <div class="main-image-wrap" id="main-image-wrap" onclick="openLightbox()">
+                    <img class="main-image" id="main-image" src="" alt="" loading="eager">
+                    <div style="position:absolute;top:0.75rem;right:0.75rem;padding:0.25rem 0.5rem;background:rgba(252,249,243,0.9);font-size:0.625rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-on-surface-variant);">
+                      <span class="material-symbols-outlined" style="font-size:0.75rem;vertical-align:middle;">zoom_in</span> Zoom
+                    </div>
+                    <div id="pdp-image-badges" style="position:absolute;top:0.75rem;left:0.75rem;display:flex;flex-direction:column;gap:0.375rem;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Info -->
+            <div style="display:flex;flex-direction:column;gap:1.75rem;position:sticky;top:6rem;">
+              <!-- Header -->
+              <div style="display:flex;flex-direction:column;gap:0.625rem;">
+                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+                  <span id="pdp-category" class="text-label-caps" style="color:var(--color-secondary);"></span>
+                  <div class="trust-badges" id="pdp-badges"></div>
+                </div>
+                <h1 id="pdp-name" style="font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:500;line-height:1.2;color:var(--color-primary);"></h1>
+                <p id="pdp-fabric" style="font-size:0.9375rem;color:var(--color-on-surface-variant);font-weight:300;"></p>
+                <!-- Rating -->
+                <div style="display:flex;align-items:center;gap:0.625rem;">
+                  <div id="pdp-stars"></div>
+                  <span id="pdp-rating" style="font-size:0.875rem;font-weight:500;color:var(--color-on-surface);"></span>
+                  <span id="pdp-review-count" style="font-size:0.8125rem;color:var(--color-on-surface-variant);"></span>
+                </div>
+              </div>
+
+              <!-- Price -->
+              <div style="padding:1.25rem;background:var(--color-surface-container-low);">
+                <div style="display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap;">
+                  <span id="pdp-price" style="font-family:var(--font-display);font-size:2rem;font-weight:500;color:var(--color-primary);"></span>
+                  <span id="pdp-compare" style="font-size:1.1rem;color:var(--color-on-surface-variant);text-decoration:line-through;"></span>
+                  <span id="pdp-discount" style="font-size:0.875rem;font-weight:600;color:var(--color-secondary);padding:0.125rem 0.375rem;background:rgba(119,90,25,0.1);"></span>
+                </div>
+                <p style="font-size:0.75rem;color:var(--color-on-surface-variant);margin-top:0.375rem;">Inclusive of all taxes. Free delivery above ₹5,000.</p>
+              </div>
+
+              <!-- Color Selector -->
+              <div id="color-section" style="display:flex;flex-direction:column;gap:0.875rem;">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-on-surface-variant);">Colour</span>
+                  <span id="selected-color-label" style="font-size:0.875rem;font-weight:500;color:var(--color-primary);"></span>
+                </div>
+                <div id="color-swatches" style="display:flex;flex-wrap:wrap;gap:0.625rem;"></div>
+              </div>
+
+              <!-- Size Selector -->
+              <div id="size-section" style="display:flex;flex-direction:column;gap:0.875rem;">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-on-surface-variant);">Size / Length</span>
+                  <button onclick="openSizeGuide()" style="font-size:0.75rem;font-weight:600;color:var(--color-secondary);background:none;border:none;cursor:pointer;letter-spacing:0.1em;text-transform:uppercase;text-decoration:underline;">Size Guide</button>
+                </div>
+                <div id="size-buttons" style="display:flex;flex-wrap:wrap;gap:0.5rem;"></div>
+              </div>
+
+              <!-- Qty Selector -->
+              <div style="display:flex;align-items:center;gap:1.25rem;">
+                <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-on-surface-variant);">Quantity</span>
+                <div style="display:flex;align-items:center;">
+                  <button class="qty-btn" onclick="changeQty(-1)" aria-label="Decrease">−</button>
+                  <span class="qty-display" id="pdp-qty">1</span>
+                  <button class="qty-btn" onclick="changeQty(1)" aria-label="Increase">+</button>
+                </div>
+                <span id="stock-label" style="font-size:0.8125rem;color:var(--color-secondary);font-weight:400;"></span>
+              </div>
+
+              <!-- CTA Buttons (Desktop) -->
+              <div style="display:flex;flex-direction:column;gap:0.75rem;" id="desktop-cta">
+                <button id="atc-btn" class="btn-primary" style="width:100%;padding:1rem;justify-content:center;font-size:0.75rem;" onclick="addToCartFromPDP()">
+                  <span class="material-symbols-outlined" style="font-size:1rem;">shopping_bag</span>
+                  Add to Cart
+                </button>
+                <button id="wishlist-btn" class="btn-secondary" style="width:100%;padding:0.875rem;justify-content:center;" onclick="toggleWishlistFromPDP()">
+                  <span class="material-symbols-outlined" id="wishlist-icon" style="font-size:1rem;">favorite_border</span>
+                  <span id="wishlist-label">Save to Wishlist</span>
+                </button>
+              </div>
+
+              <!-- Trust badges row -->
+              <div style="display:flex;flex-direction:column;gap:0.75rem;padding-top:0.5rem;border-top:1px solid var(--border-hairline);">
+                <div class="trust-badges">
+                  <div class="trust-badge"><span class="material-symbols-outlined">local_shipping</span> Free Delivery ₹5K+</div>
+                  <div class="trust-badge"><span class="material-symbols-outlined">replay</span> 30-Day Returns</div>
+                  <div class="trust-badge"><span class="material-symbols-outlined">verified</span> Silk Mark Certified</div>
+                  <div class="trust-badge"><span class="material-symbols-outlined">handshake</span> Weaver Direct</div>
+                </div>
+              </div>
+
+              <!-- Accordions -->
+              <div style="display:flex;flex-direction:column;" class="accordion-group">
+                <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                    Description
+                    <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-content" id="pdp-desc"></div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                    Fabric &amp; Weave Details
+                    <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-content" id="pdp-fabric-detail"></div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                    Shipping &amp; Returns
+                    <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-content">
+                      <p>Free standard shipping on orders above ₹5,000. Express delivery (2–3 days) available at checkout. All orders include tamper-evident heritage packaging. Returns accepted within 30 days for unworn, unaltered pieces. Customized and bespoke pieces are final sale.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-header" aria-expanded="false">
+                    Care Instructions
+                    <span class="material-symbols-outlined accordion-icon">expand_more</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-content">
+                      <p>Dry-clean only for silks and zari fabrics. Store folded in muslin cloth away from direct sunlight. Air after each wear before folding. Avoid contact with perfume and synthetic materials. Polish gold zari gently with soft dry cloth to maintain brilliance.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Products -->
+      <section class="container" style="padding-top:0;padding-bottom:5rem;" aria-labelledby="related-heading">
+        <div style="border-top:1px solid var(--border-hairline);padding-top:3rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;">
+            <div>
+              <div class="section-label"><span class="section-label__line"></span><span class="section-label__text">Continue Exploring</span></div>
+              <h2 id="related-heading" style="font-family:var(--font-display);font-size:2rem;font-weight:400;color:var(--color-primary);">You May Also Like</h2>
+            </div>
+            <a href="shop.html" class="btn-ghost">View All →</a>
+          </div>
+          <div class="related-grid" id="related-products-grid"><!-- filled by JS --></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Sticky Add to Cart (Mobile) -->
+  <div class="sticky-atc" id="sticky-atc" style="display:none;">
+    <button class="btn-secondary" style="flex:1;padding:0.875rem;justify-content:center;" onclick="toggleWishlistFromPDP()">
+      <span class="material-symbols-outlined" id="sticky-wishlist-icon" style="font-size:1.1rem;">favorite_border</span>
+    </button>
+    <button class="btn-primary" style="flex:3;justify-content:center;" onclick="addToCartFromPDP()">
+      <span class="material-symbols-outlined" style="font-size:1rem;">shopping_bag</span>
+      Add to Cart — <span id="sticky-price"></span>
+    </button>
+  </div>
+
+  <!-- Size Guide Modal -->
+  <div class="modal-overlay" id="size-guide-modal" role="dialog" aria-label="Size guide">
+    <div class="modal" style="max-width:35rem;">
+      <div class="modal__header">
+        <h2 style="font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--color-primary);">Size Guide</h2>
+        <button onclick="closeSizeGuide()" aria-label="Close" style="color:var(--color-on-surface-variant);background:none;border:none;cursor:pointer;">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p style="font-size:0.875rem;color:var(--color-on-surface-variant);margin-bottom:1.25rem;">For the best fitting saree blouse, suit, or lehenga, refer to your standard measurements:</p>
+        <table class="size-table">
+          <thead>
+            <tr><th>Size</th><th>Bust (in)</th><th>Waist (in)</th><th>Hip (in)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>XS / 30</td><td>32</td><td>26</td><td>34</td></tr>
+            <tr><td>S / 32</td><td>34</td><td>28</td><td>36</td></tr>
+            <tr><td>M / 34</td><td>36</td><td>30</td><td>38</td></tr>
+            <tr><td>L / 36</td><td>38</td><td>32</td><td>40</td></tr>
+            <tr><td>XL / 38</td><td>40</td><td>34</td><td>42</td></tr>
+            <tr><td>XXL / 40</td><td>42</td><td>36</td><td>44</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.75rem;color:var(--color-on-surface-variant);margin-top:1rem;">For sarees and dress materials, 1m = 100cm / ~39 inches. For custom sizing, call our store: +91 98220 00000.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Product image zoom">
+    <button class="lightbox__close" onclick="closeLightbox()" aria-label="Close zoom"><span class="material-symbols-outlined" style="font-size:2rem;">close</span></button>
+    <button class="lightbox__prev" onclick="lightboxNav(-1)" aria-label="Previous image"><span class="material-symbols-outlined">chevron_left</span></button>
+    <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    <button class="lightbox__next" onclick="lightboxNav(1)" aria-label="Next image"><span class="material-symbols-outlined">chevron_right</span></button>
+  </div>
+
+  <script src="data/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/layout.js"></script>
+  <script>
+    let product = null;
+    let selectedSize = '';
+    let selectedColor = '';
+    let selectedQty = 1;
+    let currentImageIdx = 0;
+
+    function initPDP() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      if (!slug) { showNotFound(); return; }
+      product = getProductBySlug(slug);
+      if (!product) { showNotFound(); return; }
+
+      selectedColor = product.colors[0];
+      selectedSize = product.sizes[0];
+
+      // SEO
+      document.getElementById('meta-title').textContent = product.name + ' — Bansilal Textile';
+      document.getElementById('meta-desc').content = product.description.slice(0, 160);
+
+      // Breadcrumbs
+      document.getElementById('pdp-breadcrumbs').innerHTML = `
+        <a href="index.html">Home</a>
+        <span class="breadcrumbs__sep">›</span>
+        <a href="shop.html">Shop</a>
+        <span class="breadcrumbs__sep">›</span>
+        <a href="shop.html?cat=${product.category}">${product.categoryLabel}</a>
+        <span class="breadcrumbs__sep">›</span>
+        <span class="breadcrumbs__current">${product.name}</span>`;
+
+      // Header info
+      document.getElementById('pdp-category').textContent = product.categoryLabel;
+      document.getElementById('pdp-name').textContent = product.name;
+      document.getElementById('pdp-fabric').textContent = product.fabric;
+      document.getElementById('pdp-stars').innerHTML = renderStars(product.rating);
+      document.getElementById('pdp-rating').textContent = product.rating.toFixed(1);
+      document.getElementById('pdp-review-count').textContent = '(' + product.reviewCount + ' reviews)';
+
+      // Badges
+      const badgeContainer = document.getElementById('pdp-badges');
+      if (product.badges && product.badges.length) {
+        badgeContainer.innerHTML = product.badges.map(b => `<span class="trust-badge" style="border-color:var(--color-secondary);color:var(--color-secondary);">${b}</span>`).join('');
+      }
+
+      // Price
+      document.getElementById('pdp-price').textContent = formatPrice(product.price);
+      if (product.compareAtPrice) {
+        document.getElementById('pdp-compare').textContent = formatPrice(product.compareAtPrice);
+        const d = getDiscount(product.price, product.compareAtPrice);
+        document.getElementById('pdp-discount').textContent = d + '% off';
+      }
+      document.getElementById('sticky-price').textContent = formatPrice(product.price);
+
+      // Images
+      renderImages();
+
+      // Color swatches
+      const colorPalette = {
+        'Royal Purple': '#6B2D8F', 'Peacock Green': '#2E7B6E', 'Crimson Red': '#B22222',
+        'Magenta Pink': '#C2185B', 'Navy Blue': '#0D3B7E', 'Emerald Green': '#1B5E20',
+        'Ruby Red': '#8B0000', 'Ivory Cream': '#FFF8DC', 'Champagne Gold': '#C8A96E',
+        'Maroon': '#800000', 'Pastel Pink': '#FFB6C1', 'Mint Green': '#98FF98',
+        'Sky Blue': '#87CEEB', 'Lemon Yellow': '#FFF44F', 'Turmeric Yellow': '#FFD700',
+        'Auspicious Red': '#C41E3A', 'Sacred Green': '#228B22', 'Rose Pink': '#FF007F',
+        'Sage Green': '#8FBC8F', 'Peach': '#FFCBA4', 'Deep Maroon': '#5C0A0A',
+        'Royal Blue': '#1E3A8A', 'Forest Green': '#228B22', 'Deep Crimson': '#DC143C',
+        'Slate Grey': '#708090', 'Olive Khaki': '#7E7E55', 'Cream White': '#FAFAFA',
+        'Vibrant Yellow': '#FFD700', 'Royal Purple': '#7B2FBE', 'Festive Orange': '#FF7043',
+        'Bright Pink': '#FF1493', 'Peacock Blue': '#33A6B8', 'Mango Yellow': '#FFB800',
+        'Natural Ecru': '#C8B89A', 'Champagne': '#F7E7CE', 'Sand Gold': '#C8B06B',
+        'Slate Brown': '#7B5E4A', 'Natural White': '#FAF9F6', 'Indigo Blue': '#3E1F9B',
+        'Earth Brown': '#7B4F2E', 'Saffron': '#FF9933', 'Rich Maroon': '#7B0C0C',
+        'Black Gold': '#1A1100', 'Black': '#000000', 'Off-White Pearl': '#F5F0E8',
+        'Mustard Yellow': '#E3A000', 'Terracotta': '#C4623E', 'Blush Pink': '#FFB6C1',
+        'Powder Blue': '#B0D4E8'
+      };
+      const swatches = document.getElementById('color-swatches');
+      swatches.innerHTML = product.colors.map(color => {
+        const bg = colorPalette[color] || '#aaa';
+        const isLight = ['Ivory Cream','Cream White','Natural White','Off-White Pearl','Lemon Yellow','Champagne'].includes(color);
+        return `<button class="color-swatch${color===selectedColor?' is-active':''}" 
+          style="background:${bg};${isLight ? 'border-color:#ccc;' : ''}" 
+          onclick="selectColor('${color}', this)" 
+          aria-label="Select ${color}" 
+          title="${color}"></button>`;
+      }).join('');
+      document.getElementById('selected-color-label').textContent = selectedColor;
+
+      // Sizes
+      const sizesEl = document.getElementById('size-buttons');
+      sizesEl.innerHTML = product.sizes.map(size => `
+        <button class="size-btn${size===selectedSize?' is-active':''}" 
+          onclick="selectSize('${size}', this)">${size}</button>`).join('');
+
+      // Stock label
+      const sl = document.getElementById('stock-label');
+      if (product.stock <= 0) sl.textContent = 'Out of Stock';
+      else if (product.stock <= 5) sl.textContent = 'Only ' + product.stock + ' left!';
+      else sl.textContent = 'In Stock';
+
+      // Description
+      document.getElementById('pdp-desc').innerHTML = `<p>${product.description}</p>`;
+      document.getElementById('pdp-fabric-detail').innerHTML = `
+        <ul style="display:flex;flex-direction:column;gap:0.5rem;list-style:none;padding:0;">
+          <li><strong>Fabric:</strong> ${product.fabric}</li>
+          <li><strong>Weave:</strong> ${product.weave}</li>
+          <li><strong>Category:</strong> ${product.categoryLabel}</li>
+          ${product.badges && product.badges.length ? '<li><strong>Certifications:</strong> ' + product.badges.join(', ') + '</li>' : ''}
+        </ul>`;
+
+      // Wishlist state
+      updateWishlistBtnState();
+
+      // Show page
+      document.getElementById('product-page').style.display = 'block';
+      document.getElementById('not-found').style.display = 'none';
+
+      // Show sticky ATC on mobile after scroll
+      window.addEventListener('scroll', () => {
+        const stickyAtc = document.getElementById('sticky-atc');
+        if (stickyAtc) stickyAtc.style.display = window.scrollY > 300 ? 'flex' : 'none';
+      }, { passive: true });
+
+      // Related products
+      renderRelated();
+    }
+
+    function showNotFound() {
+      document.getElementById('not-found').style.display = 'block';
+      document.getElementById('product-page').style.display = 'none';
+    }
+
+    function renderImages() {
+      const mainImg = document.getElementById('main-image');
+      const thumbStrip = document.getElementById('thumb-strip');
+      mainImg.src = product.images[currentImageIdx];
+      mainImg.alt = product.name + ' — Image ' + (currentImageIdx + 1);
+      thumbStrip.innerHTML = product.images.map((img, i) =>
+        `<img class="thumb${i===currentImageIdx?' is-active':''}" src="${img}" alt="${product.name} thumbnail ${i+1}" onclick="selectImage(${i})" loading="${i===0 ? 'eager' : 'lazy'}">`
+      ).join('');
+    }
+
+    function selectImage(idx) {
+      currentImageIdx = idx;
+      renderImages();
+    }
+
+    function selectColor(color, btn) {
+      selectedColor = color;
+      document.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      document.getElementById('selected-color-label').textContent = color;
+    }
+
+    function selectSize(size, btn) {
+      selectedSize = size;
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+    }
+
+    function changeQty(delta) {
+      selectedQty = Math.max(1, Math.min(10, selectedQty + delta));
+      document.getElementById('pdp-qty').textContent = selectedQty;
+    }
+
+    function addToCartFromPDP() {
+      if (!product) return;
+      cartManager.addToCart(product.id, selectedQty, null, selectedSize, selectedColor);
+    }
+
+    function toggleWishlistFromPDP() {
+      if (!product) return;
+      wishlistManager.toggle(product.id, null);
+      updateWishlistBtnState();
+    }
+
+    function updateWishlistBtnState() {
+      if (!product) return;
+      const wished = wishlistManager.isWished(product.id);
+      const icon = document.getElementById('wishlist-icon');
+      const label = document.getElementById('wishlist-label');
+      const stickyIcon = document.getElementById('sticky-wishlist-icon');
+      if (icon) { icon.textContent = wished ? 'favorite' : 'favorite_border'; icon.style.fontVariationSettings = wished ? "'FILL' 1" : "'FILL' 0"; }
+      if (label) label.textContent = wished ? 'Remove from Wishlist' : 'Save to Wishlist';
+      if (stickyIcon) { stickyIcon.textContent = wished ? 'favorite' : 'favorite_border'; }
+    }
+
+    function renderRelated() {
+      const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+      const wishlist = wishlistManager ? wishlistManager.getWishlist() : [];
+      const grid = document.getElementById('related-products-grid');
+      if (grid) {
+        grid.innerHTML = related.length > 0
+          ? related.map(p => buildProductCardHTML(p, wishlist)).join('')
+          : '<p style="color:var(--color-on-surface-variant);grid-column:1/-1;">More products coming soon.</p>';
+      }
+    }
+
+    // Lightbox
+    function openLightbox() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('is-open');
+      document.getElementById('lightbox-img').src = product.images[currentImageIdx];
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    function lightboxNav(dir) {
+      currentImageIdx = (currentImageIdx + dir + product.images.length) % product.images.length;
+      document.getElementById('lightbox-img').src = product.images[currentImageIdx];
+      renderImages();
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+      if (e.key === 'ArrowRight') lightboxNav(1);
+    });
+
+    // Size guide modal
+    function openSizeGuide() { document.getElementById('size-guide-modal').classList.add('is-open'); }
+    function closeSizeGuide() { document.getElementById('size-guide-modal').classList.remove('is-open'); }
+    document.getElementById('size-guide-modal').addEventListener('click', e => { if (e.target.id === 'size-guide-modal') closeSizeGuide(); });
+
+    document.addEventListener('DOMContentLoaded', initPDP);
+  </script>
+</body>
+</html>
