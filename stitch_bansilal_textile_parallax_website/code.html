@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-surface": "#31312d", "background": "#fcf9f3", "tertiary-fixed": "#ffdcbf", "on-tertiary-fixed": "#2d1600", "on-secondary-fixed": "#261900", "surface-container-low": "#f6f3ed", "surface-bright": "#fcf9f3", "on-primary": "#ffffff", "secondary": "#775a19", "on-tertiary-container": "#a87b4f", "on-primary-fixed-variant": "#4d4542", "secondary-container": "#fed488", "tertiary-fixed-dim": "#f1bc8c", "on-surface-variant": "#4e4542", "on-background": "#1c1c18", "surface-container-highest": "#e5e2dc", "surface-container-high": "#ebe8e2", "on-tertiary": "#ffffff", "on-secondary": "#ffffff", "primary": "#000000", "on-secondary-fixed-variant": "#5d4201", "primary-fixed": "#ede0dc", "surface-dim": "#dcdad4", "on-surface": "#1c1c18", "on-secondary-container": "#785a1a", "secondary-fixed": "#ffdea5", "surface": "#fcf9f3", "error": "#ba1a1a", "on-primary-fixed": "#201a18", "outline-variant": "#d1c4c0", "tertiary": "#000000", "surface-variant": "#e5e2dc", "primary-container": "#201a18", "secondary-fixed-dim": "#e9c176", "inverse-on-surface": "#f3f0ea", "on-error": "#ffffff", "on-primary-container": "#8c827e", "error-container": "#ffdad6", "outline": "#807571", "surface-tint": "#655c5a", "surface-container-lowest": "#ffffff", "on-tertiary-fixed-variant": "#633f19", "on-error-container": "#93000a", "primary-fixed-dim": "#d0c4c0", "tertiary-container": "#2d1600", "surface-container": "#f0eee8", "inverse-primary": "#d0c4c0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "4rem", "space-md": "1rem", "gutter-mobile": "1rem", "space-sm": "0.5rem", "space-xl": "3rem", "space-xs": "0.25rem", "space-lg": "1.75rem", "margin-mobile": "1.25rem", "gutter": "2rem" }, "fontFamily": { "headline-sm": [ "Playfair Display" ], "title-md": [ "Outfit" ], "body-lg": [ "Outfit" ], "display-lg": [ "Playfair Display" ], "display-xl-mobile": [ "Playfair Display" ], "body-sm": [ "Outfit" ], "headline-md": [ "Playfair Display" ], "body-md": [ "Outfit" ], "label-md": [ "Outfit" ], "title-lg": [ "Outfit" ], "display-lg-mobile": [ "Playfair Display" ], "display-xl": [ "Playfair Display" ], "headline-lg": [ "Playfair Display" ], "label-caps": [ "Outfit" ] }, "fontSize": { "headline-sm": [ "1.25rem", { "lineHeight": "1.75rem", "fontWeight": "600" } ], "title-md": [ "1rem", { "lineHeight": "1.5rem", "letterSpacing": "0.03em", "fontWeight": "500" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.875rem", "fontWeight": "300" } ], "display-lg": [ "3.25rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.015em", "fontWeight": "400" } ], "display-xl-mobile": [ "2.75rem", { "lineHeight": "3.25rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.375rem", "fontWeight": "400" } ], "headline-md": [ "1.75rem", { "lineHeight": "2.25rem", "fontWeight": "500" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.6rem", "fontWeight": "300" } ], "label-md": [ "0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.05em", "fontWeight": "400" } ], "title-lg": [ "1.125rem", { "lineHeight": "1.625rem", "letterSpacing": "0.02em", "fontWeight": "500" } ], "display-lg-mobile": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-xl": [ "4.5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "headline-lg": [ "2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "label-caps": [ "0.6875rem", { "lineHeight": "1rem", "letterSpacing": "0.18em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="hidden lg:block bg-surface-container-low/70 border-b border-outline-variant/20 py-space-xs"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between font-label-caps text-label-caps text-on-surface-variant"><div class="flex items-center gap-space-lg"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-secondary">location_on</span>Alandi-Moshi Road, Alandi, Pune - 412105</span><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[14px] text-secondary">schedule</span>10:00 AM – 9:30 PM (All 7 Days)</span></div><div class="flex items-center gap-space-md"><span class="tracking-wider uppercase text-secondary font-medium">Heirloom Paithani &amp; Bridal Silks</span><span class="h-2 w-px bg-outline-variant"></span><button class="hover:text-primary transition-colors text-on-surface-variant font-label-caps text-label-caps px-2 py-0.5 border border-outline-variant/50" type="button">मराठी</button></div></div></div><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><img alt="Bansilal Textile Emblem &amp; Wordmark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xudn696YbMS77VtsraDzWVvrt0AKnawLJ5JnfElFeiXvR36f7FlNNUpLS_uTRT_VuFrp6X5wXemyriLjGh_uvnywrbkf59Kq_C-DckOq0WxZj2D_P-GwuZRuua98F2SOY7iTL5eqIG3521ky5TaGyieib_U-VRB8bHMv9Clk-VZLh2vHwBF34AQYAul-xha22sug8cUyPovEZiZ5GQfFYZ5spLBYd6cSXsqh9kzMuzc6P_GH-hNOXy9LPq"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-primary uppercase">Bansilal Textile</span><span class="font-label-caps text-label-caps tracking-widest text-secondary -mt-1">बंसीलाल टेक्सटाइल</span></div></div><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-medium border-b border-secondary"><a aria-current="page" class="transition-colors py-1 text-primary font-medium border-b border-secondary" data-path="home" href="#">About Us</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="collections" href="#">Collections</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="craft-experience" href="#">Experience</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="store-flagship" href="#">Store</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="why-us" href="#">Why Us</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="haute-gallery" href="#">Gallery</a><a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="visit-location" href="#">Location</a></nav><div class="flex items-center gap-space-md shrink-0"><a class="hidden sm:inline-flex items-center gap-2 bg-primary text-on-primary font-label-caps text-label-caps px-5 py-2.5 transition-all duration-300 hover:bg-secondary hover:text-on-secondary" data-path="visit-location" href="#">Visit Store</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO PARALLAX SHOWCASE -->
+<section class="relative w-full overflow-hidden bg-primary-container text-on-primary -mt-20 pt-20">
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full scale-105 transition-transform duration-1000 ease-out transform motion-safe:hover:scale-100 opacity-40" data-alt="Exquisite royal crimson and saffron Paithani pure silk saree with opulent handwoven real gold zari peacock pallu flowing majestically in soft dramatic lighting, high fashion bridal editorial, deep rich espresso background with delicate suspended golden threads and warm glow" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTtAxt8hd8ufT2877Iya9DfpXZzaMQNtSb7cKkZAayEbLMpkLAkviwO9QOx4IHaHy3DgnUvFkjG7QRsZpYr91OXz7KuR2234nJXzhQwzriR0OaKJYxrCRcP7nzM57N5pyc5qeceqm_3YTz6KJ04ITFno0T7bMg_C97YXjxKsnXCGBSqFs12X1JuAkMk4ZxtVlNYawBfSEkKkUi1ZWV7VyE2I2gBRVcXMnx0SqtVLG42rZamnc6t2OQkA')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-primary-container/80 via-primary-container/60 to-primary-container"></div>
+<div class="absolute inset-0 bg-radial from-transparent via-primary-container/40 to-primary-container"></div>
+</div>
+<!-- Floating Thread Accents (Decorative SVGs) -->
+<div class="absolute inset-0 pointer-events-none z-10 overflow-hidden opacity-35">
+<svg class="absolute -top-12 -left-20 w-96 h-96 text-secondary" fill="none" viewbox="0 0 200 200">
+<circle cx="100" cy="100" r="80" stroke="currentColor" stroke-dasharray="4 6" stroke-width="0.75"></circle>
+<path d="M40 100 Q 100 20 160 100 T 280 100" stroke="currentColor" stroke-width="0.5"></path>
+</svg>
+<svg class="absolute top-1/3 -right-24 w-80 h-80 text-secondary-container" fill="none" viewbox="0 0 200 200">
+<circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="0.5"></circle>
+<circle cx="100" cy="100" r="60" stroke="currentColor" stroke-dasharray="2 8" stroke-width="0.75"></circle>
+</svg>
+</div>
+<div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 pt-28 pb-20 flex flex-col justify-between min-h-[921px]">
+<div class="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/15 backdrop-blur-md text-secondary-container shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary-fixed">Royal Heritage Weaves • Alandi Devachi</span>
+</div>
+<div class="space-y-2">
+<h1 class="font-display-xl text-display-xl text-surface-bright tracking-tight uppercase leading-none drop-shadow-sm">
+            Bansilal Textile
+          </h1>
+<p class="font-headline-md text-headline-md text-secondary-fixed font-light tracking-wide">
+            बंसीलाल टेक्सटाइल
+          </p>
+</div>
+<div class="flex items-center justify-center gap-3 font-label-caps text-label-caps text-surface-container-high tracking-widest uppercase">
+<span>Quality</span>
+<span class="w-1 h-1 rounded-full bg-secondary-fixed"></span>
+<span>Variety</span>
+<span class="w-1 h-1 rounded-full bg-secondary-fixed"></span>
+<span>Affordable Fashion</span>
+</div>
+<p class="font-body-lg text-body-lg text-surface-container-high max-w-2xl font-light leading-relaxed">
+          Maharashtra's premier destination for royal Paithani sarees, handcrafted bridal couture, regal men's sherwanis, and authentic family textiles since 1994.
+        </p>
+<div class="flex flex-col sm:flex-row items-center gap-4 pt-4 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-secondary hover:bg-secondary-fixed text-on-secondary hover:text-on-secondary-fixed font-label-caps text-label-caps px-8 py-4 uppercase tracking-widest transition-all duration-300 shadow-xl group" href="#collections">
+<span>Explore Collection</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">east</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-surface-container-low/10 hover:bg-surface-container-low/20 backdrop-blur-md text-surface-bright font-label-caps text-label-caps px-8 py-4 uppercase tracking-widest transition-all duration-300 shadow-sm" href="#location">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">location_on</span>
+<span>Visit Alandi Store</span>
+</a>
+</div>
+</div>
+<!-- Floating Metrics Band -->
+<div class="pt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
+<div class="p-6 bg-surface-container-low/10 backdrop-blur-md flex items-center gap-4 shadow-sm hover:bg-surface-container-low/15 transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-2xl">styler</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-surface-bright font-normal">50,000+</div>
+<div class="font-label-caps text-label-caps text-surface-container-high uppercase tracking-wider">Fabric Varieties &amp; Drapes</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low/10 backdrop-blur-md flex items-center gap-4 shadow-sm hover:bg-surface-container-low/15 transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-2xl">history_edu</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-surface-bright font-normal">30+ Years</div>
+<div class="font-label-caps text-label-caps text-surface-container-high uppercase tracking-wider">Weaving Trust &amp; Legacy</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low/10 backdrop-blur-md flex items-center gap-4 shadow-sm hover:bg-surface-container-low/15 transition-all">
+<div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-surface-bright font-normal">100% Pure</div>
+<div class="font-label-caps text-label-caps text-surface-container-high uppercase tracking-wider">Certified Handloom Authenticity</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: ABOUT US (TRADITION, QUALITY & FASHION) -->
+<section class="w-full py-28 bg-surface text-on-surface relative" id="about">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Asymmetrical Image Composition -->
+<div class="lg:col-span-6 relative">
+<div class="relative w-full aspect-[4/5] bg-surface-container-highest overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" data-alt="Traditional Indian master weaver at an authentic wooden handloom working with golden zari silk threads, creating an authentic Yeola Paithani saree with precision and devotion in a sunlit craft atelier" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKdRVTaC8LPnLpOIbOtNxojgS0FngNOX3tFUnnRANiDeyW4Iq7hyBo1312SH7QNGBSOhydZLOslM1RR97P3jgqhhsITeFUEF_kXOiwdFMMrl3erWNV-qEibpWbY_DgKomzFcDIK25UtwxG-t-ihooa6tXuf98kLPOGvH_LjVxBK6KHY_Uwh9z_TXxL43dtvPxW8MUbbFy7uWeh7llChzUDeO-b4CeIUzzPkmZ7qDFNg8PCmBh8lFeeag"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 p-4 bg-surface/90 backdrop-blur-md shadow-md">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Heritage Guarantee</span>
+<p class="font-headline-sm text-headline-sm text-primary">Direct from Yeola, Kanchipuram &amp; Banaras Looms</p>
+</div>
+</div>
+<div class="hidden sm:block absolute -bottom-10 -right-8 w-60 aspect-[3/4] bg-surface-container-low shadow-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up macro detail of intricate peacock motif woven with genuine gold and silver zari in an emerald green pure silk bridal saree pallu" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtnVYej-pUpPXDaD6nt-dSxRdn40VwidqkPYwK7ll3rAtLt2TqdlYjd76jDSHuURCxGuGBVdGLIiPwLgmlZIHh7n7nf3MfmPQGOHWLD0ys29k10LR1_Zgr_JeEj0faO3DPlV2e-6UhaE--ztiPD2UWjJ1tt-CcfzGNhmJ84oa7qnBkKJ9r6K-G9gIoCbNkzyXT_PHhwYvWtKdPR8k_HCC4Jb9wUkHWO71e1X-mDH221v9Ns8XjSmSs2g"/>
+</div>
+</div>
+<!-- Editorial Content -->
+<div class="lg:col-span-6 flex flex-col space-y-6">
+<div class="inline-flex items-center gap-2">
+<span class="w-8 h-px bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Our Legacy</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight leading-none">
+            Tradition, Quality &amp; Fashion Under One Roof
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light">
+            Bansilal Textile offers an unmatched universe of fabrics and celebration wear for families seeking uncompromising quality, infinite variety, and honest pricing. From the sacred drapes of Indrayani's riverside to grand metropolitan weddings across Pune and Maharashtra, our halls bring authentic textile treasures within your reach.
+          </p>
+<blockquote class="p-6 bg-surface-container-low shadow-sm border-l-2 border-secondary">
+<p class="font-headline-sm text-headline-sm italic text-primary">
+              "A saree is not simply six yards of fabric; it is the preserved breath, heritage, and blessing of generations."
+            </p>
+<cite class="block mt-2 font-label-caps text-label-caps text-secondary uppercase not-italic tracking-wider">— The Bansilal Family Founders</cite>
+</blockquote>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+<div class="p-4 bg-surface-container-low flex flex-col space-y-1">
+<span class="material-symbols-outlined text-secondary text-2xl">loyalty</span>
+<span class="font-title-md text-title-md text-primary font-medium">Direct Sourcing</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Zero middlemen, pure artisan value.</span>
+</div>
+<div class="p-4 bg-surface-container-low flex flex-col space-y-1">
+<span class="material-symbols-outlined text-secondary text-2xl">inventory_2</span>
+<span class="font-title-md text-title-md text-primary font-medium">Infinite Rolls</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">50,000+ meters cut to order.</span>
+</div>
+<div class="p-4 bg-surface-container-low flex flex-col space-y-1">
+<span class="material-symbols-outlined text-secondary text-2xl">sell</span>
+<span class="font-title-md text-title-md text-primary font-medium">Honest Pricing</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Wholesale tiers open to all.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: CURATED COLLECTIONS (6 ESSENTIAL TILES) -->
+<section class="w-full py-28 bg-surface-container-low text-on-surface relative" id="collections">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-3">
+<div class="inline-flex items-center gap-2">
+<span class="w-8 h-px bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Grand Archive</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight">Curated Textile Collections</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl font-light">
+            Discover handpicked weaves, bridal silhouettes, and modern everyday textiles sourced across the weaving epicenters of India.
+          </p>
+</div>
+<a class="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary hover:text-secondary uppercase tracking-widest pb-1 border-b border-primary transition-colors" href="#inquiry">
+<span>Request Custom Trousseau Catalog</span>
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+<!-- 6-Grid Category Showcase -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Sarees -->
+<div class="group relative bg-surface overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Stunning Maharashtrian bride wearing a rich purple royal Paithani silk saree with traditional peacock gold border and gold temple jewelry in an ambient warm sanctuary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD50VDD-RWefQcKofFaIJ-Y1ZRexILcmf40KUVi1eOA-VC-arRegjVX1yOTLO1_c-xqZt516jQAsE6VvqGUW6CKUbahNAEJ14okanbI1T6hoiK5pUVtX8PunHo2P7lXLSTvr6FwzfG2lZ71bRm-Zj2AbMPKPCYq1Nj2FK90nedo2ncELU2fCkne9FsdCURF9rDBo4X568Q8c2dAUy5FpezMQtGkX366FinE5cXMMNPM_u4lPrZBqerycA"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between space-y-4 bg-surface">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Loom Masterpiece</span>
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary">SILK MARK</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Royal Sarees</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 font-light">
+                Yeola Paithani, Kanjivaram Bridal Silks, Banarasi Brocade, Chanderi, Georgette, and Organza.
+              </p>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest group-hover:text-secondary transition-colors">Explore Drapes</span>
+<span class="material-symbols-outlined text-secondary text-sm group-hover:translate-x-1 transition-transform">east</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Dress Materials -->
+<div class="group relative bg-surface overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Artfully folded luxury unstitched dress material set with intricate thread embroidery on soft pastel rose silk and organza dupatta with scalloped borders" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqT5QqjAI07_ijBF_NeQLyLD5U5JkoaQ7wUpt7jJUqNyJb2iKexzxadsIHRCIrIPN6bE1c-fGflSnKpoUan8FaMFBPkGddK4utBTjEs4RO1587GebxgKRAFBwV2ILMU1ONsoRkvlDNCrWFSdFEFmQba59QUcUlYY7MWs3e2khyo9h0IAgixWqaPMu1iu0hyE-r3eCi4J8Qfdxx8-QIRbI76B1XMGyxRW-naxMrImZUX-tWi3Ke_0xVdg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between space-y-4 bg-surface">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Unstitched Luxury</span>
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary">CUSTOM FIT</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Dress Materials</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 font-light">
+                Hand-embroidered pure cotton, festive Chanderi suits, Kashmiri Tilla, and zari-detailed salwar lengths.
+              </p>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest group-hover:text-secondary transition-colors">Explore Sets</span>
+<span class="material-symbols-outlined text-secondary text-sm group-hover:translate-x-1 transition-transform">east</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Women's Wear -->
+<div class="group relative bg-surface overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Indian woman wearing an opulent royal maroon velvet bridal lehenga with heavy sequin and zardozi hand embroidery, posing gracefully in a classical courtyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLM-i-e4GItriXMYvw5g_ztyqMuoXCtfs8MaSEVg1oEZQ-WLr53pZWM_KIv9GNbChgKOWhZV02cernWEZMfZpWIX2-HLdP3GqUWRxe1CGvwYolQoLmmwNKjj0DppPhnHrCHuRknioFZxjWoBv35tBxFUUkxm_F9rNmydYYLiC7cDflfmKE97nf1zVsraMM2ZeGBdNKeMKwIc5fe30fHAXv3dxvCq1aZP42LzRcNSW40W7_qeSOTMm9Og"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between space-y-4 bg-surface">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Ready Couture</span>
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary">BRIDAL READY</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Women's Couture</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 font-light">
+                Festive designer lehengas, Floor-length Anarkalis, Sharara sets, and daily designer Kurti editions.
+              </p>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest group-hover:text-secondary transition-colors">View Pret Collection</span>
+<span class="material-symbols-outlined text-secondary text-sm group-hover:translate-x-1 transition-transform">east</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Men's Wear -->
+<div class="group relative bg-surface overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Dignified Indian groom wearing an ivory raw silk sherwani with subtle pearl hand embroidery, matched with gold stole and traditional safa headpiece" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCficxIjo2utK8TUrgwjDioreb7iXo0D6tA6uL61rSr2r9Wpmj2-aY5i5iIHQNgQdChXgoVNBylaWv0L6oyXOAYBMFMriEYZNJUJfT_zRUmdbetj6-SFFWLb7i41apqATZV3pv6rYfayte6GLA9EBJpYhPoS-RgOkAjDxsbK-yktBH-ItvASaYYHe9Wt2Nt02NwlaRbVKaQNkBPTZYR5NLetKENPbChWvr5Ij8lvdRJr_wBUFhalrTnTQ"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between space-y-4 bg-surface">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Gentlemen's Atelier</span>
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary">ROYAL WEAR</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Men's Regalia</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 font-light">
+                Bespoke Kurta-Pajamas, Modi jackets, royal Groom Sherwanis, and fine Italian and Giza cotton suitings.
+              </p>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest group-hover:text-secondary transition-colors">View Men's Wear</span>
+<span class="material-symbols-outlined text-secondary text-sm group-hover:translate-x-1 transition-transform">east</span>
+</div>
+</div>
+</div>
+<!-- Card 5: Kids Wear -->
+<div class="group relative bg-surface overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Traditional Indian kids festive wear with vibrant yellow silk dhoti kurta and little girl wearing a bright pink parkar polka Maharashtrian traditional dress" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqjMwsXbjujAt2T-IF8s24pUuud5WKnaPB3hE9YNOlkNlNhH0QULMKI9mcEa-WxBZ0Sk0eo18TiCrm_aNvBKimW3xrgm5sc0cx0nIQ-yP5COqB1jYbyF_c0VK17IsV6c1T8EIMZMmHVvpbIhp4NB6A_s0vX1zhS-815ohywTnpbus0INABY0gEPc5OGsYjF7Am40ne1UwryifFOfyQZlkdnP7QsLm4PZn-VHld9hQ6EgiDhc7auTST_A"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between space-y-4 bg-surface">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Junior Festive</span>
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary">COMFORT COTTON</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Children's Pavilions</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 font-light">
+                Traditional Dhoti sets, Parkar Polka for young girls, festive ethnic gowns, and soft breathable celebration wear.
+              </p>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest group-hover:text-secondary transition-colors">Explore Kids</span>
+<span class="material-symbols-outlined text-secondary text-sm group-hover:translate-x-1 transition-transform">east</span>
+</div>
+</div>
+</div>
+<!-- Card 6: Fabrics by the Meter -->
+<div class="group relative bg-surface overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Organized stacks of rich Indian silk fabric bolts in varying lustrous jewel tones like turquoise, ruby, and gold brocade neatly displayed on dark oak showroom shelving" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADtTyoQ1dk2e6Oj3t_XPDZHWLPfyG8xDrkFWgg9lXJXlUmooLslcfxTMK4DHymUwsH4rKjqaFJX1ItbsMJBGGhYelwgix0RVPfZjCwncR3vmSDtw2q7Am_cz4dt9j0qwbI73p8ci0dhmOvq6lk7jUYFLmVHHo1YxE56eJlBT2W1sA_NwIScumBCYKcuONWfrpcwbXgsEuGGN4mYeFZ0YcJ5x2VL4aGr49d5n_peidnXqRNeLnW041feQ"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between space-y-4 bg-surface">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">By The Meter</span>
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-secondary/10 text-secondary">50,000+ BOLTS</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-1">Textiles &amp; Bolts</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 font-light">
+                Pure Banarasi brocades, raw Tussar silk, fine natural linen, georgette, and designer borders sold cut to measure.
+              </p>
+</div>
+<div class="pt-4 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest group-hover:text-secondary transition-colors">View Fabric Lounge</span>
+<span class="material-symbols-outlined text-secondary text-sm group-hover:translate-x-1 transition-transform">east</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: PARALLAX FASHION EXPERIENCE (IMMERSIVE LUXURY BREAK) -->
+<section class="relative w-full py-36 bg-tertiary-container text-surface-bright overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-25">
+<div class="w-full h-full bg-cover bg-center" data-alt="High contrast macro abstract photo of Indian metallic gold zari brocade with intricate floral jaal motifs against a midnight espresso textile background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjgfPhgXqucjdN9JkHERKcx1ed6sXEuvjjESkNcXO7UzSdYFXTKD52oum_Yl_lHr9GZ7ElNni5qFLuIJmYwLdX6HJPOn1p2G8CZfBPRYe0dFuLRz-b10-GCDVGUj0V0LSSk2i6nEPXDvttB6lwZnB7zOOKTqazpNhTbMeWsiwhOBbjJs4vgot4KTNaHRCqILP8UQHkrqAguHoGffYzJuZJOw5JTJk7vKl7-h9Jf6cxlxMl-EMFH2susw')"></div>
+<div class="absolute inset-0 bg-tertiary-container/85"></div>
+</div>
+<!-- Floating Decorative Motifs -->
+<div class="absolute top-10 right-10 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-6xl mx-auto px-6 lg:px-12 text-center space-y-12">
+<div class="space-y-4 max-w-3xl mx-auto">
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase tracking-widest">Sensory Textile Sanctuary</span>
+<h2 class="font-display-xl text-display-xl tracking-tight leading-none">
+          Explore a World of Colours, Fabrics &amp; Fashion
+        </h2>
+<p class="font-body-lg text-body-lg text-surface-container-highest font-light">
+          From the rhythmic hum of pit looms to the celebratory swish of heavy silk on your wedding day, our store honors the living spirit of Indian weavers.
+        </p>
+</div>
+<!-- Touchpoint Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6">
+<div class="p-8 bg-surface-container-low/5 backdrop-blur-md shadow-xl text-left space-y-4 hover:bg-surface-container-low/10 transition-all duration-300">
+<span class="font-label-caps text-label-caps text-secondary-fixed tracking-widest">STAGE 01</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright">Loom to Wardrobe</h3>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">
+            We work directly with master weaver cooperatives in Yeola, Paithan, Pochampally, and Surat, eliminating markups to honor both artisan and patron.
+          </p>
+<div class="h-0.5 w-12 bg-secondary-fixed"></div>
+</div>
+<div class="p-8 bg-surface-container-low/5 backdrop-blur-md shadow-xl text-left space-y-4 hover:bg-surface-container-low/10 transition-all duration-300">
+<span class="font-label-caps text-label-caps text-secondary-fixed tracking-widest">STAGE 02</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright">Pure Zari &amp; Natural Dyes</h3>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">
+            Each heirloom piece uses verified pure mulberry silk and electroplated zari that retains its brilliant gleam for decades across family generations.
+          </p>
+<div class="h-0.5 w-12 bg-secondary-fixed"></div>
+</div>
+<div class="p-8 bg-surface-container-low/5 backdrop-blur-md shadow-xl text-left space-y-4 hover:bg-surface-container-low/10 transition-all duration-300">
+<span class="font-label-caps text-label-caps text-secondary-fixed tracking-widest">STAGE 03</span>
+<h3 class="font-headline-sm text-headline-sm text-surface-bright">Celebrations Woven With Grace</h3>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">
+            Complete trousseau curation: matched family attire for Sakharpuda, Haldi, Sangeet, and the Pheras all under one expansive destination.
+          </p>
+<div class="h-0.5 w-12 bg-secondary-fixed"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: FLAGSHIP STORE EXPERIENCE -->
+<section class="w-full py-28 bg-surface text-on-surface relative" id="store">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
+<div class="max-w-3xl space-y-3">
+<div class="inline-flex items-center gap-2">
+<span class="w-8 h-px bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Physical Destination</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight">Visit Our Flagship Store</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light">
+          Spacious, air-conditioned multi-level shopping floors designed specifically for families, large wedding parties, and wholesale textile buyers.
+        </p>
+</div>
+<!-- Feature Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-8 bg-surface-container-low shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow">
+<div class="space-y-4">
+<div class="w-14 h-14 rounded-full bg-surface flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-3xl">chair</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Grand Saree Lounge</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+              Plush, traditional floor and sofa seating where families can comfortably spend hours viewing hundreds of drape options with hot tea.
+            </p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Level 1 • Saree Sanctum</span>
+</div>
+<div class="p-8 bg-surface-container-low shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow">
+<div class="space-y-4">
+<div class="w-14 h-14 rounded-full bg-surface flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-3xl">view_column</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Vast Fabric Floor</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+              Over thousands of textile bolts organized systematically by fiber weight, weave style, and color gradation for custom tailoring.
+            </p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Level 2 • Textile Yardage</span>
+</div>
+<div class="p-8 bg-surface-container-low shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow">
+<div class="space-y-4">
+<div class="w-14 h-14 rounded-full bg-surface flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Family Pavilion</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+              A unified retail experience allowing brides, grooms, grandparents, and children to shop synchronously in dedicated wings.
+            </p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Wing B • Family Pret</span>
+</div>
+<div class="p-8 bg-surface-container-low shadow-sm flex flex-col justify-between space-y-6 hover:shadow-md transition-shadow">
+<div class="space-y-4">
+<div class="w-14 h-14 rounded-full bg-surface flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-3xl">support_agent</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Expert Drapers</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+              Seasoned textile advisors fluent in regional Maharashtrian, South Indian, and North Indian bridal customs to guide your trousseau.
+            </p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Concierge Service</span>
+</div>
+</div>
+<!-- Showroom Atmosphere Banner -->
+<div class="relative w-full h-80 bg-surface-container-highest overflow-hidden shadow-xl">
+<img class="w-full h-full object-cover" data-alt="Spacious luxury textile showroom interior with warm amber chandeliers, expansive wooden display tables displaying colorful silk sarees, and smiling polite staff assisting a family in Alandi Pune" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CpAUnRzTYty5mJLfiYvdW5XQgtF5KP18NamefkgrFdMroShGx4erG8r1jn3291BsKzEKjd09DJL9s6Aq0AWSRRIqu7YuQUQ6dmoZDAR4K56LQ6ijPkgdfEt58EQSMPuj2iBFUWiV5DPTBb7bog_JgKMRdTQnOF8Dphy64Vs1XTt2-fwLA4GVeQQq917C82FpGwEWUlOZCkLCw_pGiYE2hxgIJfODZmdPnGALNLrA5edSgnkJmUHqug"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/40 to-transparent flex items-center p-8 lg:p-16">
+<div class="max-w-lg space-y-3 text-surface-bright">
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase tracking-widest">Alandi Devachi, Pune</span>
+<p class="font-headline-md text-headline-md">Conveniently Situated on Alandi–Moshi Highway</p>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">
+              Equipped with dedicated free customer car parking, wheelchair access, and luggage lockers for out-of-station pilgrimage and wedding shoppers.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: WHY CHOOSE US (THE BANSILAL DIFFERENCE) -->
+<section class="w-full py-28 bg-surface-container-low text-on-surface relative" id="why-us">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
+<div class="text-center max-w-2xl mx-auto space-y-3">
+<div class="inline-flex items-center gap-2">
+<span class="w-8 h-px bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Trust &amp; Prestige</span>
+<span class="w-8 h-px bg-secondary"></span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight">The Bansilal Difference</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light">
+          Why thousands of families across Pune, Pimpri-Chinchwad, and rural Maharashtra place their celebratory wardrobes in our hands.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Pillar 1 -->
+<div class="p-8 bg-surface shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col space-y-4">
+<div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">auto_awesome_motion</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Vast Variety</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+            Over 50,000+ distinct clothing styles, regional weaves, and unstitched bolts refreshed every week for continuous freshness.
+          </p>
+</div>
+<!-- Pillar 2 -->
+<div class="p-8 bg-surface shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col space-y-4">
+<div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Certified Quality</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+            Triple hand-inspected threads with genuine silk mark certifications, pure gold zari tests, and durable long-life fabric integrity.
+          </p>
+</div>
+<!-- Pillar 3 -->
+<div class="p-8 bg-surface shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col space-y-4">
+<div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">savings</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Affordable Fashion</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+            Direct-from-loom procurement models pass tremendous savings directly to families and bulk trousseau purchasers.
+          </p>
+</div>
+<!-- Pillar 4 -->
+<div class="p-8 bg-surface shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col space-y-4">
+<div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl">location_city</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Prime Location</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light">
+            Situated effortlessly right on the Alandi–Moshi main arterial road, near Dehu Phata with dedicated multi-vehicle parking.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: HAUTE WEAVE GALLERY (FILTERABLE MASONRY PRESENTATION) -->
+<section class="w-full py-28 bg-surface text-on-surface relative" id="gallery">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-3">
+<div class="inline-flex items-center gap-2">
+<span class="w-8 h-px bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Lookbook &amp; Artisanship</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight">The Haute Weave Gallery</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl font-light">
+            A visual tapestry showcasing genuine Paithani pallu intricacies, grand bridal sets, and the opulent halls of Bansilal Textile.
+          </p>
+</div>
+<!-- Filter Tags (Interactive UI) -->
+<div class="flex flex-wrap gap-2" id="gallery-filters">
+<button class="gallery-filter-btn px-4 py-2 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider transition-all" data-filter="all" type="button">All Weaves</button>
+<button class="gallery-filter-btn px-4 py-2 bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-caps text-label-caps uppercase tracking-wider transition-all" data-filter="paithani" type="button">Paithani</button>
+<button class="gallery-filter-btn px-4 py-2 bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-caps text-label-caps uppercase tracking-wider transition-all" data-filter="bridal" type="button">Bridal</button>
+<button class="gallery-filter-btn px-4 py-2 bg-surface-container-low text-on-surface hover:bg-surface-container-high font-label-caps text-label-caps uppercase tracking-wider transition-all" data-filter="mens" type="button">Men's Regalia</button>
+</div>
+</div>
+<!-- Masonry Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+<!-- Gallery Item 1 -->
+<div class="gallery-card relative group overflow-hidden bg-surface-container-highest shadow-md aspect-[3/4]" data-category="paithani">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" data-alt="Traditional Yeola Paithani saree pallu featuring iconic Asavali floral vine motif and double peacock border woven in pure gold thread on royal blue silk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSM9Wrcxgtr6vJ6zx4ySgrLB9hppvTKYGSC2My_1EiZKA_Owj37dwRiIMZLC4gSLbeIl1pvzLyh-D6ZeooIz1GAMOM8VDXfGQdQ20oFbzUfER5ogw3YI5EH6ePuIPtQ9jmFpmeqxrrLnHb_2-S-PsNVGglFvUPQtZU4UztgBnr2_tfcBMZx1OKYZRysnlx_z7M3r-HI9ugN-WEhXQcuw3mzkC86UWrKwtBo72BTp8kmwGZSB3aSsa3Fg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed">Handwoven Heritage</span>
+<h4 class="font-headline-sm text-headline-sm text-surface-bright">Yeola Silk Paithani</h4>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">Asavali Zari Pallu with 100% certified silk</p>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="gallery-card relative group overflow-hidden bg-surface-container-highest shadow-md aspect-[3/4]" data-category="bridal">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" data-alt="Bridal lehenga choli with ornate crimson velvet base and dense hand-embroidered floral motifs, styled with emerald green dupatta in an opulent wedding suite" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOxQlmFh3z_UXrvoWZq1hEj9QMqqAft0z8lYGtKXN-gfsTv4ENMegm7_mU29ig3_Ip58idvYTJYjtlMsXnhVgIIKc81nio9lcNA_scBpyWskT9d10iBqSuI0RX3mWJBtYiJW7SGOL_XZgguOlqGIhZnuf5822BvCQuG0Ea7HQoQ2vVIWkOpZmhEsbLh1smac9FaNB5KI9v06hjysBP3H2uW7hE7AX4AD3ZoYpmPaspis8RtLIMbymZpw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed">Bridal Splendour</span>
+<h4 class="font-headline-sm text-headline-sm text-surface-bright">Maharani Bridal Lehenga</h4>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">Handcrafted zardozi with semi-precious stone embellishments</p>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="gallery-card relative group overflow-hidden bg-surface-container-highest shadow-md aspect-[3/4]" data-category="mens">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" data-alt="Regal Indian men groom sherwani in champagne raw silk with self threadwork and carved vintage brass buttons, paired with a matching embroidered safa turban" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOJTUkpNsTZZ7CALJMghV0aBLfANe4lBKPsw1MsFM6xVxv5AC4EJuKPQI0NhhqKlMTJlQUt34wb8ioRpxpciafXSDriA6qwk50KvF83H-vAm8_BFFOvO0mMxIrfk0CzSHmfd3EDgNsep3Gk-FPaITvFPHuTa06IwpW6up2k6spIrDEccAHBLUM7MqPLoDwAGA-AZSKsuzLQuErt3BvbTRsQBnnLPCOO6zmqEJhj_J0r4vTTEF0jZjcbA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed">Gentlemen's Edit</span>
+<h4 class="font-headline-sm text-headline-sm text-surface-bright">Royal Champagne Sherwani</h4>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">Pure Mulberry silk weave with hand-cut mother of pearl details</p>
+</div>
+</div>
+<!-- Gallery Item 4 -->
+<div class="gallery-card relative group overflow-hidden bg-surface-container-highest shadow-md aspect-[3/4]" data-category="paithani">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" data-alt="Detailed macro view of pure kadiyal paithani border with parrot and lotus motifs handwoven with real zari on magenta pure silk base" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTgZmfb1uvi0upVYG0ccKdNHdB4RjnPZwQzpUKMtE9udoaGaMpZrVNPGJqk8wWkOZ0JoIkeHi1FRkwFcSmBx_AIAaWy8Sjh-EauACfeJkwIMJfCFE-HewVwqkbtvZGGy2C_y6jVK73C55OTk9Y7965tE9ctbm2gx5lmzjufHNhxLIF959v6ntxUIhZ4rr63oM_i7q4qYULsk0IvyxCditgXaEQWEap5xhmntsZmVSI3VmaZ6sdcalfhA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed">Weft &amp; Warp</span>
+<h4 class="font-headline-sm text-headline-sm text-surface-bright">Kadiyal Muniya Border</h4>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">Ancestral 400-year-old weaving pattern</p>
+</div>
+</div>
+<!-- Gallery Item 5 -->
+<div class="gallery-card relative group overflow-hidden bg-surface-container-highest shadow-md aspect-[3/4]" data-category="bridal">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" data-alt="Regal traditional Maharashtrian Nauvari saree in auspicious turmeric yellow with bright green contrast border draped gracefully for a royal wedding celebration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrWACsfJG_Dd2hDR7RN4C2BYTpI3aeAA7l1eXTyNnBfxNqniS-PmKbVO2yR-cSCE9RmY5KFf3Ixn9IN6Iq5Mk2148ZTMe5Jzk0OuJJVvC6tPqS0XHjopJ_ey1mY8Y10L8Cknhi9WZDOeVXIrMbEAIzbDkpjOjhDMvNDWc89sER1oeKg4MEz2jOjp9wfWcnlrJOI6uinjD6dCA7ckQZ13MiYl_rFKHOuGjNgHdmJUcYSM5_zu-iAX2T4g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed">Auspicious Drapes</span>
+<h4 class="font-headline-sm text-headline-sm text-surface-bright">Traditional Nauvari Silk</h4>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">9-yard heirloom silk for authentic sacred ceremonies</p>
+</div>
+</div>
+<!-- Gallery Item 6 -->
+<div class="gallery-card relative group overflow-hidden bg-surface-container-highest shadow-md aspect-[3/4]" data-category="mens">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" data-alt="Traditional Indian wedding ensemble for men featuring rich banarasi silk kurta with woven gold butis and ivory silk stole against classic architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD823SdQQ_DhqE5hnba4nVLTaWeiHIbiIKGWh9sD1ix4wy_7QYEAM40dvJpUUN-Lh4IvqUerextlmSYqZWX3wtAvBJLrmY_tRuDJHaJI5JAJ5ghCwsU2vEopYL8QwyriVSD_4pp5gvgmP0-lXDMXMDUu_qA8U_L3SSBP9oX-j3BW6TK7Lk_i507sc9MOApSOK--6kl8XOJbdr5w-cGuVyleRzJuI-oMf1cGyPSsa7MKUuqqu8IA0Us_gA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed">Festive Collection</span>
+<h4 class="font-headline-sm text-headline-sm text-surface-bright">Banarasi Silk Kurta Set</h4>
+<p class="font-body-sm text-body-sm text-surface-container-high font-light">Crafted for sangeet and engagement ceremonies</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 8: LOCATION & HOW TO REACH (ALANDI, PUNE) -->
+<section class="w-full py-28 bg-surface-container-low text-on-surface relative" id="location">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
+<div class="max-w-3xl space-y-3">
+<div class="inline-flex items-center gap-2">
+<span class="w-8 h-px bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Find Our Sanctuary</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight">Locate Our Store in Alandi</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light">
+          Centrally situated in the sacred city of Alandi Devachi, easily accessible from Pune City, Bhosari, Chakan, and Pimpri-Chinchwad.
+        </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Interactive Simulated Map Panel -->
+<div class="lg:col-span-7 bg-surface p-4 shadow-xl flex flex-col space-y-4">
+<div class="w-full h-96 bg-cover bg-center relative flex items-center justify-center" data-location="Alandi Moshi Road, Alandi, Pune, Maharashtra 412105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0zbTCa3-rYBZATsKR6lhapCc-IR2n-8a8yGj0LDRRhjoXo8kPjShpeGRApm1hS7De5DfZzBJSPo7sFprx5xZRR52VSp0TCgtDaYE6fZ8uBqqENHqV8J9TvR7jmTC7MzBaTddepz3Kl0ar_BhhfSKN0y5TWXcckCVPlesNV8xXCQdKr0gPODMZ20QTYz7EaeG_5QiejgklzzDJKjnB1bXGl3PtG3j4C0_hOSzYrZRJDJNORBoqP1cHbQ')">
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-[1px]"></div>
+<!-- Custom Pin Badge -->
+<div class="relative z-10 p-4 bg-surface/95 backdrop-blur-md shadow-2xl flex items-center gap-3 border-l-4 border-secondary max-w-sm">
+<span class="material-symbols-outlined text-secondary text-3xl shrink-0">storefront</span>
+<div>
+<span class="font-headline-sm text-headline-sm text-primary block leading-tight">Bansilal Textile</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Alandi–Moshi Road, Dehu Phata</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-secondary text-lg">local_parking</span>
+<span>Free Valet &amp; Customer Parking Available Onsite</span>
+</div>
+<div class="flex items-center gap-3">
+<a class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-wider hover:bg-secondary transition-colors" href="https://maps.google.com" rel="noopener noreferrer" target="_blank">
+<span>Open in Google Maps</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Address & Timings Information Card -->
+<div class="lg:col-span-5 flex flex-col justify-between space-y-6 bg-surface p-8 lg:p-10 shadow-xl">
+<div class="space-y-6">
+<div class="space-y-2">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Complete Address</span>
+<h3 class="font-headline-md text-headline-md text-primary">Bansilal Textile / Cloth Market</h3>
+<p class="font-body-md text-body-md text-on-surface-variant font-light">
+                MVCR+HCG, Alandi–Moshi Road, Near Dehu Phata, Alandi Devachi, Pune, Maharashtra – 412105
+              </p>
+</div>
+<div class="space-y-3 pt-4 border-t border-outline-variant/30">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Store Timings</span>
+<div class="p-4 bg-surface-container-low flex items-center justify-between">
+<div>
+<p class="font-headline-sm text-headline-sm text-primary">10:00 AM – 9:30 PM</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Open All 7 Days of the Week (Sunday Open)</p>
+</div>
+<span class="w-3 h-3 rounded-full bg-secondary animate-pulse"></span>
+</div>
+</div>
+<div class="space-y-2 pt-2">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Key Proximity Landmarks</span>
+<ul class="space-y-1 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">navigation</span>
+<span>2 mins from Dehu Phata junction</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">temple_hindu</span>
+<span>5 mins from Sant Dnyaneshwar Maharaj Sanjeevan Samadhi Mandir</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">commute</span>
+<span>Direct highway access from Moshi &amp; Chakan Industrial corridors</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-6">
+<a class="w-full inline-flex items-center justify-center gap-3 p-4 bg-secondary text-on-secondary hover:bg-primary transition-colors font-label-caps text-label-caps uppercase tracking-widest shadow-md" href="tel:+919822000000">
+<span class="material-symbols-outlined text-lg">call</span>
+<span>Call Store Desk: +91 98220 00000</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 9: CONTACT & APPOINTMENT BOOKING -->
+<section class="w-full py-28 bg-surface text-on-surface relative" id="inquiry">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+<div class="lg:col-span-5 space-y-8">
+<div class="space-y-3">
+<div class="inline-flex items-center gap-2">
+<span class="w-8 h-px bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Bespoke Concierge</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight">Plan Your Visit or Wedding Trousseau</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-light">
+              Booking your private appointment gives your family a designated senior textile consultant, reserved lounge seating, and tailored bridal selections prepared in advance.
+            </p>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container-low flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase">WhatsApp Video Shopping</span>
+<p class="font-body-sm text-body-sm text-primary font-medium">Browse Live Saree Looms via WhatsApp Call</p>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined">groups_3</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Bulk Wedding Orders</span>
+<p class="font-body-sm text-body-sm text-primary font-medium">Wholesale Pricing for 25+ Paithani &amp; Kurta Sets</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Appointment Form -->
+<div class="lg:col-span-7 bg-surface-container-low p-8 lg:p-12 shadow-2xl">
+<form class="space-y-6" id="appointment-form">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block" for="full-name">Full Name</label>
+<input class="w-full bg-surface border-b border-outline-variant focus:border-secondary py-3 px-4 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none transition-colors" id="full-name" placeholder="e.g. Ananya Deshmukh" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block" for="contact-phone">Contact Number</label>
+<input class="w-full bg-surface border-b border-outline-variant focus:border-secondary py-3 px-4 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none transition-colors" id="contact-phone" placeholder="e.g. +91 98000 00000" required="" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block" for="preferred-date">Preferred Visit Date</label>
+<input class="w-full bg-surface border-b border-outline-variant focus:border-secondary py-3 px-4 font-body-md text-body-md text-on-surface focus:outline-none transition-colors" id="preferred-date" type="date"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block" for="interest-category">Interest Category</label>
+<select class="w-full bg-surface border-b border-outline-variant focus:border-secondary py-3 px-4 font-body-md text-body-md text-on-surface focus:outline-none transition-colors" id="interest-category">
+<option value="paithani">Bridal Paithani Sarees</option>
+<option value="full-wedding">Complete Family Wedding Trousseau</option>
+<option value="fabrics">Bulk Fabrics / Wholesale Textiles</option>
+<option value="mens">Men's Sherwani &amp; Suiting</option>
+<option value="general">Everyday Luxury &amp; Dress Materials</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block" for="special-requirements">Special Requirements / Family Size</label>
+<textarea class="w-full bg-surface border-b border-outline-variant focus:border-secondary py-3 px-4 font-body-md text-body-md text-on-surface placeholder:text-outline/60 focus:outline-none transition-colors" id="special-requirements" placeholder="Tell us about your wedding dates, color preferences, or specific weaves..." rows="3"></textarea>
+</div>
+<div class="pt-2">
+<button class="w-full py-4 bg-primary text-on-primary hover:bg-secondary transition-colors font-label-caps text-label-caps uppercase tracking-widest shadow-lg flex items-center justify-center gap-2" type="submit">
+<span>Reserve Salon Appointment</span>
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+</button>
+<p class="hidden mt-3 font-body-sm text-body-sm text-secondary text-center" id="form-success-msg">Thank you! Your private salon booking request has been received. Our concierge will call within 2 business hours.</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript Micro-interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Filter functionality for Gallery
+      const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+      const galleryCards = document.querySelectorAll('.gallery-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-primary', 'text-on-primary');
+            b.classList.add('bg-surface-container-low', 'text-on-surface');
+          });
+          btn.classList.add('bg-primary', 'text-on-primary');
+          btn.classList.remove('bg-surface-container-low', 'text-on-surface');
+
+          galleryCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Smooth Appointment Submission Form Handshake
+      const apptForm = document.getElementById('appointment-form');
+      const successMsg = document.getElementById('form-success-msg');
+      if (apptForm && successMsg) {
+        apptForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          successMsg.classList.remove('hidden');
+          apptForm.reset();
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low border-t border-outline-variant/30"><div class="max-w-7xl mx-auto px-6 lg:px-12 pt-space-xl pb-space-lg"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl pb-space-xl border-b border-outline-variant/30"><div class="flex flex-col gap-space-md"><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary">Bansilal Textile</span><span class="font-label-caps text-label-caps text-secondary tracking-widest">बंसीलाल टेक्सटाइल • ALANDI</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Curators of pure handloom weaves, mastercrafted Paithani sarees, and bespoke bridal couture. Sustaining authentic Maharashtrian textile legacies since inception.</p><div class="flex items-center gap-space-sm pt-space-xs"><span class="font-label-caps text-label-caps px-2 py-1 bg-surface border border-secondary/30 text-secondary">HANDLOOM AUTHENTIC</span><span class="font-label-caps text-label-caps px-2 py-1 bg-surface border border-secondary/30 text-secondary">PURE SILK</span></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps tracking-widest text-primary uppercase pb-space-xs border-b border-outline-variant/20">Curated Navigation</span><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="#">About the Heritage</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="collections" href="#">Bridal Paithani &amp; Silk</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="craft-experience" href="#">Bespoke Salon Experience</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="haute-gallery" href="#">Artisanal Lookbook</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="why-us" href="#">Weaver Provenance</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="visit-location" href="#">Store Directions &amp; Parking</a></div><div class="flex flex-col gap-space-sm"><span class="font-label-caps text-label-caps tracking-widest text-primary uppercase pb-space-xs border-b border-outline-variant/20">Store Experience</span><div class="font-body-sm text-body-sm text-on-surface-variant space-y-1"><p class="font-medium text-on-surface">Flagship Destination:</p><p>Opp. Indrayani Riverside Corridor,</p><p>Alandi-Moshi Road, Alandi Devachi,</p><p>Pune, Maharashtra 412105</p></div><div class="font-body-sm text-body-sm text-on-surface-variant pt-space-xs"><p class="font-medium text-on-surface">Salon Timings:</p><p>10:00 AM – 9:30 PM IST</p><p class="text-secondary font-medium">Open All 7 Days of the Week</p></div></div><div class="flex flex-col gap-space-md"><span class="font-label-caps text-label-caps tracking-widest text-primary uppercase pb-space-xs border-b border-outline-variant/20">Festive Previews</span><p class="font-body-sm text-body-sm text-on-surface-variant">Receive invitations to private salon showings, new Paithani loom releases, and wedding trousseau edits.</p><form class="flex flex-col gap-space-xs"><div class="flex items-center border-b border-on-surface-variant/40 focus-within:border-secondary transition-colors py-1"><input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none" placeholder="Your email for private releases" type="email"/><button class="shrink-0 text-primary hover:text-secondary transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div><span class="font-label-caps text-[10px] text-on-surface-variant/70 tracking-normal">Strict discretion guaranteed. No unsolicited communications.</span></form><div class="flex items-center gap-space-md pt-space-xs"><a class="w-7 h-7 flex items-center justify-center border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[15px]">share</span></a><a class="w-7 h-7 flex items-center justify-center border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[15px]">call</span></a><a class="w-7 h-7 flex items-center justify-center border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[15px]">mail</span></a></div></div></div><div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm font-label-caps text-label-caps text-on-surface-variant"><p>© 2025 BANSILAL TEXTILE (बंसीलाल टेक्सटाइल). ALL RIGHTS RESERVED.</p><div class="flex items-center gap-space-lg"><span>PUNE HANDLOOM ARCHIVE</span><span>TERMS OF ATELIER</span><span>BESPOKE INQUIRIES</span></div></div></div></footer></body></html>

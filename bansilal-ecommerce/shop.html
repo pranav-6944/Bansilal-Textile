@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Collections — Bansilal Textile | Sarees, Lehengas, Sherwanis & More</title>
+  <meta name="description" content="Browse our complete collection of handloom sarees, bridal lehengas, men's sherwanis, dress materials, children's wear, and fabric by the meter. Authentic Indian textiles at Bansilal Textile.">
+  <link rel="icon" href="../favicon_io/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="css/bansilal.css">
+  <style>
+    body { padding-top: 0; }
+    .page-top { height: calc(2.5rem + 4.5rem + 1px); } /* announcement bar + header */
+
+    /* Shop Layout */
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 1024px) {
+      .shop-layout { grid-template-columns: 16rem 1fr; }
+    }
+
+    /* Filter Sidebar */
+    .filter-sidebar {
+      display: none;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media (min-width: 1024px) { .filter-sidebar { display: flex; } }
+
+    .filter-group { display: flex; flex-direction: column; gap: 0.75rem; }
+    .filter-group__title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--color-on-surface);
+      cursor: pointer;
+    }
+    .filter-option input[type="checkbox"] { width: 0.875rem; height: 0.875rem; accent-color: var(--color-primary); cursor: pointer; }
+    .filter-option:hover { color: var(--color-secondary); }
+
+    /* Price Range */
+    .price-range-display {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      color: var(--color-on-surface-variant);
+      margin-bottom: 0.375rem;
+    }
+
+    /* Mobile Filter Bottom Sheet */
+    .filter-sheet {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+    }
+    .filter-sheet.is-open { display: flex; flex-direction: column; justify-content: flex-end; }
+    .filter-sheet__overlay { position: absolute; inset: 0; background: rgba(26,20,18,0.5); backdrop-filter: blur(4px); }
+    .filter-sheet__panel {
+      position: relative;
+      background: var(--color-surface);
+      border-radius: 0;
+      max-height: 80vh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 350ms cubic-bezier(0.4,0,0.2,1);
+    }
+    .filter-sheet.is-open .filter-sheet__panel { transform: translateY(0); }
+    .filter-sheet__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-hairline);
+      position: sticky;
+      top: 0;
+      background: var(--color-surface);
+    }
+    .filter-sheet__body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .filter-sheet__footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      gap: 0.75rem;
+      position: sticky;
+      bottom: 0;
+      background: var(--color-surface);
+    }
+
+    /* Products Grid */
+    .products-main-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .products-main-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1280px) { .products-main-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 400px) { .products-main-grid { grid-template-columns: 1fr; } }
+
+    /* Sort Select */
+    .sort-select {
+      padding: 0.5rem 2rem 0.5rem 0.75rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-outline-variant);
+      color: var(--color-on-surface);
+      font-size: 0.8125rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234e4542' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.625rem center;
+    }
+
+    /* Category Pills Horizontal Scroll */
+    .category-pills {
+      display: flex;
+      gap: 0.625rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 0.25rem;
+    }
+    .category-pills::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body>
+  <div style="height:2.5rem;background:var(--color-tertiary-container);" aria-hidden="true"></div>
+  <div class="page-top" aria-hidden="true" style="height:0;"></div>
+
+  <main style="padding-top:7rem;min-height:100vh;background:var(--color-background);">
+    <div class="container">
+      <!-- Page Header -->
+      <div style="padding:2.5rem 0 2rem;" class="reveal">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumbs__sep">›</span>
+          <span class="breadcrumbs__current" id="breadcrumb-current">All Collections</span>
+        </nav>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:1.25rem;">
+          <div>
+            <h1 id="page-title" style="font-family:var(--font-display);font-size:clamp(1.75rem,4vw,3rem);font-weight:400;color:var(--color-primary);">All Collections</h1>
+            <p id="product-count" style="font-size:0.875rem;color:var(--color-on-surface-variant);margin-top:0.25rem;"></p>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+            <!-- Mobile: Filter & Sort -->
+            <button class="btn-secondary" id="open-filter-sheet" style="display:flex;gap:0.375rem;align-items:center;" aria-label="Filter and sort products">
+              <span class="material-symbols-outlined" style="font-size:1rem;">tune</span>
+              Filter &amp; Sort
+            </button>
+            <!-- Desktop sort only -->
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+              <label for="sort-select" style="font-size:0.75rem;color:var(--color-on-surface-variant);white-space:nowrap;font-weight:400;">Sort by:</label>
+              <select class="sort-select" id="sort-select" onchange="applyFilters()" aria-label="Sort products">
+                <option value="featured">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Horizontal Pills -->
+        <div class="category-pills" style="margin-top:1.25rem;" role="list" aria-label="Filter by category">
+          <button class="filter-chip is-active" data-cat="all" onclick="setCategoryFilter(this,'all')" role="listitem">All</button>
+          <button class="filter-chip" data-cat="royal-sarees" onclick="setCategoryFilter(this,'royal-sarees')" role="listitem">Royal Sarees</button>
+          <button class="filter-chip" data-cat="dress-materials" onclick="setCategoryFilter(this,'dress-materials')" role="listitem">Dress Materials</button>
+          <button class="filter-chip" data-cat="womens-couture" onclick="setCategoryFilter(this,'womens-couture')" role="listitem">Women's Couture</button>
+          <button class="filter-chip" data-cat="mens-regalia" onclick="setCategoryFilter(this,'mens-regalia')" role="listitem">Men's Regalia</button>
+          <button class="filter-chip" data-cat="childrens-pavilions" onclick="setCategoryFilter(this,'childrens-pavilions')" role="listitem">Children's</button>
+          <button class="filter-chip" data-cat="textiles-bolts" onclick="setCategoryFilter(this,'textiles-bolts')" role="listitem">Textiles &amp; Bolts</button>
+        </div>
+      </div>
+
+      <!-- Shop Layout -->
+      <div class="shop-layout" style="padding-bottom:5rem;">
+        <!-- Filter Sidebar (Desktop) -->
+        <aside class="filter-sidebar" aria-label="Product filters">
+          <div class="filter-group">
+            <h2 class="filter-group__title">Category</h2>
+            <label class="filter-option"><input type="radio" name="cat-sidebar" value="all" checked onchange="setCatFromSidebar(this)"> All Collections</label>
+            <label class="filter-option"><input type="radio" name="cat-sidebar" value="royal-sarees" onchange="setCatFromSidebar(this)"> Royal Sarees</label>
+            <label class="filter-option"><input type="radio" name="cat-sidebar" value="dress-materials" onchange="setCatFromSidebar(this)"> Dress Materials</label>
+            <label class="filter-option"><input type="radio" name="cat-sidebar" value="womens-couture" onchange="setCatFromSidebar(this)"> Women's Couture</label>
+            <label class="filter-option"><input type="radio" name="cat-sidebar" value="mens-regalia" onchange="setCatFromSidebar(this)"> Men's Regalia</label>
+            <label class="filter-option"><input type="radio" name="cat-sidebar" value="childrens-pavilions" onchange="setCatFromSidebar(this)"> Children's Pavilions</label>
+            <label class="filter-option"><input type="radio" name="cat-sidebar" value="textiles-bolts" onchange="setCatFromSidebar(this)"> Textiles &amp; Bolts</label>
+          </div>
+
+          <div class="filter-group">
+            <h2 class="filter-group__title">Price Range</h2>
+            <div class="price-range-display">
+              <span>₹<span id="price-min-display">0</span></span>
+              <span>₹<span id="price-max-display">50,000</span></span>
+            </div>
+            <input type="range" id="price-range" min="0" max="50000" step="500" value="50000" oninput="updatePriceRange(this.value)" aria-label="Maximum price filter">
+          </div>
+
+          <div class="filter-group">
+            <h2 class="filter-group__title">Collection Type</h2>
+            <label class="filter-option"><input type="checkbox" id="filter-bestseller" onchange="applyFilters()"> Best Sellers</label>
+            <label class="filter-option"><input type="checkbox" id="filter-new" onchange="applyFilters()"> New Arrivals</label>
+            <label class="filter-option"><input type="checkbox" id="filter-featured" onchange="applyFilters()"> Featured</label>
+          </div>
+
+          <div class="filter-group">
+            <h2 class="filter-group__title">Availability</h2>
+            <label class="filter-option"><input type="checkbox" id="filter-instock" onchange="applyFilters()"> In Stock Only</label>
+          </div>
+
+          <button onclick="clearFilters()" class="btn-ghost" style="align-self:flex-start;font-size:0.75rem;">Clear All Filters</button>
+        </aside>
+
+        <!-- Products Area -->
+        <div>
+          <!-- Active filters display -->
+          <div id="active-filters" style="display:none;margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:0.375rem;align-items:center;">
+            <span style="font-size:0.75rem;color:var(--color-on-surface-variant);">Active:</span>
+          </div>
+          
+          <!-- Loading state -->
+          <div id="products-loading" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;" aria-label="Loading products" aria-busy="true">
+            ${[1,2,3,4].map(() => `<div style="background:var(--color-surface-container-low);aspect-ratio:4/5;animation:shimmer 1.5s infinite;border-radius:0;" aria-hidden="true"></div>`).join('')}
+          </div>
+          <style>@keyframes shimmer{0%{opacity:0.6}50%{opacity:1}100%{opacity:0.6}}</style>
+
+          <!-- Products Grid -->
+          <div class="products-main-grid" id="shop-grid" style="display:none;" role="list" aria-label="Products"></div>
+
+          <!-- Empty state -->
+          <div id="shop-empty" class="empty-state" style="display:none;padding:5rem 2rem;">
+            <div class="empty-state__icon"><span class="material-symbols-outlined">search_off</span></div>
+            <p class="empty-state__title">No products found</p>
+            <p class="empty-state__text">Try adjusting your filters or browse all our collections.</p>
+            <button onclick="clearFilters()" class="btn-primary" style="margin-top:0.75rem;">Clear Filters</button>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="pagination" style="margin-top:3rem;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Mobile Filter Bottom Sheet -->
+  <div class="filter-sheet" id="filter-sheet" role="dialog" aria-label="Filter products">
+    <div class="filter-sheet__overlay" onclick="closeFilterSheet()"></div>
+    <div class="filter-sheet__panel">
+      <div class="filter-sheet__header">
+        <h2 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Filter &amp; Sort</h2>
+        <button onclick="closeFilterSheet()" style="color:var(--color-on-surface-variant);background:none;border:none;cursor:pointer;" aria-label="Close filters">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="filter-sheet__body">
+        <div class="filter-group">
+          <h3 class="filter-group__title">Sort By</h3>
+          <label class="filter-option"><input type="radio" name="sort-mobile" value="featured" checked onchange="document.getElementById('sort-select').value=this.value;applyFilters()"> Featured</label>
+          <label class="filter-option"><input type="radio" name="sort-mobile" value="newest" onchange="document.getElementById('sort-select').value=this.value;applyFilters()"> Newest</label>
+          <label class="filter-option"><input type="radio" name="sort-mobile" value="price-asc" onchange="document.getElementById('sort-select').value=this.value;applyFilters()"> Price: Low to High</label>
+          <label class="filter-option"><input type="radio" name="sort-mobile" value="price-desc" onchange="document.getElementById('sort-select').value=this.value;applyFilters()"> Price: High to Low</label>
+          <label class="filter-option"><input type="radio" name="sort-mobile" value="rating" onchange="document.getElementById('sort-select').value=this.value;applyFilters()"> Top Rated</label>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Collection Type</h3>
+          <label class="filter-option"><input type="checkbox" id="m-filter-bestseller" onchange="document.getElementById('filter-bestseller').checked=this.checked;applyFilters()"> Best Sellers</label>
+          <label class="filter-option"><input type="checkbox" id="m-filter-new" onchange="document.getElementById('filter-new').checked=this.checked;applyFilters()"> New Arrivals</label>
+          <label class="filter-option"><input type="checkbox" id="m-filter-featured" onchange="document.getElementById('filter-featured').checked=this.checked;applyFilters()"> Featured</label>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Price (Up to)</h3>
+          <div class="price-range-display">
+            <span>₹0</span><span>₹<span id="m-price-max-display">50,000</span></span>
+          </div>
+          <input type="range" min="0" max="50000" step="500" value="50000" oninput="document.getElementById('price-range').value=this.value;updatePriceRange(this.value)">
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Availability</h3>
+          <label class="filter-option"><input type="checkbox" id="m-filter-instock" onchange="document.getElementById('filter-instock').checked=this.checked;applyFilters()"> In Stock Only</label>
+        </div>
+      </div>
+      <div class="filter-sheet__footer">
+        <button onclick="clearFilters()" class="btn-secondary" style="flex:1;justify-content:center;">Clear All</button>
+        <button onclick="closeFilterSheet()" class="btn-primary" style="flex:2;justify-content:center;">Apply Filters</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/layout.js"></script>
+  <script>
+    let currentCat = 'all';
+    let currentPage = 1;
+    const PER_PAGE = 12;
+
+    // Init from URL params
+    function initFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('cat');
+      const q = params.get('q');
+      if (cat) setCategoryFilter(document.querySelector(`[data-cat="${cat}"]`), cat);
+      applyFilters();
+    }
+
+    function setCategoryFilter(btn, cat) {
+      currentCat = cat;
+      currentPage = 1;
+      document.querySelectorAll('.category-pills .filter-chip').forEach(b => b.classList.remove('is-active'));
+      if (btn) btn.classList.add('is-active');
+      // Sync sidebar
+      const radio = document.querySelector(`input[name="cat-sidebar"][value="${cat}"]`);
+      if (radio) radio.checked = true;
+      // Update title & breadcrumb
+      const catObj = cat === 'all' ? null : CATEGORIES.find(c => c.slug === cat);
+      document.getElementById('page-title').textContent = catObj ? catObj.name : 'All Collections';
+      document.getElementById('breadcrumb-current').textContent = catObj ? catObj.name : 'All Collections';
+      applyFilters();
+    }
+
+    function setCatFromSidebar(radio) {
+      const btn = document.querySelector(`[data-cat="${radio.value}"]`);
+      setCategoryFilter(btn, radio.value);
+    }
+
+    function updatePriceRange(val) {
+      const formatted = parseInt(val).toLocaleString('en-IN');
+      const el1 = document.getElementById('price-max-display');
+      const el2 = document.getElementById('m-price-max-display');
+      if (el1) el1.textContent = formatted;
+      if (el2) el2.textContent = formatted;
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const maxPrice = parseInt(document.getElementById('price-range').value);
+      const sortBy = document.getElementById('sort-select').value;
+      const onlyBest = document.getElementById('filter-bestseller').checked;
+      const onlyNew = document.getElementById('filter-new').checked;
+      const onlyFeatured = document.getElementById('filter-featured').checked;
+      const onlyInStock = document.getElementById('filter-instock').checked;
+
+      let products = PRODUCTS.filter(p => {
+        if (currentCat !== 'all' && p.category !== currentCat) return false;
+        if (p.price > maxPrice) return false;
+        if (onlyBest && !p.bestseller) return false;
+        if (onlyNew && !p.newArrival) return false;
+        if (onlyFeatured && !p.featured) return false;
+        if (onlyInStock && p.stock === 0) return false;
+        return true;
+      });
+
+      // Sort
+      if (sortBy === 'price-asc') products.sort((a, b) => a.price - b.price);
+      else if (sortBy === 'price-desc') products.sort((a, b) => b.price - a.price);
+      else if (sortBy === 'rating') products.sort((a, b) => b.rating - a.rating);
+      else if (sortBy === 'newest') products.sort((a, b) => (b.newArrival ? 1 : 0) - (a.newArrival ? 1 : 0));
+
+      renderProducts(products);
+    }
+
+    function renderProducts(products) {
+      const loading = document.getElementById('products-loading');
+      const grid = document.getElementById('shop-grid');
+      const empty = document.getElementById('shop-empty');
+      const countEl = document.getElementById('product-count');
+
+      loading.style.display = 'none';
+
+      if (products.length === 0) {
+        grid.style.display = 'none';
+        empty.style.display = 'flex';
+        if (countEl) countEl.textContent = '0 products';
+        return;
+      }
+
+      empty.style.display = 'none';
+      grid.style.display = 'grid';
+
+      const wishlist = wishlistManager ? wishlistManager.getWishlist() : [];
+      // Pagination
+      const total = products.length;
+      const pages = Math.ceil(total / PER_PAGE);
+      const start = (currentPage - 1) * PER_PAGE;
+      const paginated = products.slice(start, start + PER_PAGE);
+
+      if (countEl) countEl.textContent = total + ' product' + (total !== 1 ? 's' : '');
+      grid.innerHTML = paginated.map(p => buildProductCardHTML(p, wishlist)).join('');
+      renderPagination(pages);
+    }
+
+    function renderPagination(total) {
+      const el = document.getElementById('pagination');
+      if (!el || total <= 1) { if(el) el.innerHTML = ''; return; }
+      let html = '';
+      if (currentPage > 1) html += `<button class="page-btn" onclick="goPage(${currentPage-1})" aria-label="Previous page">
+        <span class="material-symbols-outlined" style="font-size:1rem;">chevron_left</span></button>`;
+      for (let i = 1; i <= total; i++) {
+        html += `<button class="page-btn${i===currentPage?' is-active':''}" onclick="goPage(${i})" aria-label="Page ${i}">${i}</button>`;
+      }
+      if (currentPage < total) html += `<button class="page-btn" onclick="goPage(${currentPage+1})" aria-label="Next page">
+        <span class="material-symbols-outlined" style="font-size:1rem;">chevron_right</span></button>`;
+      el.innerHTML = html;
+    }
+
+    function goPage(n) {
+      currentPage = n;
+      applyFilters();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function clearFilters() {
+      currentCat = 'all';
+      currentPage = 1;
+      document.getElementById('sort-select').value = 'featured';
+      document.getElementById('filter-bestseller').checked = false;
+      document.getElementById('filter-new').checked = false;
+      document.getElementById('filter-featured').checked = false;
+      document.getElementById('filter-instock').checked = false;
+      document.getElementById('price-range').value = 50000;
+      updatePriceRange(50000);
+      document.querySelectorAll('.category-pills .filter-chip').forEach((b,i) => b.classList.toggle('is-active', i===0));
+      const radio = document.querySelector('input[name="cat-sidebar"][value="all"]');
+      if (radio) radio.checked = true;
+      document.getElementById('page-title').textContent = 'All Collections';
+      document.getElementById('breadcrumb-current').textContent = 'All Collections';
+      applyFilters();
+      closeFilterSheet();
+    }
+
+    function openFilterSheet() { document.getElementById('filter-sheet').classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+    function closeFilterSheet() { document.getElementById('filter-sheet').classList.remove('is-open'); document.body.style.overflow = ''; }
+
+    document.getElementById('open-filter-sheet').addEventListener('click', openFilterSheet);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initFromURL();
+      setTimeout(() => {
+        document.getElementById('products-loading').style.display = 'none';
+        applyFilters();
+      }, 400);
+    });
+  </script>
+</body>
+</html>

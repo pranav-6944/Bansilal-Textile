@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bansilal Textile — Royal Paithani Sarees, Bridal Wear & Handloom Textiles | Alandi, Pune</title>
+  <meta name="description" content="Bansilal Textile is Maharashtra's premier destination for royal Paithani sarees, handcrafted bridal couture, men's sherwanis, and authentic family textiles since 1994. Visit our flagship store in Alandi, Pune.">
+  <meta property="og:title" content="Bansilal Textile — Heritage Handloom & Bridal Couture">
+  <meta property="og:description" content="Maharashtra's premier destination for Paithani sarees, bridal couture, and authentic handloom textiles since 1994.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="../favicon_io/favicon.ico">
+  <link rel="apple-touch-icon" href="../favicon_io/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="css/bansilal.css">
+  <style>
+    /* Page-specific overrides */
+    body { padding-top: 0; }
+    main { margin-top: 0; }
+
+    /* Header offset for content below fixed header */
+    .content-start {
+      /* Announcement bar (40px) + Header (72px) = 112px */
+      padding-top: 7rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      overflow: hidden;
+      background-color: var(--color-primary-container);
+      color: var(--color-surface-bright);
+      display: flex;
+      flex-direction: column;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero__bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTtAxt8hd8ufT2877Iya9DfpXZzaMQNtSb7cKkZAayEbLMpkLAkviwO9QOx4IHaHy3DgnUvFkjG7QRsZpYr91OXz7KuR2234nJXzhQwzriR0OaKJYxrCRcP7nzM57N5pyc5qeceqm_3YTz6KJ04ITFno0T7bMg_C97YXjxKsnXCGBSqFs12X1JuAkMk4ZxtVlNYawBfSEkKkUi1ZWV7VyE2I2gBRVcXMnx0SqtVLG42rZamnc6t2OQkA');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.4;
+      transform: scale(1.06);
+      transition: transform 1s ease-out;
+    }
+    .hero__bg-img.is-loaded { transform: scale(1); }
+    .hero__gradient-b { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(32,26,24,0.8) 0%, rgba(32,26,24,0.6) 40%, rgba(32,26,24,1) 100%); }
+    .hero__gradient-r { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 0%, rgba(32,26,24,0.4) 70%, rgba(32,26,24,0.7) 100%); }
+    .hero__svg-accent {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+      opacity: 0.35;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      padding-top: 8rem;
+      padding-bottom: 4rem;
+    }
+    .hero__main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 56rem;
+      margin: 0 auto;
+      gap: 1.5rem;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 1rem;
+      background: rgba(119, 90, 25, 0.15);
+      backdrop-filter: blur(8px);
+      color: var(--color-secondary-fixed);
+      border-radius: 9999px;
+    }
+    .hero__badge-dot {
+      width: 0.375rem;
+      height: 0.375rem;
+      border-radius: 50%;
+      background: var(--color-secondary-fixed);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--color-surface-bright);
+      text-transform: uppercase;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.2);
+    }
+    .hero__hindi {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 3vw, 1.75rem);
+      font-weight: 500;
+      color: var(--color-secondary-fixed);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+    }
+    .hero__tagline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-surface-container-high);
+    }
+    .hero__dot { width: 0.25rem; height: 0.25rem; border-radius: 50%; background: var(--color-secondary-fixed); }
+    .hero__body {
+      font-size: clamp(0.9rem, 2.5vw, 1.125rem);
+      font-weight: 300;
+      line-height: 1.875;
+      color: var(--color-surface-container-high);
+      max-width: 38rem;
+    }
+    .hero__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      align-items: center;
+      width: 100%;
+    }
+    @media (min-width: 480px) {
+      .hero__actions { flex-direction: row; justify-content: center; }
+    }
+    .hero__cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: var(--color-secondary);
+      color: var(--color-on-secondary);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      transition: background var(--transition-button);
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .hero__cta-primary:hover { background: var(--color-secondary-fixed-dim); color: var(--color-on-secondary-fixed); }
+    .hero__cta-primary .arrow { display: inline-block; transition: transform 200ms; }
+    .hero__cta-primary:hover .arrow { transform: translateX(3px); }
+    .hero__cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      background: rgba(246,243,237,0.08);
+      backdrop-filter: blur(8px);
+      color: var(--color-surface-bright);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: background var(--transition-button);
+      text-decoration: none;
+    }
+    .hero__cta-secondary:hover { background: rgba(246,243,237,0.15); }
+
+    /* Metrics band */
+    .hero__metrics {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 56rem;
+      margin: 0 auto;
+      width: 100%;
+      padding-top: 2rem;
+    }
+    @media (min-width: 480px) { .hero__metrics { grid-template-columns: repeat(3, 1fr); } }
+    .metric-card {
+      padding: 1.25rem 1.5rem;
+      background: rgba(246,243,237,0.06);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: background var(--transition-standard);
+    }
+    .metric-card:hover { background: rgba(246,243,237,0.1); }
+    .metric-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: rgba(119,90,25,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-secondary-fixed);
+      flex-shrink: 0;
+    }
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-surface-bright);
+      line-height: 1;
+    }
+    .metric-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-surface-container-high);
+      margin-top: 0.25rem;
+    }
+
+    /* ===== COLLECTIONS GRID ===== */
+    .collection-card {
+      background: var(--color-surface);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 500ms ease;
+      cursor: pointer;
+    }
+    .collection-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    .collection-card__img-wrap { aspect-ratio: 4/5; overflow: hidden; background: var(--color-surface-container-highest); }
+    .collection-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 700ms ease-out;
+    }
+    .collection-card:hover .collection-card__img { transform: scale(1.025); }
+    .collection-card__body {
+      padding: 1.25rem;
+      background: var(--color-surface);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .collection-card__meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .collection-card__label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+    }
+    .collection-card__badge {
+      font-size: 0.5625rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.125rem 0.375rem;
+      background: rgba(119,90,25,0.1);
+      color: var(--color-secondary);
+    }
+    .collection-card__name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--color-primary);
+    }
+    .collection-card__desc {
+      font-size: 0.8125rem;
+      color: var(--color-on-surface-variant);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    .collection-card__cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(197,160,89,0.3);
+      margin-top: auto;
+    }
+    .collection-card__cta-text {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      transition: color 200ms;
+    }
+    .collection-card:hover .collection-card__cta-text { color: var(--color-secondary); }
+    .collection-card__arrow {
+      color: var(--color-secondary);
+      transition: transform 200ms;
+    }
+    .collection-card:hover .collection-card__arrow { transform: translateX(3px); }
+
+    /* ===== PARALLAX BREAK ===== */
+    .parallax-break {
+      position: relative;
+      padding: 5rem 0;
+      background: var(--color-tertiary-container);
+      color: var(--color-surface-bright);
+      overflow: hidden;
+    }
+    .parallax-break__bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.22;
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjgfPhgXqucjdN9JkHERKcx1ed6sXEuvjjESkNcXO7UzSdYFXTKD52oum_Yl_lHr9GZ7ElNni5qFLuIJmYwLdX6HJPOn1p2G8CZfBPRYe0dFuLRz-b10-GCDVGUj0V0LSSk2i6nEPXDvttB6lwZnB7zOOKTqazpNhTbMeWsiwhOBbjJs4vgot4KTNaHRCqILP8UQHkrqAguHoGffYzJuZJOw5JTJk7vKl7-h9Jf6cxlxMl-EMFH2susw');
+      background-size: cover;
+      background-position: center;
+    }
+    .parallax-break__overlay { position: absolute; inset: 0; background: rgba(45,22,0,0.85); }
+    .parallax-break__glow1 { position: absolute; top: 2.5rem; right: 2.5rem; width: 24rem; height: 24rem; border-radius: 50%; background: rgba(119,90,25,0.1); filter: blur(4rem); pointer-events: none; }
+    .parallax-break__glow2 { position: absolute; bottom: 2.5rem; left: 2.5rem; width: 18rem; height: 18rem; border-radius: 50%; background: rgba(254,212,136,0.07); filter: blur(4rem); pointer-events: none; }
+    .parallax-break__content { position: relative; z-index: 2; }
+
+    .stage-card {
+      padding: 2rem;
+      background: rgba(246,243,237,0.04);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: background var(--transition-standard);
+    }
+    .stage-card:hover { background: rgba(246,243,237,0.08); }
+    .stage-card__num {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-secondary-fixed);
+    }
+    .stage-card__title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-surface-bright);
+    }
+    .stage-card__body {
+      font-size: 0.8125rem;
+      color: var(--color-surface-container-high);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+    .stage-card__line { height: 2px; width: 3rem; background: var(--color-secondary-fixed); }
+
+    /* Gallery filter & grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--color-surface-container-highest);
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms ease-out; }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,20,18,0.85) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 300ms;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .gallery-item:hover .gallery-item__overlay { opacity: 1; }
+    .gallery-item__cat {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-secondary-fixed);
+    }
+    .gallery-item__name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-surface-bright);
+      margin-top: 0.25rem;
+    }
+    .gallery-item__desc {
+      font-size: 0.8125rem;
+      color: var(--color-surface-container-high);
+      font-weight: 300;
+      margin-top: 0.25rem;
+    }
+
+    /* Featured products strip */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1200px) { .products-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    /* Why us pillars */
+    .pillar-card {
+      padding: 2rem;
+      background: var(--color-surface);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 300ms, transform 300ms;
+    }
+    .pillar-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transform: translateY(-0.5rem);
+    }
+    .pillar-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background: rgba(119,90,25,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-secondary);
+    }
+
+    /* About section */
+    .about-image-wrapper {
+      position: relative;
+    }
+    .about-image-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: var(--color-surface-container-highest);
+    }
+    .about-image-inset {
+      display: none;
+      position: absolute;
+      bottom: -2.5rem;
+      right: -2rem;
+      width: 15rem;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      background: var(--color-surface-container-low);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    @media (min-width: 640px) { .about-image-inset { display: block; } }
+
+    /* Map / Location */
+    .map-placeholder {
+      position: relative;
+      width: 100%;
+      height: 24rem;
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0zbTCa3-rYBZATsKR6lhapCc-IR2n-8a8yGj0LDRRhjoXo8kPjShpeGRApm1hS7De5DfZzBJSPo7sFprx5xZRR52VSp0TCgtDaYE6fZ8uBqqENHqV8J9TvR7jmTC7MzBaTddepz3Kl0ar_BhhfSKN0y5TWXcckCVPlesNV8xXCQdKr0gPODMZ20QTYz7EaeG_5QiejgklzzDJKjnB1bXGl3PtG3j4C0_hOSzYrZRJDJNORBoqP1cHbQ');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-placeholder__overlay { position: absolute; inset: 0; background: rgba(26,20,18,0.2); }
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      padding: 1rem 1.25rem;
+      background: rgba(252,249,243,0.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-left: 4px solid var(--color-secondary);
+      max-width: 20rem;
+    }
+
+    /* Appointment form */
+    .appt-form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+    .appt-form-field label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-on-surface-variant);
+    }
+    .appt-form-field input,
+    .appt-form-field select,
+    .appt-form-field textarea {
+      width: 100%;
+      background: var(--color-surface);
+      border: none;
+      border-bottom: 1px solid rgba(26,20,18,0.2);
+      padding: 0.75rem 1rem;
+      font-size: 0.9375rem;
+      font-weight: 300;
+      color: var(--color-on-surface);
+      outline: none;
+      transition: border-color 300ms;
+      font-family: var(--font-body);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .appt-form-field input:focus,
+    .appt-form-field select:focus,
+    .appt-form-field textarea:focus {
+      border-bottom-color: var(--color-secondary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Layout (header/footer) injected by layout.js -->
+  
+  <!-- Announcement bar spacer -->
+  <div style="height:2.5rem;background:var(--color-tertiary-container);" aria-hidden="true"></div>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Hero banner">
+      <div class="hero__bg">
+        <div class="hero__bg-img" id="hero-bg"></div>
+        <div class="hero__gradient-b"></div>
+        <div class="hero__gradient-r"></div>
+      </div>
+      <!-- Decorative SVG -->
+      <div class="hero__svg-accent" aria-hidden="true">
+        <svg style="position:absolute;top:-3rem;left:-5rem;width:24rem;height:24rem;color:#775a19;" fill="none" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-dasharray="4 6" stroke-width="0.75"/>
+          <path d="M40 100 Q 100 20 160 100 T 280 100" stroke="currentColor" stroke-width="0.5"/>
+        </svg>
+        <svg style="position:absolute;top:33%;right:-6rem;width:20rem;height:20rem;color:#fed488;" fill="none" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="0.5"/>
+          <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-dasharray="2 8" stroke-width="0.75"/>
+        </svg>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__main reveal">
+          <div class="hero__badge">
+            <span class="hero__badge-dot"></span>
+            <span class="text-label-caps" style="color:var(--color-secondary-fixed);">Royal Heritage Weaves • Alandi Devachi</span>
+          </div>
+          <div>
+            <h1 class="hero__title">Bansilal Textile</h1>
+            <p class="hero__hindi">बंसीलाल टेक्सटाइल</p>
+          </div>
+          <div class="hero__tagline">
+            <span>Quality</span>
+            <span class="hero__dot"></span>
+            <span>Variety</span>
+            <span class="hero__dot"></span>
+            <span>Affordable Fashion</span>
+          </div>
+          <p class="hero__body">Maharashtra's premier destination for royal Paithani sarees, handcrafted bridal couture, regal men's sherwanis, and authentic family textiles since 1994.</p>
+          <div class="hero__actions">
+            <a href="shop.html" class="hero__cta-primary">
+              Explore Collection
+              <span class="material-symbols-outlined arrow" style="font-size:1.125rem;">east</span>
+            </a>
+            <a href="#location" class="hero__cta-secondary">
+              <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary-fixed);">location_on</span>
+              Visit Alandi Store
+            </a>
+          </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="hero__metrics reveal reveal-delay-2">
+          <div class="metric-card">
+            <div class="metric-icon">
+              <span class="material-symbols-outlined" style="font-size:1.5rem;">styler</span>
+            </div>
+            <div>
+              <p class="metric-value">50,000+</p>
+              <p class="metric-label">Fabric Varieties &amp; Drapes</p>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">
+              <span class="material-symbols-outlined" style="font-size:1.5rem;">history_edu</span>
+            </div>
+            <div>
+              <p class="metric-value">30+ Years</p>
+              <p class="metric-label">Weaving Trust &amp; Legacy</p>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">
+              <span class="material-symbols-outlined" style="font-size:1.5rem;">verified</span>
+            </div>
+            <div>
+              <p class="metric-value">100% Pure</p>
+              <p class="metric-label">Certified Handloom Authenticity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Cue -->
+      <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.375rem;animation:bounce 2.5s infinite;" aria-hidden="true">
+        <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,222,165,0.7);">Scroll</span>
+        <span class="material-symbols-outlined" style="color:rgba(255,222,165,0.6);font-size:1.25rem;">expand_more</span>
+      </div>
+      <style>@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}</style>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section-py" style="background:var(--color-surface);" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;" class="lg-grid-2">
+          <!-- Images -->
+          <div class="about-image-wrapper reveal">
+            <div style="position:relative;width:100%;overflow:hidden;background:var(--color-surface-container-highest);">
+              <img class="about-image-main" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKdRVTaC8LPnLpOIbOtNxojgS0FngNOX3tFUnnRANiDeyW4Iq7hyBo1312SH7QNGBSOhydZLOslM1RR97P3jgqhhsITeFUEF_kXOiwdFMMrl3erWNV-qEibpWbY_DgKomzFcDIK25UtwxG-t-ihooa6tXuf98kLPOGvH_LjVxBK6KHY_Uwh9z_TXxL43dtvPxW8MUbbFy7uWeh7llChzUDeO-b4CeIUzzPkmZ7qDFNg8PCmBh8lFeeag" alt="Traditional master weaver at handloom creating Paithani saree" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 700ms ease-out;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,20,18,0.6) 0%,transparent 50%);"></div>
+              <div style="position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;padding:1rem;background:rgba(252,249,243,0.92);backdrop-filter:blur(8px);">
+                <span class="text-label-caps" style="color:var(--color-secondary);">Heritage Guarantee</span>
+                <p style="font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--color-primary);margin-top:0.25rem;">Direct from Yeola, Kanchipuram &amp; Banaras Looms</p>
+              </div>
+            </div>
+            <div class="about-image-inset">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtnVYej-pUpPXDaD6nt-dSxRdn40VwidqkPYwK7ll3rAtLt2TqdlYjd76jDSHuURCxGuGBVdGLIiPwLgmlZIHh7n7nf3MfmPQGOHWLD0ys29k10LR1_Zgr_JeEj0faO3DPlV2e-6UhaE--ztiPD2UWjJ1tt-CcfzGNhmJ84oa7qnBkKJ9r6K-G9gIoCbNkzyXT_PHhwYvWtKdPR8k_HCC4Jb9wUkHWO71e1X-mDH221v9Ns8XjSmSs2g" alt="Close up of Paithani gold zari peacock motif" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div style="display:flex;flex-direction:column;gap:1.5rem;" class="reveal reveal-delay-1">
+            <div class="section-label">
+              <span class="section-label__line"></span>
+              <span class="section-label__text">Our Legacy</span>
+            </div>
+            <h2 id="about-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;line-height:1.1;letter-spacing:-0.015em;color:var(--color-primary);">Tradition, Quality &amp; Fashion Under One Roof</h2>
+            <p style="font-size:1.0625rem;font-weight:300;color:var(--color-on-surface-variant);line-height:1.875;">Bansilal Textile offers an unmatched universe of fabrics and celebration wear for families seeking uncompromising quality, infinite variety, and honest pricing. From the sacred drapes of Indrayani's riverside to grand metropolitan weddings across Pune and Maharashtra, our halls bring authentic textile treasures within your reach.</p>
+            
+            <blockquote style="padding:1.5rem;background:var(--color-surface-container-low);border-left:2px solid var(--color-secondary);">
+              <p style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;font-style:italic;color:var(--color-primary);">"A saree is not simply six yards of fabric; it is the preserved breath, heritage, and blessing of generations."</p>
+              <cite style="display:block;margin-top:0.5rem;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-secondary);font-style:normal;">— The Bansilal Family Founders</cite>
+            </blockquote>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+              <div style="padding:1rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;gap:0.5rem;">
+                <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1.5rem;">loyalty</span>
+                <span style="font-size:0.875rem;font-weight:500;color:var(--color-primary);">Direct Sourcing</span>
+                <span style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;">Zero middlemen, pure artisan value.</span>
+              </div>
+              <div style="padding:1rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;gap:0.5rem;">
+                <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1.5rem;">inventory_2</span>
+                <span style="font-size:0.875rem;font-weight:500;color:var(--color-primary);">Infinite Rolls</span>
+                <span style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;">50,000+ meters cut to order.</span>
+              </div>
+              <div style="padding:1rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;gap:0.5rem;">
+                <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1.5rem;">sell</span>
+                <span style="font-size:0.875rem;font-weight:500;color:var(--color-primary);">Honest Pricing</span>
+                <span style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;">Wholesale tiers open to all.</span>
+              </div>
+            </div>
+            <a href="about.html" class="btn-ghost" style="align-self:flex-start;">Read Our Full Story →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COLLECTIONS ===== -->
+    <section class="section-py" style="background:var(--color-surface-container-low);" id="collections" aria-labelledby="collections-heading">
+      <div class="container">
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;" class="reveal">
+          <div style="display:flex;flex-direction:column;gap:3rem;" class="md-row-between">
+            <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:36rem;">
+              <div class="section-label">
+                <span class="section-label__line"></span>
+                <span class="section-label__text">Grand Archive</span>
+              </div>
+              <h2 id="collections-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;letter-spacing:-0.015em;color:var(--color-primary);">Curated Textile Collections</h2>
+              <p style="font-size:1.0625rem;font-weight:300;color:var(--color-on-surface-variant);">Discover handpicked weaves, bridal silhouettes, and modern everyday textiles sourced across the weaving epicenters of India.</p>
+            </div>
+            <a href="shop.html" class="btn-ghost" style="align-self:flex-start;white-space:nowrap;">
+              Request Custom Trousseau Catalog
+              <span class="material-symbols-outlined" style="font-size:0.875rem;">arrow_outward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6-grid -->
+        <div style="display:grid;grid-template-columns:repeat(1,1fr);gap:2rem;" id="collections-grid" class="reveal reveal-delay-1">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURED PRODUCTS ===== -->
+    <section class="section-py" style="background:var(--color-surface);" aria-labelledby="featured-heading">
+      <div class="container">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2.5rem;flex-wrap:wrap;" class="reveal">
+          <div>
+            <div class="section-label"><span class="section-label__line"></span><span class="section-label__text">Bestsellers</span></div>
+            <h2 id="featured-heading" style="font-family:var(--font-display);font-size:clamp(1.75rem,4vw,3rem);font-weight:400;color:var(--color-primary);">Most-Loved Pieces</h2>
+          </div>
+          <a href="shop.html" class="btn-ghost">View All Products →</a>
+        </div>
+
+        <!-- Tab bar -->
+        <div class="tab-bar reveal reveal-delay-1" style="margin-bottom:2rem;">
+          <button class="tab-btn is-active" data-tab="bestsellers" onclick="switchProductTab(this,'bestsellers')">Best Sellers</button>
+          <button class="tab-btn" data-tab="new-arrivals" onclick="switchProductTab(this,'new-arrivals')">New Arrivals</button>
+          <button class="tab-btn" data-tab="featured" onclick="switchProductTab(this,'featured')">Featured</button>
+        </div>
+        <div class="products-grid reveal reveal-delay-2" id="featured-products-grid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PARALLAX BREAK ===== -->
+    <section class="parallax-break" aria-label="Our craft philosophy">
+      <div class="parallax-break__bg" aria-hidden="true"></div>
+      <div class="parallax-break__overlay" aria-hidden="true"></div>
+      <div class="parallax-break__glow1" aria-hidden="true"></div>
+      <div class="parallax-break__glow2" aria-hidden="true"></div>
+      <div class="parallax-break__content container">
+        <div style="text-align:center;max-width:44rem;margin:0 auto;margin-bottom:3rem;" class="reveal">
+          <span class="text-label-caps" style="color:var(--color-secondary-fixed);">Sensory Textile Sanctuary</span>
+          <h2 style="font-family:var(--font-display);font-size:clamp(2.25rem,6vw,4rem);font-weight:400;letter-spacing:-0.02em;color:var(--color-surface-bright);margin-top:1rem;line-height:1.1;">Explore a World of Colours, Fabrics &amp; Fashion</h2>
+          <p style="font-size:1rem;font-weight:300;color:var(--color-surface-container-highest);margin-top:1rem;line-height:1.75;">From the rhythmic hum of pit looms to the celebratory swish of heavy silk on your wedding day, our store honors the living spirit of Indian weavers.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(1,1fr);gap:1.5rem;" class="reveal reveal-delay-1">
+          <style>@media(min-width:768px){.stage-grid{grid-template-columns:repeat(3,1fr)!important}}</style>
+          <div style="display:grid;grid-template-columns:1fr;gap:1.5rem;" class="stage-grid">
+            <div class="stage-card">
+              <span class="stage-card__num">Stage 01</span>
+              <h3 class="stage-card__title">Loom to Wardrobe</h3>
+              <p class="stage-card__body">We work directly with master weaver cooperatives in Yeola, Paithan, Pochampally, and Surat, eliminating markups to honor both artisan and patron.</p>
+              <div class="stage-card__line"></div>
+            </div>
+            <div class="stage-card">
+              <span class="stage-card__num">Stage 02</span>
+              <h3 class="stage-card__title">Pure Zari &amp; Natural Dyes</h3>
+              <p class="stage-card__body">Each heirloom piece uses verified pure mulberry silk and electroplated zari that retains its brilliant gleam for decades across family generations.</p>
+              <div class="stage-card__line"></div>
+            </div>
+            <div class="stage-card">
+              <span class="stage-card__num">Stage 03</span>
+              <h3 class="stage-card__title">Celebrations Woven With Grace</h3>
+              <p class="stage-card__body">Complete trousseau curation: matched family attire for Sakharpuda, Haldi, Sangeet, and the Pheras all under one expansive destination.</p>
+              <div class="stage-card__line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FLAGSHIP STORE ===== -->
+    <section class="section-py" style="background:var(--color-surface);" id="store" aria-labelledby="store-heading">
+      <div class="container" style="display:flex;flex-direction:column;gap:4rem;">
+        <div class="reveal">
+          <div class="section-label"><span class="section-label__line"></span><span class="section-label__text">Physical Destination</span></div>
+          <h2 id="store-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;color:var(--color-primary);">Visit Our Flagship Store</h2>
+          <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.75rem;max-width:40rem;">Spacious, air-conditioned multi-level shopping floors designed specifically for families, large wedding parties, and wholesale textile buyers.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="reveal reveal-delay-1">
+          <style>@media(min-width:1024px){.store-grid{grid-template-columns:repeat(4,1fr)!important}}</style>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="store-grid">
+            <div style="padding:2rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;transition:box-shadow 300ms;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+              <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:var(--color-surface);display:flex;align-items:center;justify-content:center;color:var(--color-secondary);">
+                  <span class="material-symbols-outlined" style="font-size:1.75rem;">chair</span>
+                </div>
+                <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Grand Saree Lounge</h3>
+                <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">Plush seating where families view hundreds of drape options with hot tea.</p>
+              </div>
+              <span class="text-label-caps" style="color:var(--color-secondary);">Level 1 • Saree Sanctum</span>
+            </div>
+            <div style="padding:2rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;transition:box-shadow 300ms;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+              <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:var(--color-surface);display:flex;align-items:center;justify-content:center;color:var(--color-secondary);">
+                  <span class="material-symbols-outlined" style="font-size:1.75rem;">view_column</span>
+                </div>
+                <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Vast Fabric Floor</h3>
+                <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">Thousands of textile bolts organized by fiber weight, weave style, and color.</p>
+              </div>
+              <span class="text-label-caps" style="color:var(--color-secondary);">Level 2 • Textile Yardage</span>
+            </div>
+            <div style="padding:2rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;transition:box-shadow 300ms;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+              <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:var(--color-surface);display:flex;align-items:center;justify-content:center;color:var(--color-secondary);">
+                  <span class="material-symbols-outlined" style="font-size:1.75rem;">groups</span>
+                </div>
+                <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Family Pavilion</h3>
+                <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">A unified space for brides, grooms, grandparents, and children to shop together.</p>
+              </div>
+              <span class="text-label-caps" style="color:var(--color-secondary);">Wing B • Family Pret</span>
+            </div>
+            <div style="padding:2rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;transition:box-shadow 300ms;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+              <div style="display:flex;flex-direction:column;gap:1rem;">
+                <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:var(--color-surface);display:flex;align-items:center;justify-content:center;color:var(--color-secondary);">
+                  <span class="material-symbols-outlined" style="font-size:1.75rem;">support_agent</span>
+                </div>
+                <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Expert Drapers</h3>
+                <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">Seasoned textile advisors fluent in regional bridal customs to guide your trousseau.</p>
+              </div>
+              <span class="text-label-caps" style="color:var(--color-secondary);">Concierge Service</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Store Banner -->
+        <div style="position:relative;width:100%;height:20rem;overflow:hidden;" class="reveal reveal-delay-2">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CpAUnRzTYty5mJLfiYvdW5XQgtF5KP18NamefkgrFdMroShGx4erG8r1jn3291BsKzEKjd09DJL9s6Aq0AWSRRIqu7YuQUQ6dmoZDAR4K56LQ6ijPkgdfEt58EQSMPuj2iBFUWiV5DPTBb7bog_JgKMRdTQnOF8Dphy64Vs1XTt2-fwLA4GVeQQq917C82FpGwEWUlOZCkLCw_pGiYE2hxgIJfODZmdPnGALNLrA5edSgnkJmUHqug" alt="Bansilal Textile flagship showroom interior in Alandi, Pune" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.4) 55%,transparent 100%);display:flex;align-items:center;padding:2rem 3rem;">
+            <div style="max-width:28rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <span class="text-label-caps" style="color:var(--color-secondary-fixed);">Alandi Devachi, Pune</span>
+              <p style="font-family:var(--font-display);font-size:1.5rem;font-weight:500;color:var(--color-surface-bright);line-height:1.3;">Conveniently Situated on Alandi–Moshi Highway</p>
+              <p style="font-size:0.8125rem;font-weight:300;color:var(--color-surface-container-high);line-height:1.6;">Equipped with dedicated free customer car parking, wheelchair access, and luggage lockers for out-of-station pilgrimage and wedding shoppers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY US ===== -->
+    <section class="section-py" style="background:var(--color-surface-container-low);" aria-labelledby="why-heading">
+      <div class="container">
+        <div style="text-align:center;max-width:36rem;margin:0 auto 3rem;" class="reveal">
+          <div class="section-label" style="justify-content:center;">
+            <span class="section-label__line"></span>
+            <span class="section-label__text">Trust &amp; Prestige</span>
+            <span class="section-label__line"></span>
+          </div>
+          <h2 id="why-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;color:var(--color-primary);">The Bansilal Difference</h2>
+          <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.75rem;">Why thousands of families across Pune, Pimpri-Chinchwad, and rural Maharashtra place their celebratory wardrobes in our hands.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="reveal reveal-delay-1">
+          <style>@media(min-width:1024px){.why-grid{grid-template-columns:repeat(4,1fr)!important}}</style>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="why-grid">
+            <div class="pillar-card">
+              <div class="pillar-icon"><span class="material-symbols-outlined" style="font-size:1.75rem;">auto_awesome_motion</span></div>
+              <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Vast Variety</h3>
+              <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">Over 50,000+ distinct clothing styles, regional weaves, and unstitched bolts refreshed every week.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon"><span class="material-symbols-outlined" style="font-size:1.75rem;">verified_user</span></div>
+              <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Certified Quality</h3>
+              <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">Triple hand-inspected threads with genuine silk mark certifications, pure gold zari tests, and durable fabric integrity.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon"><span class="material-symbols-outlined" style="font-size:1.75rem;">savings</span></div>
+              <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Affordable Fashion</h3>
+              <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">Direct-from-loom procurement models pass tremendous savings to families and bulk trousseau purchasers.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon"><span class="material-symbols-outlined" style="font-size:1.75rem;">location_city</span></div>
+              <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Prime Location</h3>
+              <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.6;">Right on the Alandi–Moshi main road near Dehu Phata with dedicated multi-vehicle parking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="section-py" style="background:var(--color-surface);" id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem;" class="reveal">
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;">
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div class="section-label"><span class="section-label__line"></span><span class="section-label__text">Lookbook &amp; Artisanship</span></div>
+              <h2 id="gallery-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;color:var(--color-primary);">The Haute Weave Gallery</h2>
+              <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);max-width:36rem;">A visual tapestry showcasing genuine Paithani pallu intricacies, grand bridal sets, and the opulent halls of Bansilal Textile.</p>
+            </div>
+            <!-- Gallery Filters -->
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="gallery-filter-bar">
+              <button class="filter-chip is-active" data-filter="all" onclick="galleryFilter(this,'all')">All Weaves</button>
+              <button class="filter-chip" data-filter="paithani" onclick="galleryFilter(this,'paithani')">Paithani</button>
+              <button class="filter-chip" data-filter="bridal" onclick="galleryFilter(this,'bridal')">Bridal</button>
+              <button class="filter-chip" data-filter="mens" onclick="galleryFilter(this,'mens')">Men's Regalia</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-grid reveal reveal-delay-1" id="gallery-grid">
+          <div class="gallery-item" data-cat="paithani">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSM9Wrcxgtr6vJ6zx4ySgrLB9hppvTKYGSC2My_1EiZKA_Owj37dwRiIMZLC4gSLbeIl1pvzLyh-D6ZeooIz1GAMOM8VDXfGQdQ20oFbzUfER5ogw3YI5EH6ePuIPtQ9jmFpmeqxrrLnHb_2-S-PsNVGglFvUPQtZU4UztgBnr2_tfcBMZx1OKYZRysnlx_z7M3r-HI9ugN-WEhXQcuw3mzkC86UWrKwtBo72BTp8kmwGZSB3aSsa3Fg" alt="Yeola Paithani saree with peacock motif" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__cat">Handwoven Heritage</span>
+              <h4 class="gallery-item__name">Yeola Silk Paithani</h4>
+              <p class="gallery-item__desc">Asavali Zari Pallu with 100% certified silk</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-cat="bridal">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOxQlmFh3z_UXrvoWZq1hEj9QMqqAft0z8lYGtKXN-gfsTv4ENMegm7_mU29ig3_Ip58idvYTJYjtlMsXnhVgIIKc81nio9lcNA_scBpyWskT9d10iBqSuI0RX3mWJBtYiJW7SGOL_XZgguOlqGIhZnuf5822BvCQuG0Ea7HQoQ2vVIWkOpZmhEsbLh1smac9FaNB5KI9v06hjysBP3H2uW7hE7AX4AD3ZoYpmPaspis8RtLIMbymZpw" alt="Bridal lehenga choli with zardozi embroidery" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__cat">Bridal Splendour</span>
+              <h4 class="gallery-item__name">Maharani Bridal Lehenga</h4>
+              <p class="gallery-item__desc">Handcrafted zardozi with semi-precious stone embellishments</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-cat="mens">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOJTUkpNsTZZ7CALJMghV0aBLfANe4lBKPsw1MsFM6xVxv5AC4EJuKPQI0NhhqKlMTJlQUt34wb8ioRpxpciafXSDriA6qwk50KvF83H-vAm8_BFFOvO0mMxIrfk0CzSHmfd3EDgNsep3Gk-FPaITvFPHuTa06IwpW6up2k6spIrDEccAHBLUM7MqPLoDwAGA-AZSKsuzLQuErt3BvbTRsQBnnLPCOO6zmqEJhj_J0r4vTTEF0jZjcbA" alt="Royal Champagne Sherwani for groom" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__cat">Gentlemen's Edit</span>
+              <h4 class="gallery-item__name">Royal Champagne Sherwani</h4>
+              <p class="gallery-item__desc">Pure Mulberry silk weave with hand-cut mother of pearl details</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-cat="paithani">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTgZmfb1uvi0upVYG0ccKdNHdB4RjnPZwQzpUKMtE9udoaGaMpZrVNPGJqk8wWkOZ0JoIkeHi1FRkwFcSmBx_AIAaWy8Sjh-EauACfeJkwIMJfCFE-HewVwqkbtvZGGy2C_y6jVK73C55OTk9Y7965tE9ctbm2gx5lmzjufHNhxLIF959v6ntxUIhZ4rr63oM_i7q4qYULsk0IvyxCditgXaEQWEap5xhmntsZmVSI3VmaZ6sdcalfhA" alt="Kadiyal Muniya border Paithani detail" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__cat">Weft &amp; Warp</span>
+              <h4 class="gallery-item__name">Kadiyal Muniya Border</h4>
+              <p class="gallery-item__desc">Ancestral 400-year-old weaving pattern</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-cat="bridal">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrWACsfJG_Dd2hDR7RN4C2BYTpI3aeAA7l1eXTyNnBfxNqniS-PmKbVO2yR-cSCE9RmY5KFf3Ixn9IN6Iq5Mk2148ZTMe5Jzk0OuJJVvC6tPqS0XHjopJ_ey1mY8Y10L8Cknhi9WZDOeVXIrMbEAIzbDkpjOjhDMvNDWc89sER1oeKg4MEz2jOjp9wfWcnlrJOI6uinjD6dCA7ckQZ13MiYl_rFKHOuGjNgHdmJUcYSM5_zu-iAX2T4g" alt="Traditional Nauvari silk saree for wedding" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__cat">Auspicious Drapes</span>
+              <h4 class="gallery-item__name">Traditional Nauvari Silk</h4>
+              <p class="gallery-item__desc">9-yard heirloom silk for authentic sacred ceremonies</p>
+            </div>
+          </div>
+          <div class="gallery-item" data-cat="mens">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD823SdQQ_DhqE5hnba4nVLTaWeiHIbiIKGWh9sD1ix4wy_7QYEAM40dvJpUUN-Lh4IvqUerextlmSYqZWX3wtAvBJLrmY_tRuDJHaJI5JAJ5ghCwsU2vEopYL8QwyriVSD_4pp5gvgmP0-lXDMXMDUu_qA8U_L3SSBP9oX-j3BW6TK7Lk_i507sc9MOApSOK--6kl8XOJbdr5w-cGuVyleRzJuI-oMf1cGyPSsa7MKUuqqu8IA0Us_gA" alt="Banarasi silk kurta set for men" loading="lazy">
+            <div class="gallery-item__overlay">
+              <span class="gallery-item__cat">Festive Collection</span>
+              <h4 class="gallery-item__name">Banarasi Silk Kurta Set</h4>
+              <p class="gallery-item__desc">Crafted for sangeet and engagement ceremonies</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOCATION ===== -->
+    <section class="section-py" style="background:var(--color-surface-container-low);" id="location" aria-labelledby="location-heading">
+      <div class="container">
+        <div style="max-width:44rem;margin-bottom:3rem;" class="reveal">
+          <div class="section-label"><span class="section-label__line"></span><span class="section-label__text">Find Our Sanctuary</span></div>
+          <h2 id="location-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;color:var(--color-primary);">Locate Our Store in Alandi</h2>
+          <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.75rem;">Centrally situated in the sacred city of Alandi Devachi, easily accessible from Pune City, Bhosari, Chakan, and Pimpri-Chinchwad.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:2rem;align-items:stretch;" class="reveal reveal-delay-1">
+          <style>@media(min-width:1024px){.loc-grid{grid-template-columns:7fr 5fr!important}}</style>
+          <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="loc-grid">
+            <!-- Map -->
+            <div style="background:var(--color-surface);padding:1rem;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+              <div class="map-placeholder">
+                <div class="map-placeholder__overlay"></div>
+                <div class="map-pin">
+                  <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1.75rem;flex-shrink:0;">storefront</span>
+                  <div>
+                    <span style="font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--color-primary);display:block;">Bansilal Textile</span>
+                    <span style="font-size:0.8125rem;color:var(--color-on-surface-variant);">Alandi–Moshi Road, Dehu Phata</span>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:1rem;background:var(--color-surface-container-low);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-top:0;">
+                <div style="display:flex;align-items:center;gap:0.5rem;color:var(--color-on-surface-variant);font-size:0.875rem;">
+                  <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1.125rem;">local_parking</span>
+                  <span>Free Valet &amp; Customer Parking Available Onsite</span>
+                </div>
+                <a href="https://maps.google.com/?q=Bansilal+Textile+Alandi+Pune" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1rem;font-size:0.625rem;">
+                  Open in Google Maps
+                  <span class="material-symbols-outlined" style="font-size:0.875rem;">open_in_new</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Info Card -->
+            <div style="background:var(--color-surface);padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.08);display:flex;flex-direction:column;gap:2rem;">
+              <div>
+                <span class="text-label-caps" style="color:var(--color-secondary);">Complete Address</span>
+                <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:500;color:var(--color-primary);margin-top:0.5rem;">Bansilal Textile / Cloth Market</h3>
+                <p style="font-size:0.9375rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.5rem;line-height:1.7;">MVCR+HCG, Alandi–Moshi Road, Near Dehu Phata, Alandi Devachi, Pune, Maharashtra – 412105</p>
+              </div>
+              <div style="padding-top:1.25rem;border-top:1px solid rgba(209,196,192,0.3);">
+                <span class="text-label-caps" style="color:var(--color-secondary);">Store Timings</span>
+                <div style="margin-top:0.75rem;padding:1rem;background:var(--color-surface-container-low);display:flex;align-items:center;justify-content:space-between;">
+                  <div>
+                    <p style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">10:00 AM – 9:30 PM</p>
+                    <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);">Open All 7 Days of the Week (Sunday Open)</p>
+                  </div>
+                  <span style="width:0.75rem;height:0.75rem;border-radius:50%;background:var(--color-secondary);animation:pulse 2s infinite;"></span>
+                </div>
+              </div>
+              <div>
+                <span class="text-label-caps" style="color:var(--color-secondary);">Key Proximity Landmarks</span>
+                <ul style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.5rem;">
+                  <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--color-on-surface-variant);">
+                    <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1rem;">navigation</span>
+                    2 mins from Dehu Phata junction
+                  </li>
+                  <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--color-on-surface-variant);">
+                    <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1rem;">temple_hindu</span>
+                    5 mins from Sant Dnyaneshwar Maharaj Samadhi Mandir
+                  </li>
+                  <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--color-on-surface-variant);">
+                    <span class="material-symbols-outlined" style="color:var(--color-secondary);font-size:1rem;">commute</span>
+                    Direct access from Moshi &amp; Chakan corridors
+                  </li>
+                </ul>
+              </div>
+              <a href="tel:+919822000000" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;">
+                <span class="material-symbols-outlined" style="font-size:1.125rem;">call</span>
+                Call Store: +91 98220 00000
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== APPOINTMENT / INQUIRY ===== -->
+    <section class="section-py" style="background:var(--color-surface);" id="inquiry" aria-labelledby="inquiry-heading">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr;gap:3rem;" class="reveal">
+          <style>@media(min-width:1024px){.appt-grid{grid-template-columns:5fr 7fr!important}}</style>
+          <div style="display:grid;grid-template-columns:1fr;gap:3rem;" class="appt-grid">
+            <!-- Left: Info -->
+            <div style="display:flex;flex-direction:column;gap:2rem;">
+              <div>
+                <div class="section-label"><span class="section-label__line"></span><span class="section-label__text">Bespoke Concierge</span></div>
+                <h2 id="inquiry-heading" style="font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.75rem);font-weight:400;color:var(--color-primary);margin-top:0.75rem;">Plan Your Visit or Wedding Trousseau</h2>
+                <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.75rem;line-height:1.75;">Booking your private appointment gives your family a designated senior textile consultant, reserved lounge seating, and tailored bridal selections prepared in advance.</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:0.875rem;">
+                <div style="padding:1rem;background:var(--color-surface-container-low);display:flex;align-items:center;gap:1rem;">
+                  <div style="width:3rem;height:3rem;border-radius:50%;background:rgba(119,90,25,0.1);display:flex;align-items:center;justify-content:center;color:var(--color-secondary);flex-shrink:0;">
+                    <span class="material-symbols-outlined">chat</span>
+                  </div>
+                  <div>
+                    <span class="text-label-caps" style="color:var(--color-secondary);">WhatsApp Video Shopping</span>
+                    <p style="font-size:0.875rem;font-weight:500;color:var(--color-primary);margin-top:0.125rem;">Browse Live Saree Looms via WhatsApp Call</p>
+                  </div>
+                </div>
+                <div style="padding:1rem;background:var(--color-surface-container-low);display:flex;align-items:center;gap:1rem;">
+                  <div style="width:3rem;height:3rem;border-radius:50%;background:rgba(119,90,25,0.1);display:flex;align-items:center;justify-content:center;color:var(--color-secondary);flex-shrink:0;">
+                    <span class="material-symbols-outlined">groups_3</span>
+                  </div>
+                  <div>
+                    <span class="text-label-caps" style="color:var(--color-secondary);">Bulk Wedding Orders</span>
+                    <p style="font-size:0.875rem;font-weight:500;color:var(--color-primary);margin-top:0.125rem;">Wholesale Pricing for 25+ Paithani &amp; Kurta Sets</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Form -->
+            <div style="background:var(--color-surface-container-low);padding:2.5rem 3rem;box-shadow:0 16px 48px rgba(0,0,0,0.08);">
+              <form id="appointment-form" style="display:flex;flex-direction:column;gap:1.5rem;" novalidate>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+                  <div class="appt-form-field">
+                    <label for="appt-name">Full Name</label>
+                    <input id="appt-name" type="text" placeholder="e.g. Ananya Deshmukh" required autocomplete="name">
+                  </div>
+                  <div class="appt-form-field">
+                    <label for="appt-phone">Contact Number</label>
+                    <input id="appt-phone" type="tel" placeholder="e.g. +91 98000 00000" required autocomplete="tel">
+                  </div>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+                  <div class="appt-form-field">
+                    <label for="appt-date">Preferred Visit Date</label>
+                    <input id="appt-date" type="date">
+                  </div>
+                  <div class="appt-form-field">
+                    <label for="appt-category">Interest Category</label>
+                    <select id="appt-category">
+                      <option value="paithani">Bridal Paithani Sarees</option>
+                      <option value="full-wedding">Complete Family Wedding Trousseau</option>
+                      <option value="fabrics">Bulk Fabrics / Wholesale Textiles</option>
+                      <option value="mens">Men's Sherwani &amp; Suiting</option>
+                      <option value="general">Everyday Luxury &amp; Dress Materials</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="appt-form-field">
+                  <label for="appt-notes">Special Requirements / Family Size</label>
+                  <textarea id="appt-notes" rows="3" placeholder="Tell us about your wedding dates, color preferences, or specific weaves..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;">
+                  Reserve Salon Appointment
+                  <span class="material-symbols-outlined" style="font-size:1rem;">calendar_month</span>
+                </button>
+                <p id="appt-success" style="display:none;font-size:0.875rem;color:var(--color-secondary);text-align:center;font-weight:400;">Thank you! Your private salon booking request has been received. Our concierge will call within 2 business hours.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="data/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/layout.js"></script>
+  <script>
+    // Render collections grid
+    function renderCollections() {
+      const grid = document.getElementById('collections-grid');
+      if (!grid) return;
+      grid.style.gridTemplateColumns = 'repeat(1,1fr)';
+      if (window.innerWidth >= 768) grid.style.gridTemplateColumns = 'repeat(2,1fr)';
+      if (window.innerWidth >= 1024) grid.style.gridTemplateColumns = 'repeat(3,1fr)';
+      grid.innerHTML = CATEGORIES.map(cat => `
+        <a href="shop.html?cat=${cat.slug}" class="collection-card" style="text-decoration:none;" aria-label="Shop ${cat.name}">
+          <div class="collection-card__img-wrap">
+            <img class="collection-card__img" src="${cat.image}" alt="${cat.name} — ${cat.description}" loading="lazy">
+          </div>
+          <div class="collection-card__body">
+            <div class="collection-card__meta">
+              <span class="collection-card__label">${cat.label}</span>
+              <span class="collection-card__badge">${cat.badge}</span>
+            </div>
+            <h3 class="collection-card__name">${cat.name}</h3>
+            <p class="collection-card__desc">${cat.description}</p>
+            <div class="collection-card__cta">
+              <span class="collection-card__cta-text">${cat.cta}</span>
+              <span class="material-symbols-outlined collection-card__arrow" style="font-size:1rem;">east</span>
+            </div>
+          </div>
+        </a>`).join('');
+    }
+
+    // Render featured products
+    function renderFeaturedProducts(type = 'bestsellers') {
+      const grid = document.getElementById('featured-products-grid');
+      if (!grid) return;
+      const wishlist = wishlistManager ? wishlistManager.getWishlist() : [];
+      let products;
+      if (type === 'bestsellers') products = getBestsellers();
+      else if (type === 'new-arrivals') products = getNewArrivals();
+      else products = getFeaturedProducts();
+      products = products.slice(0, 4);
+      grid.innerHTML = products.length > 0
+        ? products.map(p => buildProductCardHTML(p, wishlist)).join('')
+        : '<p style="color:var(--color-on-surface-variant);grid-column:1/-1;text-align:center;padding:2rem;">No products available</p>';
+    }
+
+    function switchProductTab(btn, type) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      renderFeaturedProducts(type);
+    }
+
+    // Gallery filter
+    function galleryFilter(btn, filter) {
+      document.querySelectorAll('#gallery-filter-bar .filter-chip').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      document.querySelectorAll('#gallery-grid .gallery-item').forEach(item => {
+        const cat = item.getAttribute('data-cat');
+        item.style.display = (filter === 'all' || cat === filter) ? 'block' : 'none';
+      });
+    }
+
+    // Hero bg parallax
+    window.addEventListener('scroll', () => {
+      const bg = document.getElementById('hero-bg');
+      if (bg) {
+        const scrolled = window.scrollY;
+        bg.style.transform = `translateY(${scrolled * 0.35}px) scale(1.06)`;
+      }
+    }, { passive: true });
+
+    // Appointment form
+    document.getElementById('appointment-form') && document.getElementById('appointment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('appt-name').value.trim();
+      const phone = document.getElementById('appt-phone').value.trim();
+      if (!name || !phone) { showToast('Please fill in your name and contact number.', 'error'); return; }
+      this.reset();
+      document.getElementById('appt-success').style.display = 'block';
+      showToast('Salon appointment request received! We\'ll call you within 2 hours.', 'success');
+    });
+
+    // Responsive grid
+    window.addEventListener('resize', () => {
+      renderCollections();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCollections();
+      renderFeaturedProducts('bestsellers');
+      // Hero image loaded
+      const heroBg = document.getElementById('hero-bg');
+      if (heroBg) setTimeout(() => heroBg.classList.add('is-loaded'), 300);
+    });
+  </script>
+</body>
+</html>
