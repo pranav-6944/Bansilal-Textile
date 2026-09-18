@@ -67,12 +67,21 @@ bansilal-ecommerce/
 ## Coupon Codes (checkout.html)
 - `SILK10` → 10%, `BANSILAL15` → 15%, `BRIDAL20` → 20%, `WELCOME5` → 5%
 
-## Pages Still Needed (Future)
-- `about.html` — brand story, team, sourcing
-- `contact.html` — map, form, store details
-- `faq.html` — accordion FAQ
-- `search.html` — full search results page
-- `shipping-policy.html`, `returns-policy.html` — policy pages
+## Pages Completed
+- `index.html` — Homepage
+- `shop.html` — Catalog with filters
+- `product.html` — Product details
+- `cart.html` — Shopping cart
+- `checkout.html` — Multi-step checkout
+- `wishlist.html` — Wishlist
+- `about.html` — Brand story & heritage
+- `contact.html` — Store locator & contact form
+- `faq.html` — Accordion FAQ
+
+## Git Repository
+- **Remote**: `https://github.com/pranav-6944/Bansilal-Textile.git`
+- **Branch**: `main`
+- **Commit**: `feat: complete Bansilal Textile ecommerce website with design system, shop, cart, checkout, pdp, and static server setup`
 
 ## Known Patterns / Gotchas
 - Header offset: pages need `padding-top: 4.5rem` for main (header fixed)
