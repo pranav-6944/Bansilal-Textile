@@ -242,9 +242,9 @@ p { margin: 0; }
   .container { padding-left: var(--margin-mobile); padding-right: var(--margin-mobile); }
 }
 
-.section-py { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.section-py { padding-top: 2.75rem; padding-bottom: 2.75rem; }
 @media (max-width: 767px) {
-  .section-py { padding-top: 2.25rem; padding-bottom: 2.25rem; }
+  .section-py { padding-top: 1.75rem; padding-bottom: 1.75rem; }
 }
 
 /* === BUTTONS === */
