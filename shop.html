@@ -31,7 +31,10 @@
       flex-direction: column;
       gap: 2rem;
     }
-    @media (min-width: 1024px) { .filter-sidebar { display: flex; } }
+    @media (min-width: 1024px) {
+      .filter-sidebar { display: flex; }
+      #open-filter-sheet { display: none !important; }
+    }
 
     .filter-group { display: flex; flex-direction: column; gap: 0.75rem; }
     .filter-group__title {
