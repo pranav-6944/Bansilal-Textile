@@ -90,4 +90,4 @@ bansilal-ecommerce/
 - All pages include announcement bar spacer: `<div style="height:2.5rem;background:var(--color-tertiary-container);">`
 - search overlay is in the header HTML; `initSearch()` is called in utils.js DOMContentLoaded
 - Product images: Google AID public URLs (working in browser)
-- Dev server running at `http://localhost:3000` (serving `bansilal-ecommerce/`)
+- Dev server running at `http://localhost:3000` (serving `bansilal-ecommerce/` via `python -m http.server 3000 --directory bansilal-ecommerce`)
