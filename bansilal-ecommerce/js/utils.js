@@ -122,29 +122,62 @@ function initScrollReveal() {
 // BANSILAL TEXTILE — Mobile Navigation
 // ===================================================
 function initMobileNav() {
-  const btn = document.getElementById('mobile-menu-btn');
-  const nav = document.getElementById('mobile-nav');
-  const overlay = document.getElementById('mobile-nav-overlay');
-  const closeBtn = document.getElementById('mobile-nav-close');
+  function getElements() {
+    return {
+      nav: document.getElementById('mobile-nav'),
+      btn: document.getElementById('mobile-menu-btn'),
+      overlay: document.getElementById('mobile-nav-overlay'),
+      closeBtn: document.getElementById('mobile-nav-close')
+    };
+  }
 
-  if (!btn || !nav) return;
-
-  function open() {
+  function openNav() {
+    const { nav, btn } = getElements();
+    if (!nav) return;
     nav.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-    btn.setAttribute('aria-expanded', 'true');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
   }
-  function close() {
+
+  function closeNav() {
+    const { nav, btn } = getElements();
+    if (!nav) return;
     nav.classList.remove('is-open');
     document.body.style.overflow = '';
-    btn.setAttribute('aria-expanded', 'false');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
   }
 
-  btn.addEventListener('click', open);
-  if (overlay) overlay.addEventListener('click', close);
-  if (closeBtn) closeBtn.addEventListener('click', close);
+  // Bind delegated events once to eliminate race conditions
+  if (!window._mobileNavInitialized) {
+    window._mobileNavInitialized = true;
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    document.addEventListener('click', (e) => {
+      const openTrigger = e.target.closest('#mobile-menu-btn');
+      if (openTrigger) {
+        e.preventDefault();
+        e.stopPropagation();
+        openNav();
+        return;
+      }
+
+      const closeTrigger = e.target.closest('#mobile-nav-close');
+      const overlayTrigger = e.target.closest('#mobile-nav-overlay');
+      if (closeTrigger || overlayTrigger) {
+        e.preventDefault();
+        closeNav();
+        return;
+      }
+
+      // Close when clicking a nav link inside drawer
+      if (e.target.closest('.mobile-nav__link') || e.target.closest('.mobile-nav__cta')) {
+        closeNav();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeNav();
+    });
+  }
 }
 
 
