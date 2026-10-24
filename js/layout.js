@@ -4,11 +4,6 @@
 // ===================================================
 
 const HEADER_HTML = `
-<!-- Announcement Bar -->
-<div class="announcement-bar" id="announcement-bar">
-  <span>Free shipping on orders above ₹5,000 &nbsp;•&nbsp; 30-day easy returns &nbsp;•&nbsp; Open all 7 days: 10 AM – 9:30 PM</span>
-</div>
-
 <!-- Site Header -->
 <header class="site-header" id="site-header">
   <!-- Top Bar (Desktop) -->
@@ -72,7 +67,7 @@ const HEADER_HTML = `
           Visit Store
         </a>
         <!-- Mobile Menu Hamburger -->
-        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobile-nav" title="Menu">
           <span class="material-symbols-outlined" style="font-size:1.5rem;line-height:1;display:block;">menu</span>
         </button>
       </div>
@@ -81,65 +76,101 @@ const HEADER_HTML = `
 </header>
 
 <!-- Mobile Navigation Drawer -->
-<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Navigation menu">
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mobile-nav__overlay" id="mobile-nav-overlay"></div>
   <div class="mobile-nav__panel">
     <div class="mobile-nav__header">
       <div>
-        <span style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Bansilal Textile</span>
-        <p style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-secondary);margin-top:0.1rem;">बंसीलाल टेक्सटाइल</p>
+        <span style="font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--color-primary);letter-spacing:0.02em;">Bansilal Textile</span>
+        <p style="font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-secondary);margin-top:0.15rem;">बंसीलाल टेक्सटाइल</p>
       </div>
-      <button id="mobile-nav-close" aria-label="Close menu" style="color:var(--color-on-surface-variant);background:none;border:none;cursor:pointer;">
-        <span class="material-symbols-outlined">close</span>
+      <button type="button" id="mobile-nav-close" class="mobile-nav__close-btn" aria-label="Close menu">
+        <span class="material-symbols-outlined" style="font-size:1.25rem;line-height:1;">close</span>
       </button>
     </div>
     <div class="mobile-nav__links">
       <a href="index.html" class="mobile-nav__link">
-        <span>Home</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">home</span>
+          Home
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="shop.html" class="mobile-nav__link">
-        <span>All Products</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">storefront</span>
+          All Products
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="shop.html?cat=royal-sarees" class="mobile-nav__link">
-        <span>Royal Sarees</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">auto_awesome</span>
+          Royal Sarees
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="shop.html?cat=dress-materials" class="mobile-nav__link">
-        <span>Dress Materials</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">styler</span>
+          Dress Materials
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="shop.html?cat=womens-couture" class="mobile-nav__link">
-        <span>Women's Couture</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">woman</span>
+          Women's Couture
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="shop.html?cat=mens-regalia" class="mobile-nav__link">
-        <span>Men's Regalia</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">man</span>
+          Men's Regalia
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="shop.html?cat=childrens-pavilions" class="mobile-nav__link">
-        <span>Children's Pavilions</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">child_care</span>
+          Children's Pavilions
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="shop.html?cat=textiles-bolts" class="mobile-nav__link">
-        <span>Textiles &amp; Bolts</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">texture</span>
+          Textiles &amp; Bolts
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="wishlist.html" class="mobile-nav__link">
-        <span>Wishlist</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">favorite_border</span>
+          Wishlist
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="about.html" class="mobile-nav__link">
-        <span>About Us</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">info</span>
+          About Us
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="contact.html" class="mobile-nav__link">
-        <span>Contact</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">support_agent</span>
+          Contact
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
       <a href="faq.html" class="mobile-nav__link">
-        <span>FAQ</span>
+        <span style="display:flex;align-items:center;gap:0.75rem;">
+          <span class="material-symbols-outlined" style="font-size:1.125rem;color:var(--color-secondary);">help_outline</span>
+          FAQ
+        </span>
         <span class="material-symbols-outlined" style="font-size:1rem;color:var(--color-on-surface-variant);">chevron_right</span>
       </a>
     </div>
@@ -312,18 +343,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof wishlistManager !== 'undefined' && wishlistManager.updateBadge) wishlistManager.updateBadge();
   if (typeof cartManager !== 'undefined' && cartManager.updateCartUI) cartManager.updateCartUI();
 
-  // Sticky header with announcement bar offset
-  const annBar = document.getElementById('announcement-bar');
+  // Dynamic header elevation shadow on scroll
   const header = document.getElementById('site-header');
-  if (annBar && header) {
-    // Announcement bar is not fixed, so header is positioned below it
-    document.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        header.style.boxShadow = '0 2px 12px rgba(0,0,0,0.08)';
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08)';
       } else {
         header.style.boxShadow = '0 1px 8px rgba(0,0,0,0.04)';
       }
-    });
+    }, { passive: true });
   }
 
   // Update cart count label

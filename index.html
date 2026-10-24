@@ -73,9 +73,14 @@
       padding: 1.5rem;
       max-width: 1440px;
       margin: 0 auto;
-      width: 100%;
-      padding-top: 4.5rem;
+      padding-top: 5rem;
       padding-bottom: 2rem;
+    }
+    @media (min-width: 1024px) {
+      .hero__content {
+        padding-top: 6.5rem;
+        padding-bottom: 3rem;
+      }
     }
     .hero__main {
       display: flex;
@@ -631,10 +636,7 @@
 <body>
   <!-- Layout (header/footer) injected by layout.js -->
   
-  <!-- Announcement bar spacer -->
-  <div style="height:2.5rem;background:var(--color-tertiary-container);" aria-hidden="true"></div>
-
-  <main>
+  <main class="home-main">
     <!-- ===== HERO ===== -->
     <section class="hero" aria-label="Hero banner">
       <div class="hero__bg">
