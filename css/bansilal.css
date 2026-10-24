@@ -345,7 +345,7 @@ p { margin: 0; }
 
 .product-card__image-wrap {
   aspect-ratio: 1 / 1;
-  max-height: 250px;
+  max-height: 210px;
   overflow: hidden;
   background: var(--color-surface-container-highest);
   position: relative;
@@ -353,7 +353,7 @@ p { margin: 0; }
 @media (max-width: 639px) {
   .product-card__image-wrap {
     aspect-ratio: 1 / 1;
-    max-height: 180px;
+    max-height: 150px;
   }
 }
 .product-card__image {
@@ -1517,11 +1517,11 @@ input[type="range"]::-moz-range-thumb {
 
 .appt-form-card {
   background: var(--color-surface-container-low);
-  padding: 1.5rem 1.25rem;
+  padding: 1.25rem 1rem;
   box-shadow: 0 16px 48px rgba(0,0,0,0.08);
 }
 @media (min-width: 640px) {
   .appt-form-card {
-    padding: 2.5rem 3rem;
+    padding: 1.75rem 2rem;
   }
 }
