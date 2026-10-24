@@ -150,9 +150,29 @@
       gap: 0.875rem;
       align-items: center;
       width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
-    @media (min-width: 480px) {
-      .hero__actions { flex-direction: row; justify-content: center; }
+    @media (min-width: 640px) {
+      .hero__actions {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    .hero__cta-primary,
+    .hero__cta-secondary {
+      box-sizing: border-box;
+      max-width: 100%;
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .hero__cta-primary,
+      .hero__cta-secondary {
+        width: auto;
+      }
     }
     .hero__cta-primary {
       display: inline-flex;
@@ -162,12 +182,18 @@
       color: var(--color-on-secondary);
       font-size: 0.6875rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 1rem 2rem;
+      padding: 0.875rem 1.5rem;
       transition: background var(--transition-button);
       text-decoration: none;
       box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    @media (min-width: 640px) {
+      .hero__cta-primary {
+        padding: 1rem 2rem;
+        letter-spacing: 0.18em;
+      }
     }
     .hero__cta-primary:hover { background: var(--color-secondary-fixed-dim); color: var(--color-on-secondary-fixed); }
     .hero__cta-primary .arrow { display: inline-block; transition: transform 200ms; }
@@ -178,15 +204,22 @@
       gap: 0.625rem;
       background: rgba(246,243,237,0.08);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: var(--color-surface-bright);
       font-size: 0.6875rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 1rem 2rem;
-      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.875rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.2);
       transition: background var(--transition-button);
       text-decoration: none;
+    }
+    @media (min-width: 640px) {
+      .hero__cta-secondary {
+        padding: 1rem 2rem;
+        letter-spacing: 0.18em;
+      }
     }
     .hero__cta-secondary:hover { background: rgba(246,243,237,0.15); }
 
@@ -463,25 +496,59 @@
     /* About section */
     .about-image-wrapper {
       position: relative;
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+    @media (min-width: 1024px) {
+      .about-image-wrapper {
+        max-width: 100%;
+        margin: 0;
+      }
     }
     .about-image-main {
       width: 100%;
-      aspect-ratio: 4/5;
+      aspect-ratio: 16/10;
+      max-height: 320px;
       object-fit: cover;
       background: var(--color-surface-container-highest);
+    }
+    @media (min-width: 640px) {
+      .about-image-main {
+        aspect-ratio: 4/3;
+        max-height: 380px;
+      }
+    }
+    @media (min-width: 1024px) {
+      .about-image-main {
+        aspect-ratio: 4/5;
+        max-height: 520px;
+      }
     }
     .about-image-inset {
       display: none;
       position: absolute;
-      bottom: -2.5rem;
-      right: -2rem;
-      width: 15rem;
+      bottom: -1.5rem;
+      right: 0;
+      width: 10rem;
+      max-width: 38%;
       aspect-ratio: 3/4;
       object-fit: cover;
       background: var(--color-surface-container-low);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+      border: 3px solid var(--color-surface);
     }
-    @media (min-width: 640px) { .about-image-inset { display: block; } }
+    @media (min-width: 640px) {
+      .about-image-inset { display: block; }
+    }
+    @media (min-width: 1024px) {
+      .about-image-inset {
+        bottom: -2.5rem;
+        right: -1.5rem;
+        width: 14rem;
+        max-width: none;
+      }
+    }
 
     /* Map / Location */
     .map-placeholder {
@@ -650,11 +717,11 @@
           <!-- Images -->
           <div class="about-image-wrapper reveal">
             <div style="position:relative;width:100%;overflow:hidden;background:var(--color-surface-container-highest);">
-              <img class="about-image-main" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKdRVTaC8LPnLpOIbOtNxojgS0FngNOX3tFUnnRANiDeyW4Iq7hyBo1312SH7QNGBSOhydZLOslM1RR97P3jgqhhsITeFUEF_kXOiwdFMMrl3erWNV-qEibpWbY_DgKomzFcDIK25UtwxG-t-ihooa6tXuf98kLPOGvH_LjVxBK6KHY_Uwh9z_TXxL43dtvPxW8MUbbFy7uWeh7llChzUDeO-b4CeIUzzPkmZ7qDFNg8PCmBh8lFeeag" alt="Traditional master weaver at handloom creating Paithani saree" style="width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 700ms ease-out;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+              <img class="about-image-main" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKdRVTaC8LPnLpOIbOtNxojgS0FngNOX3tFUnnRANiDeyW4Iq7hyBo1312SH7QNGBSOhydZLOslM1RR97P3jgqhhsITeFUEF_kXOiwdFMMrl3erWNV-qEibpWbY_DgKomzFcDIK25UtwxG-t-ihooa6tXuf98kLPOGvH_LjVxBK6KHY_Uwh9z_TXxL43dtvPxW8MUbbFy7uWeh7llChzUDeO-b4CeIUzzPkmZ7qDFNg8PCmBh8lFeeag" alt="Traditional master weaver at handloom creating Paithani saree" style="width:100%;object-fit:cover;transition:transform 700ms ease-out;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
               <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,20,18,0.6) 0%,transparent 50%);"></div>
-              <div style="position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;padding:1rem;background:rgba(252,249,243,0.92);backdrop-filter:blur(8px);">
+              <div style="position:absolute;bottom:1rem;left:1rem;right:1rem;padding:0.75rem 1rem;background:rgba(252,249,243,0.92);backdrop-filter:blur(8px);">
                 <span class="text-label-caps" style="color:var(--color-secondary);">Heritage Guarantee</span>
-                <p style="font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--color-primary);margin-top:0.25rem;">Direct from Yeola, Kanchipuram &amp; Banaras Looms</p>
+                <p style="font-family:var(--font-display);font-size:0.9375rem;font-weight:600;color:var(--color-primary);margin-top:0.25rem;">Direct from Yeola, Kanchipuram &amp; Banaras Looms</p>
               </div>
             </div>
             <div class="about-image-inset">
@@ -761,9 +828,8 @@
           <h2 style="font-family:var(--font-display);font-size:clamp(2.25rem,6vw,4rem);font-weight:400;letter-spacing:-0.02em;color:var(--color-surface-bright);margin-top:1rem;line-height:1.1;">Explore a World of Colours, Fabrics &amp; Fashion</h2>
           <p style="font-size:1rem;font-weight:300;color:var(--color-surface-container-highest);margin-top:1rem;line-height:1.75;">From the rhythmic hum of pit looms to the celebratory swish of heavy silk on your wedding day, our store honors the living spirit of Indian weavers.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(1,1fr);gap:1.5rem;" class="reveal reveal-delay-1">
-          <style>@media(min-width:768px){.stage-grid{grid-template-columns:repeat(3,1fr)!important}}</style>
-          <div style="display:grid;grid-template-columns:1fr;gap:1.5rem;" class="stage-grid">
+        <div class="reveal reveal-delay-1">
+          <div class="stage-grid">
             <div class="stage-card">
               <span class="stage-card__num">Stage 01</span>
               <h3 class="stage-card__title">Loom to Wardrobe</h3>
@@ -795,9 +861,8 @@
           <h2 id="store-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;color:var(--color-primary);">Visit Our Flagship Store</h2>
           <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.75rem;max-width:40rem;">Spacious, air-conditioned multi-level shopping floors designed specifically for families, large wedding parties, and wholesale textile buyers.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="reveal reveal-delay-1">
-          <style>@media(min-width:1024px){.store-grid{grid-template-columns:repeat(4,1fr)!important}}</style>
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="store-grid">
+        <div class="reveal reveal-delay-1">
+          <div class="store-grid">
             <div style="padding:2rem;background:var(--color-surface-container-low);display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;transition:box-shadow 300ms;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
               <div style="display:flex;flex-direction:column;gap:1rem;">
                 <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:var(--color-surface);display:flex;align-items:center;justify-content:center;color:var(--color-secondary);">
@@ -867,9 +932,8 @@
           <h2 id="why-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;color:var(--color-primary);">The Bansilal Difference</h2>
           <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.75rem;">Why thousands of families across Pune, Pimpri-Chinchwad, and rural Maharashtra place their celebratory wardrobes in our hands.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="reveal reveal-delay-1">
-          <style>@media(min-width:1024px){.why-grid{grid-template-columns:repeat(4,1fr)!important}}</style>
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;" class="why-grid">
+        <div class="reveal reveal-delay-1">
+          <div class="why-grid">
             <div class="pillar-card">
               <div class="pillar-icon"><span class="material-symbols-outlined" style="font-size:1.75rem;">auto_awesome_motion</span></div>
               <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--color-primary);">Vast Variety</h3>
@@ -976,9 +1040,8 @@
           <h2 id="location-heading" style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.25rem);font-weight:400;color:var(--color-primary);">Locate Our Store in Alandi</h2>
           <p style="font-size:1rem;font-weight:300;color:var(--color-on-surface-variant);margin-top:0.75rem;">Centrally situated in the sacred city of Alandi Devachi, easily accessible from Pune City, Bhosari, Chakan, and Pimpri-Chinchwad.</p>
         </div>
-        <div style="display:grid;grid-template-columns:1fr;gap:2rem;align-items:stretch;" class="reveal reveal-delay-1">
-          <style>@media(min-width:1024px){.loc-grid{grid-template-columns:7fr 5fr!important}}</style>
-          <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="loc-grid">
+        <div class="reveal reveal-delay-1">
+          <div class="loc-grid">
             <!-- Map -->
             <div style="background:var(--color-surface);padding:1rem;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
               <div class="map-placeholder">
@@ -1004,7 +1067,7 @@
             </div>
 
             <!-- Info Card -->
-            <div style="background:var(--color-surface);padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,0.08);display:flex;flex-direction:column;gap:2rem;">
+            <div style="background:var(--color-surface);padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.08);display:flex;flex-direction:column;gap:2rem;">
               <div>
                 <span class="text-label-caps" style="color:var(--color-secondary);">Complete Address</span>
                 <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:500;color:var(--color-primary);margin-top:0.5rem;">Bansilal Textile / Cloth Market</h3>
@@ -1050,9 +1113,8 @@
     <!-- ===== APPOINTMENT / INQUIRY ===== -->
     <section class="section-py" style="background:var(--color-surface);" id="inquiry" aria-labelledby="inquiry-heading">
       <div class="container">
-        <div style="display:grid;grid-template-columns:1fr;gap:3rem;" class="reveal">
-          <style>@media(min-width:1024px){.appt-grid{grid-template-columns:5fr 7fr!important}}</style>
-          <div style="display:grid;grid-template-columns:1fr;gap:3rem;" class="appt-grid">
+        <div class="reveal">
+          <div class="appt-grid">
             <!-- Left: Info -->
             <div style="display:flex;flex-direction:column;gap:2rem;">
               <div>
@@ -1083,9 +1145,9 @@
             </div>
 
             <!-- Right: Form -->
-            <div style="background:var(--color-surface-container-low);padding:2.5rem 3rem;box-shadow:0 16px 48px rgba(0,0,0,0.08);">
+            <div class="appt-form-card">
               <form id="appointment-form" style="display:flex;flex-direction:column;gap:1.5rem;" novalidate>
-                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+                <div class="form-row-2">
                   <div class="appt-form-field">
                     <label for="appt-name">Full Name</label>
                     <input id="appt-name" type="text" placeholder="e.g. Ananya Deshmukh" required autocomplete="name">
@@ -1095,7 +1157,7 @@
                     <input id="appt-phone" type="tel" placeholder="e.g. +91 98000 00000" required autocomplete="tel">
                   </div>
                 </div>
-                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+                <div class="form-row-2">
                   <div class="appt-form-field">
                     <label for="appt-date">Preferred Visit Date</label>
                     <input id="appt-date" type="date">
