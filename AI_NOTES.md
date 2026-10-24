@@ -91,3 +91,24 @@ bansilal-ecommerce/
 - search overlay is in the header HTML; `initSearch()` is called in utils.js DOMContentLoaded
 - Product images: Google AID public URLs (working in browser)
 - Dev server running at `http://localhost:3000` (serving `bansilal-ecommerce/` via `python -m http.server 3000 --directory bansilal-ecommerce`)
+
+## Mobile & Tablet Responsiveness (Resolved)
+- **Horizontal Overflow Prevention**: `html, body { overflow-x: clip; }` added in `bansilal.css:107, 120`.
+- **Visit Button Overflow**:
+  - Hero actions (`.hero__actions` in `index.html:150`): stacks vertically on mobile (<640px) with `width: 100%; max-width: 20rem;` and responsive padding `0.875rem 1.5rem` (`letter-spacing: 0.14em`), switching to row only at `>= 640px`.
+  - Header CTA (`#header-cta` in `bansilal.css:604`): hidden on mobile and tablet (`display: none !important`), only displays on desktop (`@media (min-width: 1280px)`), eliminating header overcrowding.
+- **Left-Stuck Grids (Trust & Prestige, Physical Destination, Journey in Numbers)**:
+  - Removed erroneous outer `grid-template-columns: repeat(2, 1fr)` wrappers in `index.html:798, 870, 979, 1053` and `about.html:73, 104`.
+  - Replaced with clean responsive classes `.store-grid`, `.why-grid`, `.stage-grid`, `.stats-grid`, `.values-grid`, `.loc-grid`, `.appt-grid`, and `.form-row-2` in `bansilal.css:1337-1450`:
+    - Mobile (<640px): 1 column (100% full width, centered)
+    - Tablet (640px–1023px): 2 columns
+    - Desktop (>=1024px): 4 columns (or 3 columns for 3-item sets)
+- **Image Below Hero (About Master Weaver)**:
+  - Constrained `.about-image-wrapper` to `max-width: 32rem; margin: 0 auto;` on mobile/tablet (`index.html:464`).
+  - `.about-image-main`: `aspect-ratio: 16/10; max-height: 320px;` on mobile, `4/3; max-height: 380px;` on tablet, `4/5; max-height: 520px;` on desktop. Removed inline `aspect-ratio: 4/5` override on `<img>`.
+  - `.about-image-inset`: `right: 0` on tablet, `right: -1.5rem` on desktop (prevents breaking past viewport edge).
+- **Hamburger Menu & Mobile Drawer**:
+  - Button (`.mobile-menu-btn` in `bansilal.css:644`): styled with border, gold hover, visible on all viewports `< 1280px`.
+  - Delegated click handling in `utils.js:124` on `document` to guarantee zero race condition with dynamic `layout.js` injection.
+  - Automatically closes on backdrop click, close button, Escape key, or tapping any `.mobile-nav__link` / CTA.
+  - Added "Plan A Store Visit" CTA inside the drawer footer (`layout.js:146`).
