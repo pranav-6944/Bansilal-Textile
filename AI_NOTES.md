@@ -112,3 +112,30 @@ bansilal-ecommerce/
   - Delegated click handling in `utils.js:124` on `document` to guarantee zero race condition with dynamic `layout.js` injection.
   - Automatically closes on backdrop click, close button, Escape key, or tapping any `.mobile-nav__link` / CTA.
   - Added "Plan A Store Visit" CTA inside the drawer footer (`layout.js:146`).
+
+## Card & Section Compact Scaling (Resolved)
+- **Root Problem**: Sections, images, and cards were measuring 900px–1200px in height due to 4/5 portrait ratios, 7rem padding, and full 100svh viewport min-heights, forcing excessive scrolling.
+- **Section Padding**:
+  - `.section-py` in `bansilal.css:245`: Reduced from `7rem` (desktop) / `4rem` (mobile) to `2.75rem` (desktop) / `1.75rem` (mobile).
+- **Hero Section**:
+  - `min-height`: Reduced from `100svh` to `75svh` (`index.html:33`).
+  - `.hero__content`: Padding reduced to `padding-top: 4.5rem; padding-bottom: 2rem;` (`index.html:77`).
+  - `.hero__title`: Reduced from `clamp(2.5rem, 8vw, 4.5rem)` to `clamp(2rem, 5.5vw, 3.5rem)`.
+  - `.hero__metrics` & `.metric-card`: Reduced padding (`0.75rem 1rem`), metric icon from `3rem` to `2.25rem`, value font to `1.2rem`.
+- **Collection Cards**:
+  - `.collection-card__img-wrap` in `index.html:279`: Changed aspect ratio from `4/5` (portrait ~500px) to `16/10` landscape with `max-height: 195px;`.
+  - `.collection-card__body`: Reduced padding to `0.875rem 1rem`, description clamped to 2 lines (`-webkit-line-clamp: 2; line-clamp: 2;`). Total card height cut in half (~280px vs ~580px).
+- **Product Cards**:
+  - `.product-card__image-wrap` in `bansilal.css:346`: Changed from `4/5` to `1/1` square with `max-height: 210px;` (desktop) and `max-height: 150px;` (mobile).
+  - `.product-card__name`: Added 1-line clamp (`-webkit-line-clamp: 1; line-clamp: 1;`).
+- **Lookbook Gallery**:
+  - `.gallery-item` in `index.html:426`: Changed from `aspect-ratio: 3/4` to `4/3` with `max-height: 200px;`.
+- **Pillars & Flagship Store**:
+  - `.pillar-card` & store cards: Padding reduced from `2rem` to `1.25rem 1.5rem;`, icon circles reduced from `4rem` / `3.5rem` to `2.5rem`.
+  - Flagship Store Banner: Reduced height from `20rem` to `12rem;` (`index.html:920`).
+  - Location `.map-placeholder`: Reduced height from `24rem` to `14rem;` (`index.html:548`).
+  - Appointment `.appt-form-card`: Padding reduced from `2.5rem 3rem` to `1.75rem 2rem;` (`bansilal.css:1520`).
+- **About Page (`about.html`)**:
+  - Hero banner reduced from `32rem` to `22rem;`.
+  - Weaving process image reduced from `aspect-ratio: 4/5` to `16/10; max-height: 280px;`.
+  - Milestone stats and values cards padded to `1.25rem 1.5rem` with `2.5rem` icons.
