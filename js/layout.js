@@ -71,9 +71,9 @@ const HEADER_HTML = `
         <a href="index.html#inquiry" class="btn-primary" style="padding:0.5rem 1rem;font-size:0.625rem;display:none;" id="header-cta">
           Visit Store
         </a>
-        <!-- Mobile Menu -->
-        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span class="material-symbols-outlined">menu</span>
+        <!-- Mobile Menu Hamburger -->
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="material-symbols-outlined" style="font-size:1.5rem;line-height:1;display:block;">menu</span>
         </button>
       </div>
     </div>
@@ -144,6 +144,10 @@ const HEADER_HTML = `
       </a>
     </div>
     <div class="mobile-nav__footer">
+      <a href="index.html#inquiry" class="btn-primary mobile-nav__cta" style="width:100%;justify-content:center;margin-bottom:1rem;padding:0.875rem;">
+        <span class="material-symbols-outlined" style="font-size:1rem;">calendar_month</span>
+        Plan A Store Visit
+      </a>
       <p style="font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-secondary);margin-bottom:0.375rem;">Flagship Store</p>
       <p style="font-size:0.8125rem;color:var(--color-on-surface-variant);font-weight:300;line-height:1.5;">Alandi-Moshi Road, Near Dehu Phata,<br>Alandi Devachi, Pune – 412105</p>
       <p style="font-size:0.75rem;font-weight:600;color:var(--color-secondary);margin-top:0.5rem;">Open All 7 Days • 10 AM – 9:30 PM</p>
@@ -300,9 +304,13 @@ document.addEventListener('DOMContentLoaded', () => {
   footerDiv.innerHTML = FOOTER_HTML;
   document.body.appendChild(footerDiv);
 
-  // Show header CTA on desktop
-  const cta = document.getElementById('header-cta');
-  if (cta && window.innerWidth >= 640) cta.style.display = 'inline-flex';
+  // Initialize layout modules immediately after header/footer insertion
+  if (typeof initMobileNav === 'function') initMobileNav();
+  if (typeof initCartDrawer === 'function') initCartDrawer();
+  if (typeof initSearch === 'function') initSearch();
+  if (typeof setActiveNavItem === 'function') setActiveNavItem();
+  if (typeof wishlistManager !== 'undefined' && wishlistManager.updateBadge) wishlistManager.updateBadge();
+  if (typeof cartManager !== 'undefined' && cartManager.updateCartUI) cartManager.updateCartUI();
 
   // Sticky header with announcement bar offset
   const annBar = document.getElementById('announcement-bar');
