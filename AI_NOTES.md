@@ -139,3 +139,24 @@ bansilal-ecommerce/
   - Hero banner reduced from `32rem` to `22rem;`.
   - Weaving process image reduced from `aspect-ratio: 4/5` to `16/10; max-height: 280px;`.
   - Milestone stats and values cards padded to `1.25rem 1.5rem` with `2.5rem` icons.
+
+## Navbar Spacing Elimination & Hamburger Menu Redesign (Resolved)
+- **Root Problem 1: Unwanted Space Below Navbar (150px–220px gap)**:
+  - Discovered multi-layer stacking bug:
+    1. `layout.js` had injected `<div class="announcement-bar" id="announcement-bar">` outside `<header class="site-header">`. Because `.site-header` was `position: fixed; top: 0;`, the header sat at y=0 covering the announcement bar, but the announcement bar still occupied ~35px in normal flow.
+    2. Every HTML file (`shop.html:150`, `index.html:635`, `about.html:17`, `contact.html:21`, `cart.html:44`, `product.html:140`, `wishlist.html:26`, `faq.html:17`) contained a hardcoded duplicate spacer: `<div style="height:2.5rem;background:var(--color-tertiary-container);" aria-hidden="true"></div>` adding 40px.
+    3. `shop.html` had `<main style="padding-top:7rem;">` (112px), and header container had `padding:2.5rem 0 2rem;` (40px). Total stacked space = 35 + 40 + 112 + 40 = 227px!
+  - **Fix Implemented**:
+    - Removed redundant `<div class="announcement-bar">` from `layout.js`. Header now contains clean, responsive 2-bar layout (`.site-header__top` on desktop >=1024px, `.site-header__main` on all devices).
+    - Removed all duplicate `height:2.5rem` spacers from all 8 HTML files.
+    - Added global responsive offset rule in `bansilal.css`: `main { padding-top: 4.5rem; }` on mobile / `padding-top: 6.25rem;` on desktop (`min-width: 1024px`), matching header height exactly.
+    - `index.html` uses `main.home-main { padding-top: 0; }` so hero background seamlessly flows under glassmorphic header.
+    - Normalized page header containers: `shop.html` (`padding: 1.25rem 0 1rem;`), `contact.html`, `cart.html`, `wishlist.html`, `faq.html` (`padding-top: 1.25rem;`).
+- **Root Problem 2: Hamburger Menu & Mobile Drawer Redesign**:
+  - Replaced unreliable `visibility: hidden; opacity: 0; transition: visibility 0s 350ms, opacity 300ms ease;` pattern with clean `display: none;` and `.is-open { display: flex; }` at `z-index: 500`.
+  - Added smooth CSS keyframe animations: `mobileNavSlideIn` (260ms bezier), `mobileNavSlideOut` (200ms), `mobileNavFadeIn` (220ms), and `mobileNavFadeOut` (200ms).
+  - Implemented `window.mobileNavManager` with `open()`, `close()`, and `toggle()` in `utils.js` so clicking the hamburger button when open toggles it closed smoothly.
+  - Added direct `.onclick` element bindings in `layout.js:initMobileNav()` for instant reaction, with fallback delegated click and `Escape` key handling.
+  - Added touch-friendly `.mobile-nav__close-btn` (2.25rem x 2.25rem, gold border, high contrast).
+  - Enhanced mobile drawer link item icons (Home, All Products, Royal Sarees, Dress Materials, Women's Couture, Men's Regalia, Children's, Textiles, Wishlist, About, Contact, FAQ).
+  - Auto-closes mobile drawer if viewport is resized >= 1280px.
