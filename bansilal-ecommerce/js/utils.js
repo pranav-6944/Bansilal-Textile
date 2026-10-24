@@ -119,63 +119,125 @@ function initScrollReveal() {
 
 
 // ===================================================
-// BANSILAL TEXTILE — Mobile Navigation
+// BANSILAL TEXTILE — Mobile Navigation Manager
 // ===================================================
-function initMobileNav() {
-  function getElements() {
+window.mobileNavManager = {
+  isOpen: false,
+  getElements() {
     return {
       nav: document.getElementById('mobile-nav'),
       btn: document.getElementById('mobile-menu-btn'),
       overlay: document.getElementById('mobile-nav-overlay'),
       closeBtn: document.getElementById('mobile-nav-close')
     };
-  }
-
-  function openNav() {
-    const { nav, btn } = getElements();
+  },
+  open() {
+    const { nav, btn } = this.getElements();
     if (!nav) return;
+    this.isOpen = true;
+    nav.classList.remove('is-closing');
     nav.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-    if (btn) btn.setAttribute('aria-expanded', 'true');
-  }
-
-  function closeNav() {
-    const { nav, btn } = getElements();
+    if (btn) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.classList.add('is-active');
+    }
+  },
+  close() {
+    const { nav, btn } = this.getElements();
     if (!nav) return;
-    nav.classList.remove('is-open');
-    document.body.style.overflow = '';
-    if (btn) btn.setAttribute('aria-expanded', 'false');
+    this.isOpen = false;
+    nav.classList.add('is-closing');
+    if (btn) {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.classList.remove('is-active');
+    }
+    setTimeout(() => {
+      nav.classList.remove('is-open');
+      nav.classList.remove('is-closing');
+      document.body.style.overflow = '';
+    }, 220);
+  },
+  toggle() {
+    const nav = document.getElementById('mobile-nav');
+    const isCurrentlyOpen = nav && nav.classList.contains('is-open');
+    if (isCurrentlyOpen) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+};
+
+function initMobileNav() {
+  const { btn, overlay, closeBtn, nav } = window.mobileNavManager.getElements();
+
+  // Direct element bindings for instant response
+  if (btn) {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.mobileNavManager.toggle();
+    };
+  }
+  if (closeBtn) {
+    closeBtn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.mobileNavManager.close();
+    };
+  }
+  if (overlay) {
+    overlay.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.mobileNavManager.close();
+    };
+  }
+  if (nav) {
+    nav.querySelectorAll('.mobile-nav__link, .mobile-nav__cta').forEach(link => {
+      link.onclick = () => {
+        window.mobileNavManager.close();
+      };
+    });
   }
 
-  // Bind delegated events once to eliminate race conditions
-  if (!window._mobileNavInitialized) {
-    window._mobileNavInitialized = true;
+  // Delegated document listeners as fallback & global keyboard handling
+  if (!window._mobileNavDelegated) {
+    window._mobileNavDelegated = true;
 
     document.addEventListener('click', (e) => {
       const openTrigger = e.target.closest('#mobile-menu-btn');
       if (openTrigger) {
         e.preventDefault();
         e.stopPropagation();
-        openNav();
+        window.mobileNavManager.toggle();
         return;
       }
 
-      const closeTrigger = e.target.closest('#mobile-nav-close');
-      const overlayTrigger = e.target.closest('#mobile-nav-overlay');
-      if (closeTrigger || overlayTrigger) {
+      const closeTrigger = e.target.closest('#mobile-nav-close') || e.target.closest('#mobile-nav-overlay');
+      if (closeTrigger) {
         e.preventDefault();
-        closeNav();
+        e.stopPropagation();
+        window.mobileNavManager.close();
         return;
       }
 
-      // Close when clicking a nav link inside drawer
       if (e.target.closest('.mobile-nav__link') || e.target.closest('.mobile-nav__cta')) {
-        closeNav();
+        window.mobileNavManager.close();
       }
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeNav();
+      if (e.key === 'Escape' && window.mobileNavManager.isOpen) {
+        window.mobileNavManager.close();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1280 && window.mobileNavManager.isOpen) {
+        window.mobileNavManager.close();
+      }
     });
   }
 }
