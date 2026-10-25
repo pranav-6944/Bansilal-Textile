@@ -160,3 +160,11 @@ bansilal-ecommerce/
   - Added touch-friendly `.mobile-nav__close-btn` (2.25rem x 2.25rem, gold border, high contrast).
   - Enhanced mobile drawer link item icons (Home, All Products, Royal Sarees, Dress Materials, Women's Couture, Men's Regalia, Children's, Textiles, Wishlist, About, Contact, FAQ).
   - Auto-closes mobile drawer if viewport is resized >= 1280px.
+
+## Live Deployment (GitHub Pages)
+- **Live URL**: [https://pranav-6944.github.io/Bansilal-Textile/](https://pranav-6944.github.io/Bansilal-Textile/)
+- **Deployment Strategy**:
+  1. **`gh-pages` Branch**: Direct subtree push of `bansilal-ecommerce/` to `origin/gh-pages` (`7719702`). The root of `gh-pages` contains the complete web application (`index.html`, `shop.html`, `about.html`, `css/`, `js/`, `data/`).
+  2. **GitHub Actions**: Configured `.github/workflows/deploy.yml` with `actions/deploy-pages@v4` and `actions/upload-pages-artifact@v3` (`path: './bansilal-ecommerce'`).
+  3. **Root Redirect**: Root `index.html` on `main` branch immediately forwards any root traffic to `bansilal-ecommerce/index.html`.
+- **Status**: Live, verified 200 OK across desktop, tablet, and mobile URLs.
